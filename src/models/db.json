@@ -1,0 +1,521 @@
+{
+  "title": "JavaScript Interview Questions & Answers",
+  "description": "Click ⭐ if you like the project and follow @SudheerJonna for more updates. Coding questions available here. Check DataStructures and Algorithms for DSA related questions and ECMAScript for all ES features.",
+  "sponsors": [
+    {
+      "name": "GreatFrontEnd",
+      "description": "💡 Nail JavaScript interviews with questions and solutions from ex-interviewers! Try GreatFrontEnd → 💡"
+    },
+    {
+      "name": "FrontEndLead",
+      "description": "🚀 Ace Javascript interview questions with solutions from FAANG+ companies! Try FrontendLead → 🚀"
+    },
+    {
+      "name": "ZTM",
+      "description": "1. Take this JavaScript Projects course to go from a JS beginner to confidently building your own projects\n2. Take this coding interview bootcamp if you're serious about getting hired and don't have a CS degree\n3. Take this Advanced JavaScript Course to learn advanced JS concepts and become a top JS developer"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What are the possible ways to create objects in JavaScript",
+      "answer": "There are many ways to create objects in javascript as mentioned below:\n1. Object literal syntax\n2. Object constructor\n3. Object's create method\n4. Function constructor\n5. Function constructor with prototype\n6. Object's assign method\n7. ES6 Class syntax\n8. Singleton pattern"
+    },
+    {
+      "id": 2,
+      "question": "What is a prototype chain",
+      "answer": "The prototype chain is a core concept in JavaScript's inheritance model. It allows objects to inherit properties and methods from other objects. When you try to access a property or method on an object, JavaScript first looks for it on that object itself. If it's not found, the engine looks up the object's internal [[Prototype]] reference."
+    },
+    {
+      "id": 3,
+      "question": "What is the difference between Call, Apply and Bind",
+      "answer": "The difference between Call, Apply and Bind can be explained with below examples:\n- Call: The call() method invokes a function with a given this value and arguments provided one by one\n- Apply: Invokes the function with a given this value and allows you to pass in arguments as an array\n- Bind: returns a new function, allowing you to pass any number of arguments"
+    },
+    {
+      "id": 4,
+      "question": "What is JSON and its common operations",
+      "answer": "JSON is a text-based data format following JavaScript object syntax. It is useful when you want to transmit data across a network.\nCommon operations:\n- Parsing: Converting a string to a native object using JSON.parse(text)\n- Stringification: Converting a native object to a string using JSON.stringify(object)"
+    },
+    {
+      "id": 5,
+      "question": "What is the purpose of the array slice method",
+      "answer": "The slice() method returns the selected elements in an array as a new array object. It selects the elements starting at the given start argument, and ends at the given optional end argument without including the last element. If you omit the second argument then it selects till the end of the array."
+    },
+    {
+      "id": 6,
+      "question": "What is the purpose of the array splice method",
+      "answer": "The splice() method adds/removes items to/from an array, and then returns the removed item. The first argument specifies the array position/index for insertion or deletion whereas the optional second argument indicates the number of elements to be deleted. Each additional argument is added to the array."
+    },
+    {
+      "id": 7,
+      "question": "What is the difference between slice and splice",
+      "answer": "Major differences:\n- Slice doesn't modify the original array (immutable) while Splice modifies the original array (mutable)\n- Slice returns the subset of original array while Splice returns the deleted elements as array\n- Slice is used to pick elements from array while Splice is used to insert/delete elements to/from array"
+    },
+    {
+      "id": 8,
+      "question": "How do you compare Object and Map",
+      "answer": "Objects are similar to Maps but there are important differences:\n1. The keys of an Object can be Strings and Symbols, whereas they can be any value for a Map\n2. The keys in a Map are ordered while keys added to Object are not\n3. You can get the size of a Map easily with the size property\n4. A Map is an iterable and can be directly iterated\n5. An Object has a prototype which could collide with your keys"
+    },
+    {
+      "id": 9,
+      "question": "What is the difference between == and === operators",
+      "answer": "The difference between == (abstract equality) and === (strict equality) is that == compares values after performing any necessary type conversions, while === compares values without type conversion (so it will return false if the types differ)."
+    },
+    {
+      "id": 10,
+      "question": "What are lambda expressions or arrow functions",
+      "answer": "An arrow function is a shorter syntax for a function expression and does not have its own this, arguments, super, or new.target. These functions are best suited for non-method functions. Example:\nconst arrowFunc = (a, b) => a + b;"
+    },
+    {
+      "id": 11,
+      "question": "What is a first class function",
+      "answer": "In JavaScript, first-class functions mean that functions are treated like any other variable. You can:\n1. Assign a function to a variable\n2. Pass a function as an argument to another function\n3. Return a function from another function"
+    },
+    {
+      "id": 12,
+      "question": "What is a first order function",
+      "answer": "A first-order function is a function that doesn't accept another function as an argument and doesn't return a function as its return value. Example:\nconst firstOrder = () => console.log('I am a first order function!');"
+    },
+    {
+      "id": 13,
+      "question": "What is a higher order function",
+      "answer": "A higher-order function is a function that either accepts another function as an argument, returns a function as its result, or both. Example:\nconst higherOrder = (callback) => callback();"
+    },
+    {
+      "id": 14,
+      "question": "What is a unary function",
+      "answer": "A unary function is a function that accepts exactly one argument. Example:\nconst unaryFunction = (a) => console.log(a + 10);"
+    },
+    {
+      "id": 15,
+      "question": "What is the currying function",
+      "answer": "Currying is the process of transforming a function with multiple arguments into a sequence of nested functions, each accepting only one argument at a time. Example:\nconst curryUnaryFunction = (a) => (b) => (c) => a + b + c;"
+    },
+    {
+      "id": 16,
+      "question": "What is a pure function",
+      "answer": "A pure function is a function whose output depends only on its input arguments and produces no side effects. Given the same inputs, a pure function will always return the same output, and it does not modify any external state or data."
+    },
+    {
+      "id": 17,
+      "question": "Benefits of pure functions",
+      "answer": "1. Easier testing\n2. Predictability\n3. Immutability\n4. No side effects\n5. Better code organization and maintainability"
+    },
+    {
+      "id": 18,
+      "question": "What is the purpose of the let keyword",
+      "answer": "The let statement declares a block scope local variable. Variables defined with let keyword are limited in scope to the block, statement, or expression on which it is used."
+    },
+    {
+      "id": 19,
+      "question": "What is the difference between let and var",
+      "answer": "Main differences:\n1. let has block scope while var has function scope\n2. let variables are not hoisted (or hoisted but not initialized)\n3. let doesn't allow redeclaration in the same scope\n4. let was introduced in ES6 while var has been available since the beginning"
+    },
+    {
+      "id": 20,
+      "question": "What is the reason to choose the name let as a keyword",
+      "answer": "let is a mathematical statement that was adopted by early programming languages like Scheme and Basic. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to var as possible."
+    },
+    {
+      "id": 21,
+      "question": "How do you redeclare variables in a switch block without an error",
+      "answer": "You can create a nested block inside a case clause to create a new block scoped lexical environment:\nswitch(x) {\n  case 0: {\n    let name;\n    break;\n  }\n  case 1: {\n    let name; // No error\n    break;\n  }\n}"
+    },
+    {
+      "id": 22,
+      "question": "What is the Temporal Dead Zone",
+      "answer": "The Temporal Dead Zone (TDZ) is a specific period where a variable is inaccessible until it has been initialized with a value. This occurs when declaring a variable with let and const, but not with var. Accessing a let or const variable before its declaration causes a ReferenceError."
+    },
+    {
+      "id": 23,
+      "question": "What is an IIFE (Immediately Invoked Function Expression)",
+      "answer": "An IIFE is a JavaScript function that runs as soon as it is defined. The primary reason to use an IIFE is to obtain data privacy because any variables declared within the IIFE cannot be accessed by the outside world. Syntax:\n(function() {\n  // logic here\n})();"
+    },
+    {
+      "id": 24,
+      "question": "How do you decode or encode a URL in JavaScript?",
+      "answer": "encodeURI() function is used to encode an URL and decodeURI() function is used to decode an URL. Example:\nlet uri = 'employeeDetails?name=john&occupation=manager';\nlet encoded_uri = encodeURI(uri);\nlet decoded_uri = decodeURI(encoded_uri);"
+    },
+    {
+      "id": 25,
+      "question": "What is memoization",
+      "answer": "Memoization is a functional programming technique which attempts to increase a function's performance by caching its previously computed results. Each time a memoized function is called, its parameters are used to index the cache. If the data is present, then it can be returned without executing the entire function."
+    },
+    {
+      "id": 26,
+      "question": "What is Hoisting",
+      "answer": "Hoisting is a JavaScript mechanism where variables, function declarations and classes are moved to the top of their scope before code execution. JavaScript only hoists declarations, not initialization. Example:\nconsole.log(message); // undefined\nvar message = 'The variable Has been hoisted';"
+    },
+    {
+      "id": 27,
+      "question": "What are classes in ES6",
+      "answer": "In ES6, JavaScript classes are primarily syntactic sugar over JavaScript's existing prototype-based inheritance. They provide a cleaner way to create objects and deal with inheritance. Example:\nclass Bike {\n  constructor(color, model) {\n    this.color = color;\n    this.model = model;\n  }\n  getDetails() {\n    return this.model + ' bike has' + this.color + ' color';\n  }\n}"
+    },
+    {
+      "id": 28,
+      "question": "What are closures",
+      "answer": "A closure is the combination of a function bundled together with its lexical environment. It is an inner function that has access to the outer function's variables, functions and other data even after the outer function has finished execution. Example:\nfunction Welcome(name) {\n  var greetingInfo = function(message) {\n    console.log(message + ' ' + name);\n  };\n  return greetingInfo;\n}"
+    },
+    {
+      "id": 29,
+      "question": "What are modules",
+      "answer": "Modules refer to small units of independent, reusable code and also act as the foundation of many JavaScript design patterns. Most JavaScript modules export an object literal, a function, or a constructor."
+    },
+    {
+      "id": 30,
+      "question": "Why do you need modules",
+      "answer": "Benefits of using modules:\n1. Maintainability\n2. Reusability\n3. Namespacing"
+    },
+    {
+      "id": 31,
+      "question": "What is scope in javascript",
+      "answer": "Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. Scope determines the visibility of variables and other resources in areas of your code."
+    },
+    {
+      "id": 32,
+      "question": "What is a service worker",
+      "answer": "A Service worker is a script that runs in the background, separate from a web page and provides features that don't need a web page or user interaction. Features include offline experiences, periodic background syncs, push notifications, intercepting network requests and programmatically managing a cache of responses."
+    },
+    {
+      "id": 33,
+      "question": "How do you manipulate DOM using a service worker",
+      "answer": "Service worker can't access the DOM directly. But it can communicate with the pages it controls by responding to messages sent via the postMessage interface, and those pages can manipulate the DOM."
+    },
+    {
+      "id": 34,
+      "question": "How do you reuse information across service worker restarts",
+      "answer": "Service workers will have access to IndexedDB API in order to persist and reuse across restarts since service workers get terminated when not in use, and restarted when needed."
+    },
+    {
+      "id": 35,
+      "question": "What is IndexedDB",
+      "answer": "IndexedDB is a low-level API for client-side storage of larger amounts of structured data, including files/blobs. This API uses indexes to enable high-performance searches of this data."
+    },
+    {
+      "id": 36,
+      "question": "What is web storage",
+      "answer": "Web storage is an API that provides a mechanism by which browsers can store key/value pairs locally within the user's browser. It provides two mechanisms:\n1. Local storage: Stores data with no expiration date\n2. Session storage: Stores data for one session (lost when browser tab is closed)"
+    },
+    {
+      "id": 37,
+      "question": "What is a post message",
+      "answer": "Post message is a method that enables cross-origin communication between Window objects (between a page and a pop-up or iframe). Generally, scripts on different pages can access each other only if they follow same-origin policy."
+    },
+    {
+      "id": 38,
+      "question": "What is a Cookie",
+      "answer": "A cookie is a piece of data that is stored on your computer to be accessed by your browser. Cookies are saved as key/value pairs. Example:\ndocument.cookie = 'username=John';"
+    },
+    {
+      "id": 39,
+      "question": "Why do you need a Cookie",
+      "answer": "Cookies are used to remember information about the user profile. When a user visits a web page, the user profile can be stored in a cookie. Next time the user visits the page, the cookie remembers the user profile."
+    },
+    {
+      "id": 40,
+      "question": "What are the options in a cookie",
+      "answer": "Options available for a cookie:\n1. Expires: Sets expiry date\n   Example: document.cookie = 'username=John; expires=Sat, 8 Jun 2019 12:00:00 UTC';\n2. Path: Tells browser what path the cookie belongs to\n   Example: document.cookie = 'username=John; path=/services';"
+    },
+    {
+      "id": 41,
+      "question": "How do you delete a cookie",
+      "answer": "You can delete a cookie by setting the expiry date as a passed date:\ndocument.cookie = 'username=; expires=Fri, 07 Jun 2019 00:00:00 UTC; path=/;';"
+    },
+    {
+      "id": 42,
+      "question": "What are the differences between cookie, local storage and session storage",
+      "answer": {
+        "cookie": {
+          "accessedOn": "Both server-side & client-side",
+          "expiry": "Manually configured using Expires option",
+          "sslSupport": "Supported",
+          "maxSize": "4KB",
+          "accessibleFrom": "Any window",
+          "sentWithRequests": "Yes"
+        },
+        "localStorage": {
+          "accessedOn": "client-side only",
+          "expiry": "Forever until deleted",
+          "sslSupport": "Not supported",
+          "maxSize": "5MB",
+          "accessibleFrom": "Any window",
+          "sentWithRequests": "No"
+        },
+        "sessionStorage": {
+          "accessedOn": "client-side only",
+          "expiry": "until tab is closed",
+          "sslSupport": "Not supported",
+          "maxSize": "5MB",
+          "accessibleFrom": "Same tab",
+          "sentWithRequests": "No"
+        }
+      }
+    },
+    {
+      "id": 43,
+      "question": "What is the main difference between localStorage and sessionStorage",
+      "answer": "LocalStorage is the same as SessionStorage but it persists the data even when the browser is closed and reopened (it has no expiration time) whereas in sessionStorage data gets cleared when the page session ends."
+    },
+    {
+      "id": 44,
+      "question": "How do you access web storage",
+      "answer": "The Window object implements the WindowLocalStorage and WindowSessionStorage objects which has localStorage (window.localStorage) and sessionStorage (window.sessionStorage) properties respectively. Example:\nlocalStorage.setItem('logo', document.getElementById('logo').value);\nlocalStorage.getItem('logo');"
+    },
+    {
+      "id": 45,
+      "question": "What are the methods available on session storage",
+      "answer": "Session storage methods:\n1. sessionStorage.setItem('key', 'value') - Save data\n2. sessionStorage.getItem('key') - Get saved data\n3. sessionStorage.removeItem('key') - Remove saved data\n4. sessionStorage.clear() - Remove all saved data"
+    },
+    {
+      "id": 46,
+      "question": "What is a storage event and its event handler",
+      "answer": "The StorageEvent is an event that fires when a storage area has been changed in the context of another document. The onstorage property is an EventHandler for processing storage events. Example:\nwindow.onstorage = function(e) {\n  console.log(e.key + ' changed from ' + e.oldValue + ' to ' + e.newValue);\n};"
+    },
+    {
+      "id": 47,
+      "question": "Why do you need web storage",
+      "answer": "Web storage is more secure, and large amounts of data can be stored locally, without affecting website performance. Also, the information is never transferred to the server. Hence this is a more recommended approach than Cookies."
+    },
+    {
+      "id": 48,
+      "question": "How do you check web storage browser support",
+      "answer": "You need to check browser support before using web storage:\nif (typeof Storage !== 'undefined') {\n  // Code for localStorage/sessionStorage\n} else {\n  // No Web Storage support\n}"
+    },
+    {
+      "id": 49,
+      "question": "How do you check web workers browser support",
+      "answer": "You can check browser support for web workers before using it:\nif (typeof Worker !== 'undefined') {\n  // Web worker support\n} else {\n  // No Web Worker support\n}"
+    },
+    {
+      "id": 50,
+      "question": "Give an example of a web worker",
+      "answer": "Example steps:\n1. Create a Web Worker File (counter.js):\n   let i = 0;\n   function timedCount() {\n     i = i + 1;\n     postMessage(i);\n     setTimeout('timedCount()', 500);\n   }\n   timedCount();\n2. Create Web Worker Object:\n   if (typeof w == 'undefined') {\n     w = new Worker('counter.js');\n   }\n   w.onmessage = function(event) {\n     document.getElementById('message').innerHTML = event.data;\n   };\n3. Terminate: w.terminate();\n4. Reuse: w = undefined;"
+    },
+    {
+      "id": 51,
+      "question": "What are the restrictions of web workers on DOM",
+      "answer": "WebWorkers don't have access to:\n1. Window object\n2. Document object\n3. Parent object"
+    },
+    {
+      "id": 52,
+      "question": "What is a promise",
+      "answer": "A Promise is a JavaScript object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. A Promise can be in one of three states:\n1. pending: Initial state\n2. fulfilled: Operation completed successfully\n3. rejected: Operation failed\nExample:\nconst promise = new Promise((resolve, reject) => {\n  setTimeout(() => resolve('Done!'), 1000);\n});"
+    },
+    {
+      "id": 53,
+      "question": "Why do you need a promise",
+      "answer": "Promises are used to:\n1. Handle asynchronous operations\n2. Provide a cleaner alternative to callbacks\n3. Avoid callback hell\n4. Make code more readable and maintainable"
+    },
+    {
+      "id": 54,
+      "question": "Explain the three states of promise",
+      "answer": "Promises have three states:\n1. Pending: Initial state before operation begins\n2. Fulfilled: The specified operation was completed\n3. Rejected: The operation did not complete (error occurred)"
+    },
+    {
+      "id": 55,
+      "question": "What is a callback function",
+      "answer": "A callback function is a function passed into another function as an argument. This function is invoked inside the outer function to complete an action. Example:\nfunction callbackFunction(name) {\n  console.log('Hello ' + name);\n}\nfunction outerFunction(callback) {\n  let name = prompt('Please enter your name.');\n  callback(name);\n}\nouterFunction(callbackFunction);"
+    },
+    {
+      "id": 56,
+      "question": "Why do we need callbacks",
+      "answer": "Callbacks are needed because JavaScript is an event-driven language. Instead of waiting for a response, JavaScript keeps executing while listening for other events. Callbacks ensure that certain code doesn't execute until other code finishes execution."
+    },
+    {
+      "id": 57,
+      "question": "What is a callback hell",
+      "answer": "Callback Hell is an anti-pattern with multiple nested callbacks which makes code hard to read and debug when dealing with asynchronous logic. Example:\nasync1(function(){\n    async2(function(){\n        async3(function(){\n            async4(function(){\n                ....\n            });\n        });\n    });\n});"
+    },
+    {
+      "id": 58,
+      "question": "What are server-sent events",
+      "answer": "Server-sent events (SSE) is a server push technology enabling a browser to receive automatic updates from a server via HTTP connection without resorting to polling. These are one-way communications channel - events flow from server to client only."
+    },
+    {
+      "id": 59,
+      "question": "How do you receive server-sent event notifications",
+      "answer": "The EventSource object is used to receive server-sent event notifications:\nif (typeof EventSource !== 'undefined') {\n  var source = new EventSource('sse_generator.js');\n  source.onmessage = function(event) {\n    document.getElementById('output').innerHTML += event.data + '<br>';\n  };\n}"
+    },
+    {
+      "id": 60,
+      "question": "How do you check browser support for server-sent events",
+      "answer": "You can check browser support before using server-sent events:\nif (typeof EventSource !== 'undefined') {\n  // Server-sent events supported\n} else {\n  // No server-sent events supported\n}"
+    },
+    {
+      "id": 61,
+      "question": "What are the events available for server sent events",
+      "answer": {
+        "onopen": "When a connection to the server is opened",
+        "onmessage": "When a message is received",
+        "onerror": "When an error occurs"
+      }
+    },
+    {
+      "id": 62,
+      "question": "What are the main rules of promise",
+      "answer": "A promise must follow these rules:\n1. A promise is an object that supplies a standard-compliant .then() method\n2. A pending promise may transition into either fulfilled or rejected state\n3. A fulfilled or rejected promise is settled and must not transition into any other state\n4. Once a promise is settled, the value must not change"
+    },
+    {
+      "id": 63,
+      "question": "What is callback in callback",
+      "answer": "You can nest one callback inside another callback to execute actions sequentially. This is known as callbacks in callbacks (can lead to callback hell):\nloadScript('/script1.js', function(script) {\n  loadScript('/script2.js', function(script) {\n    loadScript('/script3.js', function(script) {\n      // after all scripts are loaded\n    });\n  });\n});"
+    },
+    {
+      "id": 64,
+      "question": "What is promise chaining",
+      "answer": "Promise chaining is the process of executing a sequence of asynchronous tasks one after another using promises. Example:\nnew Promise(function(resolve, reject) {\n  setTimeout(() => resolve(1), 1000);\n}).then(function(result) {\n  console.log(result); // 1\n  return result * 2;\n}).then(function(result) {\n  console.log(result); // 2\n  return result * 3;\n}).then(function(result) {\n  console.log(result); // 6\n  return result * 4;\n});"
+    },
+    {
+      "id": 65,
+      "question": "What is promise.all",
+      "answer": "Promise.all is a promise that takes an array of promises as input, and gets resolved when all promises get resolved or any one gets rejected. Syntax:\nPromise.all([Promise1, Promise2, Promise3])\n.then(result => console.log(result))\n.catch(error => console.log(`Error in promises ${error}`))"
+    },
+    {
+      "id": 66,
+      "question": "What is the purpose of the race method in promise",
+      "answer": "Promise.race() method returns the promise instance which is firstly resolved or rejected. Example:\nvar promise1 = new Promise(function(resolve, reject) {\n  setTimeout(resolve, 500, 'one');\n});\nvar promise2 = new Promise(function(resolve, reject) {\n  setTimeout(resolve, 100, 'two');\n});\nPromise.race([promise1, promise2]).then(function(value) {\n  console.log(value); // 'two' (faster)\n});"
+    },
+    {
+      "id": 67,
+      "question": "What is a strict mode in javascript",
+      "answer": "Strict Mode is a feature in ECMAScript 5 that allows placing a program or function in a 'strict' operating context. This prevents certain actions and throws more exceptions. The literal expression 'use strict'; instructs the browser to use strict mode."
+    },
+    {
+      "id": 68,
+      "question": "Why do you need strict mode",
+      "answer": "Strict mode helps write secure JavaScript by notifying 'bad syntax' into real errors. It eliminates accidentally creating global variables, throws errors for assignments to non-writable properties, getter-only properties, non-existing properties/variables/objects, etc."
+    },
+    {
+      "id": 69,
+      "question": "How do you declare strict mode",
+      "answer": "Strict mode is declared by adding 'use strict'; to the beginning of a script or function. If declared at the beginning, it has global scope:\n'use strict';\nx = 3.14; // Error\n\nIf declared inside a function, it has local scope:\nfunction myFunction() {\n  'use strict';\n  y = 3.14; // Error\n}"
+    },
+    {
+      "id": 70,
+      "question": "What is the purpose of double exclamation",
+      "answer": "The double exclamation (!!) ensures the resulting type is a boolean. If the value is falsey (e.g., 0, null, undefined), it will be false, otherwise true. Example:\nlet isIE8 = false;\nisIE8 = !!navigator.userAgent.match(/MSIE 8.0/);\nconsole.log(isIE8); // true or false"
+    },
+    {
+      "id": 71,
+      "question": "What is the purpose of the delete operator",
+      "answer": "The delete operator is used to delete the property as well as its value. Example:\nvar user = { firstName: 'John', lastName: 'Doe', age: 20 };\ndelete user.age;\nconsole.log(user); // {firstName: 'John', lastName: 'Doe'}"
+    },
+    {
+      "id": 72,
+      "question": "What is typeof operator",
+      "answer": "The typeof operator is used to find the type of a JavaScript variable. Example:\ntypeof 'John Abraham'; // 'string'\ntypeof (1 + 2); // 'number'\ntypeof [1, 2, 3]; // 'object'"
+    },
+    {
+      "id": 73,
+      "question": "What is undefined property",
+      "answer": "The undefined property indicates that a variable has not been assigned a value, or declared but not initialized. Example:\nvar user; // Value is undefined\nconsole.log(typeof user); // 'undefined'\n\nYou can empty a variable by setting it to undefined:\nuser = undefined;"
+    },
+    {
+      "id": 74,
+      "question": "What is null value",
+      "answer": "The value null represents the intentional absence of any object value. It is one of JavaScript's primitive values. The type of null is object. Example:\nvar user = null;\nconsole.log(typeof user); // 'object'"
+    },
+    {
+      "id": 75,
+      "question": "What is the difference between null and undefined",
+      "answer": {
+        "null": {
+          "description": "Assignment value indicating no object reference",
+          "type": "object",
+          "usage": "Represents null, empty, or non-existent reference",
+          "conversion": "Converted to zero in primitive operations"
+        },
+        "undefined": {
+          "description": "Variable declared but not assigned",
+          "type": "undefined",
+          "usage": "Indicates absence of variable itself",
+          "conversion": "Converted to NaN in primitive operations"
+        }
+      }
+    },
+    {
+      "id": 76,
+      "question": "What is eval",
+      "answer": "The eval() function evaluates JavaScript code represented as a string. Example:\nconsole.log(eval('1 + 2')); // 3\n\nNote: It's not recommended to use eval as it allows arbitrary code execution which causes security problems."
+    },
+    {
+      "id": 77,
+      "question": "What is the difference between window and document",
+      "answer": {
+        "window": {
+          "description": "Root level element in any web page",
+          "access": "Available implicitly",
+          "methods": "alert(), confirm()",
+          "properties": "document, location"
+        },
+        "document": {
+          "description": "Child of window object (DOM)",
+          "access": "Via window.document or document",
+          "methods": "getElementById, getElementsByTagName, createElement",
+          "properties": "DOM nodes and properties"
+        }
+      }
+    },
+    {
+      "id": 78,
+      "question": "How do you access history in javascript",
+      "answer": "The window.history object contains the browser's history. You can navigate using back() and forward() methods:\nfunction goBack() {\n  window.history.back();\n}\nfunction goForward() {\n  window.history.forward();\n}"
+    },
+    {
+      "id": 79,
+      "question": "How do you detect caps lock key turned on or not",
+      "answer": "The mouseEvent getModifierState() is used to detect if CapsLock is on:\n<input type='password' onmousedown='enterInput(event)' />\n<p id='feedback'></p>\n<script>\nfunction enterInput(e) {\n  var flag = e.getModifierState('CapsLock');\n  if (flag) {\n    document.getElementById('feedback').innerHTML = 'CapsLock activated';\n  } else {\n    document.getElementById('feedback').innerHTML = 'CapsLock not activated';\n  }\n}\n</script>"
+    },
+    {
+      "id": 80,
+      "question": "What is isNaN",
+      "answer": "The isNaN() function is used to determine whether a value is an illegal number (Not-a-Number). Returns true if the value equates to NaN. Example:\nisNaN('Hello'); // true\nisNaN('100'); // false"
+    },
+    {
+      "id": 81,
+      "question": "What are the differences between undeclared and undefined variables",
+      "answer": {
+        "undeclared": {
+          "description": "Variables that do not exist in a program and are not declared",
+          "access": "Throws runtime error when trying to read",
+          "example": "b; // Throws 'Uncaught ReferenceError: b is not defined'"
+        },
+        "undefined": {
+          "description": "Variables declared in the program but have not assigned any value",
+          "access": "Returns undefined value when trying to read",
+          "example": "var a; a; // yields undefined"
+        }
+      }
+    },
+    {
+      "id": 82,
+      "question": "What are global variables",
+      "answer": "Global variables are those that are available throughout the length of the code without any scope. If you omit var when declaring a variable, it becomes global:\nmsg = 'Hello'; // global variable"
+    },
+    {
+      "id": 83,
+      "question": "What are the problems with global variables",
+      "answer": "The problem with global variables is the conflict of variable names of local and global scope. It is also difficult to debug and test the code that relies on global variables."
+    },
+    {
+      "id": 84,
+      "question": "What is NaN property",
+      "answer": "The NaN property is a global property that represents 'Not-a-Number' value. Example:\nMath.sqrt(-1); // NaN\nparseInt('Hello'); // NaN"
+    },
+    {
+      "id": 85,
+      "question": "What is the purpose of isFinite function",
+      "answer": "The isFinite() function determines whether a number is a finite, legal number. Returns false for +infinity, -infinity, or NaN. Example:\nisFinite(Infinity); // false\nisFinite(NaN); // false\nisFinite(-Infinity); // false\nisFinite(100); // true"
+    },
+    {
+      "id": 86,
+      "question": "What is an event flow",
+      "answer": "Event flow is the order in which event is received on the web page. There are two ways of event flow:\n1. Top to Bottom (Event Capturing)\n2. Bottom to Top (Event Bubbling)"
+    },
+    {
+      "id": 87,
+      "question": "What is event bubbling",
+      "answer": "Event bubbling is a type of event propagation where the event first triggers on the innermost target element, and then successively triggers on the ancestors of the target element till it reaches the outermost DOM element. Example:\n<div>\n  <button class='child'>Hello</button>\n</div>\n<script>\n  const parent = document.querySelector('div');\n  const child = document.querySelector('.child');\n  parent.addEventListener('click', () => console.log('Parent clicked'));\n  child.addEventListener('click', () => console.log('Child clicked'));\n</script>\n// Clicking the button will log 'Child clicked' then 'Parent clicked'"
+    }
+  ]
+}

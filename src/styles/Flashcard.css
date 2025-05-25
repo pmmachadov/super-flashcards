@@ -1,0 +1,190 @@
+/* Flashcard component styling */
+.flashcard {
+  width: 150%; /* Aumentado un 50% */
+  height: 600px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 2rem auto;
+  margin-bottom: 3.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  background-image: var(--gradient-dark-blue);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: auto;
+}
+
+.flashcard-front {
+  background-image: var(--gradient-darker-blue);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 2.8rem;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(9, 132, 227, 0.3);
+}
+
+.flashcard-back {
+  background-image: var(--gradient-blue-dark);
+  color: var(--vscode-foreground);
+  transform: rotateY(180deg);
+  border: none;
+  border-radius: 16px;
+  text-align: left;
+  padding: 2.8rem;
+  overflow-y: auto;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(65, 105, 225, 0.2);
+}
+
+/* VS Code-like answer styling con mejores colores */
+.answer-content {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+}
+
+.answer-content p {
+  margin-bottom: 1.5rem;
+  color: #eaf0fb;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.answer-content .list-item {
+  margin-left: 2rem;
+  margin-bottom: 0.9rem;
+  position: relative;
+  padding-left: 0.5rem;
+  line-height: 1.6;
+}
+
+.answer-content .list-item:before {
+  content: "•";
+  position: absolute;
+  left: -1.3rem;
+  color: #a9e4ff;
+  font-size: 1.5rem;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(169, 228, 255, 0.5);
+}
+
+.flashcard h2 {
+  margin-top: 0;
+  font-weight: 700;
+  margin-bottom: 2.2rem;
+  font-size: 2.2rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.6px;
+  background: linear-gradient(to bottom, #ffffff, #cfe1ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.flashcard p {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+
+/* VS Code command palette style instruction con efecto de brillo */
+.flip-instruction {
+  position: absolute;
+  bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.85rem;
+  color: #a9e4ff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.25);
+  animation: pulse 2s infinite;
+  letter-spacing: 0.5px;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.75;
+    color: #a9e4ff;
+  }
+  50% {
+    opacity: 1;
+    color: #c2f0ff;
+    text-shadow: 0 0 10px rgba(169, 228, 255, 0.7);
+  }
+  100% {
+    opacity: 0.75;
+    color: #a9e4ff;
+  }
+}
+
+/* Hover effect */
+.flashcard:hover .flashcard-inner {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .flashcard {
+    height: 350px;
+    margin: 1rem auto;
+  }
+
+  .flashcard h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .flashcard p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashcard {
+    height: 320px;
+    margin: 0.5rem auto;
+  }
+
+  .flashcard-front,
+  .flashcard-back {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,139 @@
+/* Header Component Styling */
+.app-header {
+  background-color: #252526;
+  padding: 1rem;
+  color: var(--vscode-foreground);
+  border-bottom: 1px solid var(--vscode-border);
+  margin-bottom: 2rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #4ec9b0;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.create-button,
+.menu-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-default);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.create-button {
+  background: var(--gradient-accent);
+  color: white;
+}
+
+.menu-button {
+  background: transparent;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 3px;
+  background-color: white;
+  position: relative;
+}
+
+.menu-icon:before,
+.menu-icon:after {
+  content: "";
+  width: 24px;
+  height: 3px;
+  background-color: white;
+  position: absolute;
+  transition: var(--transition-default);
+}
+
+.menu-icon:before {
+  transform: translateY(-7px);
+}
+
+.menu-icon:after {
+  transform: translateY(7px);
+}
+
+.plus-icon {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.create-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  min-width: 160px;
+  z-index: 100;
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu ul li {
+  padding: 0;
+}
+
+.dropdown-menu ul li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--color-dark);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.dropdown-menu ul li a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

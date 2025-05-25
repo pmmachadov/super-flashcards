@@ -1,0 +1,108 @@
+/* Flashcard Form Styling */
+.flashcard-form-container {
+  width: 100%;
+}
+
+.flashcard-form-container h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--vscode-variable);
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.flashcard-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--vscode-foreground);
+}
+
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--vscode-editor-bg);
+  color: var(--vscode-foreground);
+  border: 1px solid var(--vscode-border);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  resize: vertical;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+}
+
+.form-group textarea.error {
+  border-color: #f14c4c;
+}
+
+.form-group textarea:focus {
+  border-color: #569cd6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(86, 156, 214, 0.2);
+}
+
+.error-message {
+  color: #f14c4c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.submit-button,
+.cancel-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.submit-button {
+  background-color: #0e639c;
+  color: white;
+}
+
+.cancel-button {
+  background-color: #333;
+  color: var(--vscode-foreground);
+  border: 1px solid #444;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.cancel-button:hover {
+  background-color: #2a2a2a;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .submit-button,
+  .cancel-button {
+    width: 100%;
+    padding: 0.6rem 1rem;
+  }
+}

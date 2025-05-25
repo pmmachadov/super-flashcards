@@ -1,0 +1,101 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--vscode-foreground);
+  background-color: var(--vscode-bg);
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 1280px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* VS Code-like tab bar */
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  gap: 0;
+  background-color: var(--vscode-editor-bg);
+  border-bottom: 1px solid var(--vscode-border);
+  border-top: 1px solid var(--vscode-border);
+  width: 100%;
+  max-width: 1200px; /* Match card width */
+}
+
+.view-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  color: var(--vscode-foreground);
+}
+
+.view-button.active {
+  background-color: var(--vscode-editor-bg);
+  border-bottom: 2px solid var(--vscode-button-bg);
+  color: #ffffff;
+  color: white;
+}
+
+.view-button:hover {
+  background-color: var(--vscode-editor-bg);
+}
+
+/* VS Code status bar style footer */
+.app-footer {
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--vscode-statusbar);
+  color: white;
+  text-align: center;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

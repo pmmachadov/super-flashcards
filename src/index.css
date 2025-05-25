@@ -1,0 +1,165 @@
+:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: #e8e8ff;
+  background-color: #1a1a2e;
+
+  /* Gradientes de azules y verdes */
+  --gradient-blue-teal: linear-gradient(135deg, #0984e3, #38b2ac);
+  --gradient-darker-blue: linear-gradient(135deg, #0a417a, #1e4976);
+  --gradient-blue-green: linear-gradient(135deg, #0984e3, #34c0a2);
+  --gradient-teal-green: linear-gradient(135deg, #0d9488, #2dd4bf);
+  --gradient-green-blue: linear-gradient(135deg, #00b894, #0984e3);
+  --gradient-dark-blue: linear-gradient(135deg, #1e3a8a, #164e63);
+  --gradient-blue-dark: linear-gradient(180deg, #1e3a8a, #1e272e);
+
+  /* VS Code Dark theme colors con más vida */
+  --vscode-bg: #1a1a2e;
+  --vscode-editor-bg: #16213e;
+  --vscode-foreground: #e8e8ff;
+  --vscode-string: #ff9d7a;
+  --vscode-keyword: #7e9eff;
+  --vscode-function: #ffca80;
+  --vscode-variable: #a9e4ff;
+  --vscode-number: #c2e59c;
+  --vscode-comment: #7be495;
+  --vscode-class: #65edda;
+  --vscode-bracket: #ffffff80;
+  --vscode-border: #363852;
+
+  /* VS Code UI colors modificados */
+  --vscode-titlebar: #0f3460;
+  --vscode-activitybar: #16213e;
+  --vscode-sidebar: #0f3460;
+  --vscode-panel: #1a1a2e;
+  --vscode-statusbar: #0284c7;
+  --vscode-button-bg: #0984e3;
+  --vscode-button-hover: #0ea5e9;
+  --vscode-dropdown-bg: #1a1a2e;
+  --vscode-selected-bg: #0d9488;
+
+  /* Gradient colors */
+  --gradient-primary: linear-gradient(135deg, #2c3e50, #4a5568);
+  --gradient-secondary: linear-gradient(135deg, #2d3748, #1a202c);
+
+  /* Shadow variables */
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.6);
+
+  /* Border radius */
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #4ec9b0;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #569cd6;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--vscode-bg);
+  color: var(--vscode-foreground);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for the whole app (like VS Code) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vscode-editor-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Reusable VS Code-like components */
+.vscode-panel {
+  background-color: var(--vscode-editor-bg);
+  border: 1px solid var(--vscode-border);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.vscode-button {
+  background-color: var(--vscode-button-bg);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.vscode-button:hover {
+  background-color: var(--vscode-button-hover);
+}
+
+code {
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

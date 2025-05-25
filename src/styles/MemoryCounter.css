@@ -1,0 +1,155 @@
+/* Memory Counter styles */
+.memory-counter {
+  margin: 0 auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1000px; /* Increased to match wider card */
+}
+
+.memory-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem; /* Increased gap for better spacing */
+  margin: 0 auto;
+  width: 100%;
+  max-width: 900px; /* Increased to match wider layout */
+}
+
+.memory-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.15);
+  flex: 1;
+  min-width: 100px;
+}
+
+.memory-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-image: var(--gradient-blue-green);
+  flex: 1;
+  min-width: 120px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.memory-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  opacity: 0.85;
+}
+
+.memory-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.memory-buttons {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem auto 0;
+  width: 100%;
+  max-width: 900px;
+}
+
+.memory-button {
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: 1;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+}
+
+.memory-yes {
+  background-image: var(--gradient-teal-green);
+  color: white;
+}
+
+.memory-no {
+  background-image: var(--gradient-blue-teal);
+  color: white;
+}
+
+.memory-reset {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e8e8ff;
+}
+
+@media (max-width: 768px) {
+  .memory-stats {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .memory-stat,
+  .memory-total {
+    min-width: 110px;
+    flex: 0 1 auto;
+  }
+
+  .memory-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .memory-button {
+    flex: 0 1 auto;
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .memory-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .memory-stat,
+  .memory-total {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .memory-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .memory-button {
+    width: 100%;
+    max-width: 250px;
+  }
+}

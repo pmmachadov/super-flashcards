@@ -1,0 +1,316 @@
+/* Flashcard List styling */
+.flashcard-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px; /* Increased to match wider card */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.progress-bar {
+  width: 100%;
+  max-width: 1200px;
+  height: 12px;
+  background-color: rgba(20, 20, 50, 0.6);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3),
+    0 1px 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.progress {
+  height: 100%;
+  background-image: linear-gradient(90deg, #0984e3, #38b2ac, #2dd4bf);
+  background-size: 200% auto;
+  animation: gradientShift 3s ease infinite;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 15px rgba(9, 132, 227, 0.6);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.counter {
+  text-align: right;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--vscode-foreground);
+}
+
+.flashcard-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+  max-width: 1200px; /* Match the card width */
+}
+
+.nav-button,
+.random-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.nav-button-prev,
+.nav-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(9, 132, 227, 0.3);
+  color: white;
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-button-prev {
+  left: -100px; /* Position relative to card - adjusted for wider card */
+}
+
+.nav-button-next {
+  right: -100px; /* Position relative to card - adjusted for wider card */
+}
+
+.flashcard-container:hover .nav-button-prev,
+.flashcard-container:hover .nav-button-next {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav-button-prev:hover,
+.nav-button-next:hover {
+  transform: translateY(-50%) scale(1.1);
+  background-color: rgba(9, 132, 227, 0.5);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.nav-button-prev:active,
+.nav-button-next:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.nav-button-prev:disabled,
+.nav-button-next:disabled {
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav-button {
+  background-image: var(--gradient-blue-green);
+  color: white;
+  min-width: 150px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 12px rgba(53, 84, 232, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.random-button {
+  background-image: var(--gradient-teal-green);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 12px rgba(13, 148, 136, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+  min-width: 200px;
+}
+
+.nav-button:hover,
+.random-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  filter: brightness(1.1);
+}
+
+.nav-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.nav-button:hover::after {
+  left: 100%;
+}
+
+.nav-button:disabled {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.flashcard-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+  font-size: 1.25rem;
+  color: #569cd6;
+  background: var(--vscode-editor-bg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--vscode-border);
+}
+
+/* Card and counter wrapper */
+.card-and-counter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Memory counter container styles */
+.memory-counter-container {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--vscode-editor-bg);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--vscode-border);
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+  .flashcard {
+    width: 120%; /* Reduce width on medium screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .flashcard {
+    width: 100%; /* Standard width on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .flashcard-list-container {
+    padding: 0 10px;
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .random-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .nav-button-prev {
+    left: -60px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .nav-button-next {
+    right: -60px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashcard-list-container {
+    padding: 0 5px;
+  }
+
+  .card-and-counter-wrapper {
+    width: 100%;
+  }
+
+  .flashcard-container {
+    margin: 0;
+  }
+
+  .nav-button-prev,
+  .nav-button-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .nav-button-prev {
+    left: -45px;
+  }
+
+  .nav-button-next {
+    right: -45px;
+  }
+
+  .random-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-width: 180px;
+  }
+}
