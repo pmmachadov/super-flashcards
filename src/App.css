@@ -29,7 +29,6 @@
   width: 100%;
 }
 
-/* VS Code-like tab bar */
 .view-toggle {
   display: flex;
   justify-content: center;
@@ -39,7 +38,7 @@
   border-bottom: 1px solid var(--vscode-border);
   border-top: 1px solid var(--vscode-border);
   width: 100%;
-  max-width: 1200px; /* Match card width */
+  max-width: 1200px;
 }
 
 .view-button {
@@ -65,7 +64,6 @@
   background-color: var(--vscode-editor-bg);
 }
 
-/* VS Code status bar style footer */
 .app-footer {
   margin-top: 2rem;
   padding: 0.5rem 1rem;

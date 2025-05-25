@@ -1,6 +1,5 @@
-/* Flashcard component styling */
 .flashcard {
-  width: 150%; /* Aumentado un 50% */
+  width: 150%;
   height: 600px;
   perspective: 1000px;
   cursor: pointer;
@@ -68,7 +67,6 @@
     0 0 30px rgba(65, 105, 225, 0.2);
 }
 
-/* VS Code-like answer styling con mejores colores */
 .answer-content {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.3rem;
@@ -119,7 +117,6 @@
   letter-spacing: 0.3px;
 }
 
-/* VS Code command palette style instruction con efecto de brillo */
 .flip-instruction {
   position: absolute;
   bottom: 1.5rem;
@@ -155,12 +152,10 @@
   }
 }
 
-/* Hover effect */
 .flashcard:hover .flashcard-inner {
   box-shadow: var(--shadow-lg);
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
   .flashcard {
     height: 350px;

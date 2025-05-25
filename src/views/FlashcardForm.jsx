@@ -1,4 +1,3 @@
-// FlashcardForm component for creating and editing flashcards
 import { useState } from "react";
 import PropTypes from "prop-types";
 import FlashcardController from "../controllers/FlashcardController";
@@ -8,6 +7,8 @@ const FlashcardForm = ({ editMode = false, flashcard = null, onClose }) => {
   const [formData, setFormData] = useState({
     question: flashcard ? flashcard.question : "",
     answer: flashcard ? flashcard.answer : "",
+    questionImage: flashcard ? flashcard.questionImage : null,
+    answerImage: flashcard ? flashcard.answerImage : null,
   });
 
   const [errors, setErrors] = useState({});
@@ -23,12 +24,33 @@ const FlashcardForm = ({ editMode = false, flashcard = null, onClose }) => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
+    });
+  };
+
+  const handleImageChange = (e) => {
+    const { name, files } = e.target;
+    if (files && files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const imageData = event.target.result;
+        setFormData({
+          ...formData,
+          [name]: imageData,
+        });
+      };
+      reader.readAsDataURL(files[0]);
+    }
+  };
+
+  const removeImage = (type) => {
+    setFormData({
+      ...formData,
+      [type + "Image"]: null,
     });
   };
 
@@ -47,10 +69,10 @@ const FlashcardForm = ({ editMode = false, flashcard = null, onClose }) => {
 
   return (
     <div className="flashcard-form-container">
-      <h2>{editMode ? "Edit Flashcard" : "Create New Flashcard"}</h2>
+      <h2>{editMode ? "Edit Flashcard" : "Create New Flashcard"}</h2>{" "}
       <form onSubmit={handleSubmit} className="flashcard-form">
         <div className="form-group">
-          <label htmlFor="question">Question:</label>
+          <label htmlFor="question">Question:</label>{" "}
           <textarea
             id="question"
             name="question"
@@ -58,7 +80,7 @@ const FlashcardForm = ({ editMode = false, flashcard = null, onClose }) => {
             onChange={handleChange}
             placeholder="Enter the question"
             className={errors.question ? "error" : ""}
-            rows={4}
+            rows={10}
           />
           {errors.question && (
             <div className="error-message">{errors.question}</div>
@@ -66,7 +88,35 @@ const FlashcardForm = ({ editMode = false, flashcard = null, onClose }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="answer">Answer:</label>
+          <label htmlFor="questionImage">Question Image (optional):</label>
+          <input
+            type="file"
+            id="questionImage"
+            name="questionImage"
+            onChange={handleImageChange}
+            accept="image/*"
+            className="form-control"
+          />
+          {formData.questionImage && (
+            <div className="image-preview-container">
+              <img
+                src={formData.questionImage}
+                alt="Question preview"
+                className="image-preview"
+              />
+              <button
+                type="button"
+                className="remove-image-btn"
+                onClick={() => removeImage("question")}
+              >
+                Remove
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="answer">Answer:</label>{" "}
           <textarea
             id="answer"
             name="answer"
@@ -74,10 +124,38 @@ const FlashcardForm = ({ editMode = false, flashcard = null, onClose }) => {
             onChange={handleChange}
             placeholder="Enter the answer"
             className={errors.answer ? "error" : ""}
-            rows={6}
+            rows={12}
           />
           {errors.answer && (
             <div className="error-message">{errors.answer}</div>
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="answerImage">Answer Image (optional):</label>
+          <input
+            type="file"
+            id="answerImage"
+            name="answerImage"
+            onChange={handleImageChange}
+            accept="image/*"
+            className="form-control"
+          />
+          {formData.answerImage && (
+            <div className="image-preview-container">
+              <img
+                src={formData.answerImage}
+                alt="Answer preview"
+                className="image-preview"
+              />
+              <button
+                type="button"
+                className="remove-image-btn"
+                onClick={() => removeImage("answer")}
+              >
+                Remove
+              </button>
+            </div>
           )}
         </div>
 

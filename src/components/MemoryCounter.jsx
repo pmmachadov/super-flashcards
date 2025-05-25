@@ -1,4 +1,3 @@
-// Memory Counter Component to track remembered cards
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
@@ -6,7 +5,6 @@ const MemoryCounter = ({ flashcardId }) => {
   const [remembered, setRemembered] = useState(0);
   const [notRemembered, setNotRemembered] = useState(0);
 
-  // Load from localStorage on component mount
   useEffect(() => {
     const loadStats = () => {
       const stats = JSON.parse(
@@ -22,7 +20,6 @@ const MemoryCounter = ({ flashcardId }) => {
     loadStats();
   }, [flashcardId]);
 
-  // Save to localStorage whenever stats change
   useEffect(() => {
     const stats = { remembered, notRemembered };
     localStorage.setItem(`card-stats-${flashcardId}`, JSON.stringify(stats));

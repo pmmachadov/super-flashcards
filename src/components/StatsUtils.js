@@ -1,12 +1,8 @@
-// Utility for handling flashcard statistics
 export const resetAllCardStats = () => {
-  // Get all localStorage keys
   const keys = Object.keys(localStorage);
 
-  // Filter keys that match our card-stats pattern
   const cardStatsKeys = keys.filter((key) => key.startsWith("card-stats-"));
 
-  // Reset each card's stats
   cardStatsKeys.forEach((key) => {
     localStorage.setItem(
       key,
@@ -14,7 +10,7 @@ export const resetAllCardStats = () => {
     );
   });
 
-  return cardStatsKeys.length; // Return number of cards reset
+  return cardStatsKeys.length;
 };
 
 export const getCardsWithStats = () => {
@@ -31,6 +27,18 @@ export const getCardsWithStats = () => {
       id: cardId,
       ...stats,
       total: stats.remembered + stats.notRemembered,
+      isRemembered:
+        stats.remembered > stats.notRemembered && stats.remembered > 0,
     };
   });
+};
+
+export const getRememberedCards = (allCards) => {
+  const cardsWithStats = getCardsWithStats();
+
+  const rememberedCardIds = cardsWithStats
+    .filter((card) => card.isRemembered)
+    .map((card) => parseInt(card.id));
+
+  return allCards.filter((card) => rememberedCardIds.includes(card.id));
 };

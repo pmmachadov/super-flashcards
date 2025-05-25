@@ -1,4 +1,3 @@
-// Individual Flashcard component
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "../styles/Flashcard.css";
@@ -10,22 +9,30 @@ const Flashcard = ({ flashcard }) => {
   const handleFlip = () => {
     setFlipped(!flipped);
   };
-  // Format answer with code highlighting
+
+  const renderImage = (imageData) => {
+    if (!imageData) return null;
+    return (
+      <div className="flashcard-image-container">
+        <img
+          src={imageData}
+          alt="Flashcard content"
+          className="flashcard-image"
+        />
+      </div>
+    );
+  };
   const formatAnswer = (answer) => {
-    // If answer is an object, convert it to a formatted string
     if (typeof answer !== "string") {
       return formatObjectAnswer(answer);
     }
 
-    // Format code blocks and other content types
     const lines = answer.split("\n");
     const formattedLines = [];
     let inCodeBlock = false;
     let codeBlockLines = [];
 
-    // Process each line to handle code blocks and other formatting
     lines.forEach((line, index) => {
-      // Detect code blocks (usually after a code example or has JS syntax)
       if (
         line.includes("Example:") ||
         line.includes("Examples:") ||
@@ -37,7 +44,6 @@ const Flashcard = ({ flashcard }) => {
         line.includes("{") ||
         line.includes("}")
       ) {
-        // If it's the start of an example, output the text before example
         if (line.includes("Example:") || line.includes("Examples:")) {
           const [intro, code] = line.split(/(?:Example:|Examples:)/);
           formattedLines.push(
@@ -47,23 +53,17 @@ const Flashcard = ({ flashcard }) => {
             </p>
           );
 
-          // Start collecting code lines
           inCodeBlock = true;
           if (code && code.trim()) {
             codeBlockLines.push(code.trim());
           }
         } else if (!inCodeBlock) {
-          // If not already in a code block but line has code, start a block
           inCodeBlock = true;
           codeBlockLines.push(line);
         } else {
-          // Continue adding lines to the existing code block
           codeBlockLines.push(line);
         }
-      }
-      // Handle numbered lists
-      else if (line.match(/^\d+\./)) {
-        // If we were in a code block, render it now
+      } else if (line.match(/^\d+\./)) {
         if (inCodeBlock) {
           formattedLines.push(renderCodeBlock(codeBlockLines, index));
           codeBlockLines = [];
@@ -74,10 +74,7 @@ const Flashcard = ({ flashcard }) => {
             {line}
           </div>
         );
-      }
-      // Handle bullet points
-      else if (line.startsWith("- ")) {
-        // If we were in a code block, render it now
+      } else if (line.startsWith("- ")) {
         if (inCodeBlock) {
           formattedLines.push(renderCodeBlock(codeBlockLines, index));
           codeBlockLines = [];
@@ -88,23 +85,18 @@ const Flashcard = ({ flashcard }) => {
             {line}
           </div>
         );
-      }
-      // Regular text
-      else {
-        // If we were in a code block, render it now
+      } else {
         if (inCodeBlock) {
           formattedLines.push(renderCodeBlock(codeBlockLines, index));
           codeBlockLines = [];
           inCodeBlock = false;
         }
-        // Add regular text line if it's not empty
         if (line.trim()) {
           formattedLines.push(<p key={`text-${index}`}>{line}</p>);
         }
       }
     });
 
-    // Handle any remaining code block at the end
     if (inCodeBlock && codeBlockLines.length > 0) {
       formattedLines.push(renderCodeBlock(codeBlockLines, lines.length));
     }
@@ -112,7 +104,6 @@ const Flashcard = ({ flashcard }) => {
     return <>{formattedLines}</>;
   };
 
-  // Helper to render a code block with all collected lines
   const renderCodeBlock = (codeLines, keyIndex) => {
     return (
       <div key={`code-${keyIndex}`} className="code-container">
@@ -124,9 +115,7 @@ const Flashcard = ({ flashcard }) => {
       </div>
     );
   };
-  // Helper function to highlight JavaScript syntax
   const highlightSyntax = (code) => {
-    // Replace keywords with spans
     let highlighted = code
       .replace(
         /\b(var|let|const|function|return|if|else|for|while|class|import|export|from|true|false|null|undefined|new|this|typeof|instanceof)\b/g,
@@ -145,7 +134,6 @@ const Flashcard = ({ flashcard }) => {
     return <span dangerouslySetInnerHTML={{ __html: highlighted }} />;
   };
 
-  // Handle complex object answers (like in questions 42, 61, 75, 77)
   const formatObjectAnswer = (obj) => {
     return (
       <div className="code-container">
@@ -165,15 +153,34 @@ const Flashcard = ({ flashcard }) => {
       className={`flashcard ${flipped ? "flipped" : ""}`}
       onClick={handleFlip}
     >
+      {" "}
       <div className="flashcard-inner">
         {" "}
         <div className="flashcard-front">
           <h2>Question:</h2>
           <p>{flashcard.question}</p>
+          {flashcard.questionImage && (
+            <div className="flashcard-image-container">
+              <img
+                src={flashcard.questionImage}
+                alt="Question visual"
+                className="flashcard-image"
+              />
+            </div>
+          )}
         </div>{" "}
         <div className="flashcard-back">
           <h2>Answer:</h2>
           <div className="answer-content">{formatAnswer(flashcard.answer)}</div>
+          {flashcard.answerImage && (
+            <div className="flashcard-image-container">
+              <img
+                src={flashcard.answerImage}
+                alt="Answer visual"
+                className="flashcard-image"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

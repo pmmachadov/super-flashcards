@@ -1,4 +1,3 @@
-// Header component for the flashcards app
 import { useState } from "react";
 import FlashcardForm from "./FlashcardForm";
 import "../styles/Header.css";

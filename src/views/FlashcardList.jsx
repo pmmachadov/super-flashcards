@@ -1,4 +1,3 @@
-// FlashcardList component to display all flashcards
 import { useState, useEffect } from "react";
 import FlashcardController from "../controllers/FlashcardController";
 import Flashcard from "./Flashcard";
@@ -11,7 +10,6 @@ const FlashcardList = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // Load flashcards from controller
     const loadFlashcards = () => {
       const cards = FlashcardController.getFlashcards();
       setFlashcards(cards);
@@ -19,7 +17,6 @@ const FlashcardList = () => {
 
     loadFlashcards();
 
-    // Add listener for changes
     FlashcardController.addChangeListener(loadFlashcards);
   }, []);
 

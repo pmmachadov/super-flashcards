@@ -7,7 +7,6 @@
   color: #e8e8ff;
   background-color: #1a1a2e;
 
-  /* Gradientes de azules y verdes */
   --gradient-blue-teal: linear-gradient(135deg, #0984e3, #38b2ac);
   --gradient-darker-blue: linear-gradient(135deg, #0a417a, #1e4976);
   --gradient-blue-green: linear-gradient(135deg, #0984e3, #34c0a2);
@@ -16,7 +15,6 @@
   --gradient-dark-blue: linear-gradient(135deg, #1e3a8a, #164e63);
   --gradient-blue-dark: linear-gradient(180deg, #1e3a8a, #1e272e);
 
-  /* VS Code Dark theme colors con más vida */
   --vscode-bg: #1a1a2e;
   --vscode-editor-bg: #16213e;
   --vscode-foreground: #e8e8ff;
@@ -30,7 +28,6 @@
   --vscode-bracket: #ffffff80;
   --vscode-border: #363852;
 
-  /* VS Code UI colors modificados */
   --vscode-titlebar: #0f3460;
   --vscode-activitybar: #16213e;
   --vscode-sidebar: #0f3460;
@@ -39,17 +36,14 @@
   --vscode-button-bg: #0984e3;
   --vscode-button-hover: #0ea5e9;
   --vscode-dropdown-bg: #1a1a2e;
-  --vscode-selected-bg: #0d9488;
+  --vscode-selected-bg: #073b63;
 
-  /* Gradient colors */
   --gradient-primary: linear-gradient(135deg, #2c3e50, #4a5568);
   --gradient-secondary: linear-gradient(135deg, #2d3748, #1a202c);
 
-  /* Shadow variables */
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.6);
 
-  /* Border radius */
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
 
@@ -77,7 +71,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom scrollbar for the whole app (like VS Code) */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -96,7 +89,6 @@ body {
   background: #666;
 }
 
-/* Reusable VS Code-like components */
 .vscode-panel {
   background-color: var(--vscode-editor-bg);
   border: 1px solid var(--vscode-border);

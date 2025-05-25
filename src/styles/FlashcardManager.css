@@ -1,4 +1,3 @@
-/* Flashcard Manager Styling */
 .flashcard-manager {
   max-width: 1200px;
   margin: 0 auto;
@@ -112,7 +111,6 @@
   opacity: 0.9;
 }
 
-/* New styles for manager actions and new card form */
 .manager-actions {
   display: flex;
   flex-direction: row;
@@ -162,7 +160,95 @@
   font-size: 1.3rem;
 }
 
-/* Media queries for responsiveness */
+.flashcard-tabs {
+  display: flex;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--vscode-border);
+}
+
+.tab-button {
+  padding: 0.8rem 1.5rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--vscode-foreground);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  position: relative;
+}
+
+.tab-button.active {
+  color: #7e54ce;
+  border-bottom: 3px solid #7e54ce;
+}
+
+.tab-button:hover {
+  background-color: rgba(126, 84, 206, 0.1);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7e54ce;
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+.no-cards-message {
+  padding: 2rem;
+  text-align: center;
+  color: var(--vscode-foreground);
+  font-style: italic;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.reset-stats-button {
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background-color: #9c4456;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+  text-align: center;
+}
+
+.reset-stats-button:hover {
+  background-color: #b44e61;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.reset-stats-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .flashcard-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .tab-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+}
+
 @media (max-width: 768px) {
   .flashcards-table th,
   .flashcards-table td {

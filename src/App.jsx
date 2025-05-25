@@ -5,7 +5,7 @@ import "./App.css";
 import "./styles/app.css";
 
 function App() {
-  const [currentView, setCurrentView] = useState("study"); // 'study' or 'manage'
+  const [currentView, setCurrentView] = useState("study");
 
   return (
     <div className="app-container">

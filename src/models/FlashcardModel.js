@@ -1,9 +1,7 @@
-// Model for handling flashcard data
 import flashcardsData from "./db.json";
 
 class FlashcardModel {
   constructor() {
-    // The data in db.json uses 'questions' array, not 'flashcards'
     this.flashcards = flashcardsData.questions;
   }
 
@@ -14,10 +12,14 @@ class FlashcardModel {
   getFlashcardById(id) {
     return this.flashcards.find((card) => card.id === id);
   }
-
   addFlashcard(flashcard) {
     const newId = Math.max(...this.flashcards.map((card) => card.id)) + 1;
-    const newCard = { ...flashcard, id: newId };
+    const newCard = {
+      ...flashcard,
+      id: newId,
+      questionImage: flashcard.questionImage || null,
+      answerImage: flashcard.answerImage || null,
+    };
     this.flashcards.push(newCard);
     return newCard;
   }
