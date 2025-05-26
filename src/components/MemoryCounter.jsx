@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import FlashcardController from "../controllers/FlashcardController";
 
 const MemoryCounter = ({ flashcardId }) => {
   const [remembered, setRemembered] = useState(0);
   const [notRemembered, setNotRemembered] = useState(0);
+  const [isRemembered, setIsRemembered] = useState(false);
 
   useEffect(() => {
     const loadStats = () => {
@@ -15,6 +17,9 @@ const MemoryCounter = ({ flashcardId }) => {
       };
       setRemembered(stats.remembered);
       setNotRemembered(stats.notRemembered);
+      setIsRemembered(
+        stats.remembered > stats.notRemembered && stats.remembered > 0
+      );
     };
 
     loadStats();
@@ -23,6 +28,7 @@ const MemoryCounter = ({ flashcardId }) => {
   useEffect(() => {
     const stats = { remembered, notRemembered };
     localStorage.setItem(`card-stats-${flashcardId}`, JSON.stringify(stats));
+    setIsRemembered(remembered > notRemembered && remembered > 0);
   }, [remembered, notRemembered, flashcardId]);
 
   const handleRemembered = () => {
@@ -32,10 +38,23 @@ const MemoryCounter = ({ flashcardId }) => {
   const handleNotRemembered = () => {
     setNotRemembered((prev) => prev + 1);
   };
+  // Function to reset stats if needed in the future
+  // const handleReset = () => {
+  //   setRemembered(0);
+  //   setNotRemembered(0);
+  // };
 
-  const handleReset = () => {
-    setRemembered(0);
-    setNotRemembered(0);
+  const handleDelete = () => {
+    if (
+      window.confirm("Are you sure you want to delete this remembered card?")
+    ) {
+      // Delete the card using the controller
+      const cardId = parseInt(flashcardId);
+      FlashcardController.deleteFlashcard(cardId);
+
+      // Clear the card stats from localStorage
+      localStorage.removeItem(`card-stats-${flashcardId}`);
+    }
   };
 
   return (
@@ -64,6 +83,14 @@ const MemoryCounter = ({ flashcardId }) => {
         >
           Still Learning
         </button>
+        {isRemembered && (
+          <button
+            className="memory-button memory-delete"
+            onClick={handleDelete}
+          >
+            Delete Remembered Card
+          </button>
+        )}
       </div>
     </div>
   );

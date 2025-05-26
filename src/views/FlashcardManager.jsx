@@ -140,12 +140,13 @@ const FlashcardManager = () => {
           </div>
         ) : (
           <table className="flashcards-table">
+            {" "}
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Question</th>
                 <th>Answer (Preview)</th>
-                <th>Actions</th>
+                {activeTab !== "remembered" && <th>Actions</th>}
               </tr>
             </thead>
             <tbody>
@@ -158,23 +159,25 @@ const FlashcardManager = () => {
                       ? card.answer.slice(0, 50)
                       : JSON.stringify(card.answer).slice(0, 50)}
                     ...
-                  </td>
-                  <td className="actions">
-                    <button
-                      className="edit-button"
-                      onClick={() => handleEditCard(card)}
-                      aria-label="Edit flashcard"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="delete-button"
-                      onClick={() => handleDeleteCard(card.id)}
-                      aria-label="Delete flashcard"
-                    >
-                      Delete
-                    </button>
-                  </td>
+                  </td>{" "}
+                  {activeTab !== "remembered" && (
+                    <td className="actions">
+                      <button
+                        className="edit-button"
+                        onClick={() => handleEditCard(card)}
+                        aria-label="Edit flashcard"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete-button"
+                        onClick={() => handleDeleteCard(card.id)}
+                        aria-label="Delete flashcard"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>

@@ -101,6 +101,18 @@
   color: #e8e8ff;
 }
 
+.memory-delete {
+  background-image: linear-gradient(to right, #a1260d, #cc3a3a);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.memory-delete:hover {
+  background-image: linear-gradient(to right, #b32e11, #dd4747);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
 @media (max-width: 768px) {
   .memory-stats {
     flex-direction: row;
