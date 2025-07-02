@@ -1905,6 +1905,201 @@
       "id": 383,
       "question": "What are the built-in iterables",
       "answer": "Below are the list of built-in iterables in javascript:\n\n1. **Arrays and TypedArrays**\n2. **Strings:** Iterate over each character or Unicode code-points\n3. **Maps:** iterate over its key-value pairs\n4. **Sets:** iterates over their elements\n5. **arguments:** An array-like special variable in functions\n6. **DOM collection** such as NodeList"
+    },
+    {
+      "id": 384,
+      "question": "What are the differences between for...of and for...in statements",
+      "answer": "Both for...in and for...of statements iterate over js data structures. The only difference is over what they iterate:\n\n- **for..in** iterates over all enumerable property keys of an object\n- **for..of** iterates over the values of an iterable object\n\nLet's explain this difference with an example:\n\n```javascript\nlet arr = [\"a\", \"b\", \"c\"];\n\narr.newProp = \"newVlue\";\n\n// key are the property keys\nfor (let key in arr) {\n  console.log(key); // 0, 1, 2 & newProp\n}\n\n// value are the property values\nfor (let value of arr) {\n  console.log(value); // a, b, c\n}\n```\n\nSince for..in loop iterates over the keys of the object, the first loop logs 0, 1, 2 and newProp while iterating over the array object. The for..of loop iterates over the values of a arr data structure and logs a, b, c in the console."
+    },
+    {
+      "id": 385,
+      "question": "How do you define instance and non-instance properties",
+      "answer": "The **Instance properties** must be defined inside of class methods. For example, name and age properties defined inside constructor as below:\n\n```javascript\nclass Person {\n  constructor(name, age) {\n    this.name = name;\n    this.age = age;\n  }\n}\n```\n\nBut **Static (class) and prototype data properties** must be defined outside of the ClassBody declaration. Let's assign the age value for Person class as below:\n\n```javascript\nPerson.staticAge = 30;\nPerson.prototype.prototypeAge = 40;\n```"
+    },
+    {
+      "id": 386,
+      "question": "What is the difference between isNaN and Number.isNaN?",
+      "answer": "**isNaN:** The global function isNaN converts the argument to a Number and returns true if the resulting value is NaN.\n\n**Number.isNaN:** This method does not convert the argument. But it returns true when the type is a Number and value is NaN.\n\nLet's see the difference with an example:\n\n```javascript\nisNaN('hello');   // true\nNumber.isNaN('hello'); // false\n```"
+    },
+    {
+      "id": 387,
+      "question": "How to invoke an IIFE without any extra brackets?",
+      "answer": "Immediately Invoked Function Expressions (IIFE) requires a pair of parenthesis to wrap the function which contains set of statements.\n\n```javascript\n(function (dt) {\n  console.log(dt.toLocaleTimeString());\n})(new Date());\n```\n\nSince both IIFE and void operator discard the result of an expression, you can avoid the extra brackets using void operator for IIFE as below:\n\n```javascript\nvoid (function (dt) {\n  console.log(dt.toLocaleTimeString());\n})(new Date());\n```"
+    },
+    {
+      "id": 388,
+      "question": "Is that possible to use expressions in switch cases?",
+      "answer": "You might have seen expressions used in switch condition but it is also possible to use for switch cases by assigning true value for the switch condition. Let's see the weather condition based on temperature as an example:\n\n```javascript\nconst weather = (function getWeather(temp) {\n  switch (true) {\n    case temp < 0:\n      return \"freezing\";\n    case temp < 10:\n      return \"cold\";\n    case temp < 24:\n      return \"cool\";\n    default:\n      return \"unknown\";\n  }\n})(10);\n```"
+    },
+    {
+      "id": 389,
+      "question": "What is the easiest way to ignore promise errors?",
+      "answer": "The easiest and safest way to ignore promise errors is void that error. This approach is ESLint friendly too.\n\n```javascript\nawait promise.catch((e) => void e);\n```"
+    },
+    {
+      "id": 390,
+      "question": "How do style the console output using CSS?",
+      "answer": "You can add CSS styling to the console output using the CSS format content specifier %c. The console string message can be appended after the specifier and CSS style in another argument. Let's print the red color text using console.log and CSS specifier as below:\n\n```javascript\nconsole.log(\"%cThis is a red text\", \"color:red\");\n```\n\nIt is also possible to add more styles for the content. For example, the font-size can be modified for the above text:\n\n```javascript\nconsole.log(\n  \"%cThis is a red text with bigger font\",\n  \"color:red; font-size:20px\"\n);\n```"
+    },
+    {
+      "id": 391,
+      "question": "What is nullish coalescing operator (??)?",
+      "answer": "It is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand. This can be contrasted with the logical OR (||) operator, which returns the right-hand side operand if the left operand is any falsy value, not only null or undefined.\n\n```javascript\nconsole.log(null ?? true); // true\nconsole.log(false ?? true); // false\nconsole.log(undefined ?? true); // true\n```"
+    },
+    {
+      "id": 392,
+      "question": "How do you group and nest console output?",
+      "answer": "The console.group() can be used to group related log messages to be able to easily read the logs and use console.groupEnd() to close the group. Along with this, you can also nest groups which allows to output message in hierarchical manner.\n\nFor example, if you're logging a user's details:\n\n```javascript\nconsole.group(\"User Details\");\nconsole.log(\"name: Sudheer Jonna\");\nconsole.log(\"job: Software Developer\");\n\n// Nested Group\nconsole.group(\"Address\");\nconsole.log(\"Street: Commonwealth\");\nconsole.log(\"City: Los Angeles\");\nconsole.log(\"State: California\");\n\n// Close nested group\nconsole.groupEnd();\n\n// Close outer group\nconsole.groupEnd();\n```\n\nYou can also use console.groupCollapsed() instead of console.group() if you want the groups to be collapsed by default."
+    },
+    {
+      "id": 393,
+      "question": "What is the difference between dense and sparse arrays?",
+      "answer": "An array contains items at each index starting from first (0) to last (array.length - 1) is called as **Dense array**. Whereas if at least one item is missing at any index, the array is called as **sparse**.\n\nLet's see the below two kind of arrays:\n\n```javascript\nconst avengers = [\"Ironman\", \"Hulk\", \"CaptainAmerica\"];\nconsole.log(avengers[0]); // 'Ironman'\nconsole.log(avengers[1]); // 'Hulk'\nconsole.log(avengers[2]); // 'CaptainAmerica'\nconsole.log(avengers.length); // 3\n\nconst justiceLeague = [\"Superman\", \"Aquaman\", , \"Batman\"];\nconsole.log(justiceLeague[0]); // 'Superman'\nconsole.log(justiceLeague[1]); // 'Aquaman'\nconsole.log(justiceLeague[2]); // undefined\nconsole.log(justiceLeague[3]); // 'Batman'\nconsole.log(justiceLeague.length); // 4\n```"
+    },
+    {
+      "id": 394,
+      "question": "What are the different ways to create sparse arrays?",
+      "answer": "There are 4 different ways to create sparse arrays in JavaScript:\n\n**1. Array literal:** Omit a value when using the array literal\n\n```javascript\nconst justiceLeague = [\"Superman\", \"Aquaman\", , \"Batman\"];\nconsole.log(justiceLeague); // ['Superman', 'Aquaman', empty ,'Batman']\n```\n\n**2. Array() constructor:** Invoking Array(length) or new Array(length)\n\n```javascript\nconst array = Array(3);\nconsole.log(array); // [empty, empty ,empty]\n```\n\n**3. Delete operator:** Using delete array[index] operator on the array\n\n```javascript\nconst justiceLeague = [\"Superman\", \"Aquaman\", \"Batman\"];\ndelete justiceLeague[1];\nconsole.log(justiceLeague); // ['Superman', empty, ,'Batman']\n```\n\n**4. Increase length property:** Increasing length property of an array\n\n```javascript\nconst justiceLeague = [\"Superman\", \"Aquaman\", \"Batman\"];\njusticeLeague.length = 5;\nconsole.log(justiceLeague); // ['Superman', 'Aquaman', 'Batman', empty, empty]\n```"
+    },
+    {
+      "id": 395,
+      "question": "What is the difference between setTimeout, setImmediate and process.nextTick?",
+      "answer": "**Set Timeout:** setTimeout() is to schedule execution of a one-time callback after delay milliseconds.\n\n**Set Immediate:** The setImmediate function is used to execute a function right after the current event loop finishes.\n\n**Process NextTick:** If process.nextTick() is called in a given phase, all the callbacks passed to process.nextTick() will be resolved before the event loop continues. This will block the event loop and create I/O Starvation if process.nextTick() is called recursively."
+    },
+    {
+      "id": 396,
+      "question": "How do you reverse an array without modifying original array?",
+      "answer": "The reverse() method reverses the order of the elements in an array but it mutates the original array. Let's take a simple example to demonstrate this case:\n\n```javascript\nconst originalArray = [1, 2, 3, 4, 5];\nconst newArray = originalArray.reverse();\n\nconsole.log(newArray); // [ 5, 4, 3, 2, 1]\nconsole.log(originalArray); // [ 5, 4, 3, 2, 1]\n```\n\nThere are few solutions that won't mutate the original array:\n\n**1. Using slice and reverse methods:**\n\n```javascript\nconst originalArray = [1, 2, 3, 4, 5];\nconst newArray = originalArray.slice().reverse(); //Slice an array gives a new copy\n\nconsole.log(originalArray); // [1, 2, 3, 4, 5]\nconsole.log(newArray); // [ 5, 4, 3, 2, 1]\n```\n\n**2. Using spread and reverse methods:**\n\n```javascript\nconst originalArray = [1, 2, 3, 4, 5];\nconst newArray = [...originalArray].reverse();\n\nconsole.log(originalArray); // [1, 2, 3, 4, 5]\nconsole.log(newArray); // [ 5, 4, 3, 2, 1]\n```\n\n**3. Using reduce and spread methods:**\n\n```javascript\nconst originalArray = [1, 2, 3, 4, 5];\nconst newArray = originalArray.reduce((accumulator, value) => {\n  return [value, ...accumulator];\n}, []);\n\nconsole.log(originalArray); // [1, 2, 3, 4, 5]\nconsole.log(newArray); // [ 5, 4, 3, 2, 1]\n```\n\n**4. Using reduceRight and spread methods:**\n\n```javascript\nconst originalArray = [1, 2, 3, 4, 5];\nconst newArray = originalArray.reduceRight((accumulator, value) => {\n  return [...accumulator, value];\n}, []);\n\nconsole.log(originalArray); // [1, 2, 3, 4, 5]\nconsole.log(newArray); // [ 5, 4, 3, 2, 1]\n```\n\n**5. Using reduceRight and push methods:**\n\n```javascript\nconst originalArray = [1, 2, 3, 4, 5];\nconst newArray = originalArray.reduceRight((accumulator, value) => {\n  accumulator.push(value);\n  return accumulator;\n}, []);\n\nconsole.log(originalArray); // [1, 2, 3, 4, 5]\nconsole.log(newArray); // [ 5, 4, 3, 2, 1]\n```"
+    },
+    {
+      "id": 397,
+      "question": "How do you create custom HTML element?",
+      "answer": "The creation of custom HTML elements involves two main steps:\n\n**1. Define your custom HTML element:** First you need to define some custom class by extending HTMLElement class. After that define your component properties (styles, text etc) using connectedCallback method. Note: The browser exposes a function called customElements.define in order to reuse the element.\n\n```javascript\nclass CustomElement extends HTMLElement {\n  connectedCallback() {\n    this.innerHTML = \"This is a custom element\";\n  }\n}\ncustomElements.define(\"custom-element\", CustomElement);\n```\n\n**2. Use custom element just like other HTML element:** Declare your custom element as a HTML tag.\n\n```html\n<body>\n  <custom-element>\n</body>\n```"
+    },
+    {
+      "id": 398,
+      "question": "What is global execution context?",
+      "answer": "The global execution context is the default or first execution context that is created by the JavaScript engine before any code is executed (i.e, when the file first loads in the browser). All the global code that is not inside a function or object will be executed inside this global execution context. Since JS engine is single threaded there will be only one global environment and there will be only one global execution context.\n\nFor example, the below code other than code inside any function or object is executed inside the global execution context:\n\n```javascript\nvar x = 10;\n\nfunction A() {\n  console.log(\"Start function A\");\n\n  function B() {\n    console.log(\"In function B\");\n  }\n\n  B();\n}\n\nA();\n\nconsole.log(\"GlobalContext\");\n```"
+    },
+    {
+      "id": 399,
+      "question": "What is function execution context?",
+      "answer": "Whenever a function is invoked, the JavaScript engine creates a different type of Execution Context known as a Function Execution Context (FEC) within the Global Execution Context (GEC) to evaluate and execute the code within that function."
+    },
+    {
+      "id": 400,
+      "question": "What is debouncing?",
+      "answer": "Debouncing is a programming technique used to limit how often a function is executed. Specifically, it ensures that a function is only triggered after a certain amount of time has passed since it was last invoked. This prevents unnecessary or excessive function calls, which can help optimize performance and reduce unnecessary CPU usage or API requests.\n\nFor example, when a user types in a search box, you typically want to wait until they've finished typing before fetching suggestions. Without debouncing, an API call would be triggered on every keystroke, potentially causing performance issues. With debouncing, the function call is postponed until the user stops typing for a specified period (e.g., 300ms). If the user types again before this time elapses, the timer resets.\n\n**Typical use cases for debouncing include:**\n\n- Search box suggestions (wait until typing pauses before fetching results)\n- Auto-saving text fields (save only after the user stops typing)\n- Preventing double-clicks on buttons\n- Handling window resize or scroll events efficiently\n\n**Example Debounce Function:**\n\n```javascript\nfunction debounce(func, timeout = 500) {\n  let timer;\n  return function (...args) {\n    clearTimeout(timer);\n    timer = setTimeout(() => {\n      func.apply(this, args);\n    }, timeout);\n  };\n}\n```\n\n**Usage Example:**\n\n```javascript\nfunction fetchResults() {\n  console.log(\"Fetching input suggestions\");\n}\nconst processChange = debounce(fetchResults, 300);\n\n// Attach to input element\n// <input type=\"text\" onkeyup=\"processChange()\" />\n\n// Attach to button\n// <button onclick=\"processChange()\">Click me</button>\n\n// Attach to window event\nwindow.addEventListener(\"scroll\", processChange);\n```\n\n**How it works:**\nWhen `processChange` is invoked (e.g., by typing or clicking), any pending execution is canceled, and the function is scheduled to run after the specified delay. If another event occurs before the delay is up, the timer resets, and the function will only run after events have stopped for the delay duration.\n\nDebouncing is an essential tool for improving user experience and application performance, especially when dealing with events that can fire rapidly and repeatedly."
+    },
+    {
+      "id": 401,
+      "question": "What is throttling?",
+      "answer": "Throttling is a programming technique used to control the rate at which a function is executed. When an event is triggered continuously—such as during window resizing, scrolling, or mouse movement—throttling ensures that the associated event handler is not called more often than a specified interval. This helps improve performance by reducing the number of expensive function calls and preventing performance bottlenecks.\n\n**Common use cases:**\n\n- Window resize events\n- Scroll events\n- Mouse movement or drag events\n- API rate limiting\n\n**How does throttling work?**\nThrottling will execute the function at most once every specified time interval, ignoring additional calls until the interval has passed.\n\n**Example: Throttle Implementation and Usage**\n\n```javascript\n// Simple throttle function: allows 'func' to run at most once every 'limit' ms\nfunction throttle(func, limit) {\n  let inThrottle = false;\n  return function(...args) {\n    if (!inThrottle) {\n      func.apply(this, args);\n      inThrottle = true;\n      setTimeout(() => (inThrottle = false), limit);\n    }\n  };\n}\n\n// Usage: throttling a scroll event handler\nfunction handleScrollAnimation() {\n  console.log('Scroll event triggered');\n}\n\nwindow.addEventListener(\n  \"scroll\",\n  throttle(handleScrollAnimation, 100) // Will run at most once every 100ms\n);\n```"
+    },
+    {
+      "id": 402,
+      "question": "What is optional chaining?",
+      "answer": "According to MDN official docs, the optional chaining operator (?.) permits reading the value of a property located deep within a chain of connected objects without having to expressly validate that each reference in the chain is valid.\n\nThe ?. operator is like the . chaining operator, except that instead of causing an error if a reference is nullish (null or undefined), the expression short-circuits with a return value of undefined. When used with function calls, it returns undefined if the given function does not exist.\n\n```javascript\nconst adventurer = {\n  name: \"Alice\",\n  cat: {\n    name: \"Dinah\",\n  },\n};\n\nconst dogName = adventurer.dog?.name;\nconsole.log(dogName);\n// expected output: undefined\n\nconsole.log(adventurer.someNonExistentMethod?.());\n// expected output: undefined\n```"
+    },
+    {
+      "id": 403,
+      "question": "What is an environment record?",
+      "answer": "According to ECMAScript specification 262 (9.1):\n\nEnvironment Record is a specification type used to define the association of Identifiers to specific variables and functions, based upon the lexical nesting structure of ECMAScript code.\n\nUsually an Environment Record is associated with some specific syntactic structure of ECMAScript code such as a FunctionDeclaration, a BlockStatement, or a Catch clause of a TryStatement.\n\nEach time such code is evaluated, a new Environment Record is created to record the identifier bindings that are created by that code."
+    },
+    {
+      "id": 404,
+      "question": "How to verify if a variable is an array?",
+      "answer": "It is possible to check if a variable is an array instance using 3 different ways:\n\n**1. Array.isArray() method:**\n\nThe Array.isArray(value) utility function is used to determine whether value is an array or not. This function returns a true boolean value if the variable is an array and a false value if it is not.\n\n```javascript\nconst numbers = [1, 2, 3];\nconst user = { name: \"John\" };\nArray.isArray(numbers); // true\nArray.isArray(user); //false\n```\n\n**2. instanceof operator:**\n\nThe instanceof operator is used to check the type of an array at run time. It returns true if the type of a variable is an Array other false for other type.\n\n```javascript\nconst numbers = [1, 2, 3];\nconst user = { name: \"John\" };\nconsole.log(numbers instanceof Array); // true\nconsole.log(user instanceof Array); // false\n```\n\n**3. Checking constructor type:**\n\nThe constructor property of the variable is used to determine whether the variable Array type or not.\n\n```javascript\nconst numbers = [1, 2, 3];\nconst user = { name: \"John\" };\nconsole.log(numbers.constructor === Array); // true\nconsole.log(user.constructor === Array); // false\n```"
+    },
+    {
+      "id": 405,
+      "question": "What is pass by value and pass by reference?",
+      "answer": "**Pass-by-value** creates a new space in memory and makes a copy of a value. Primitives such as string, number, boolean etc will actually create a new copy. Hence, updating one value doesn't impact the other value. i.e, The values are independent of each other.\n\n```javascript\nlet a = 5;\nlet b = a;\n\nb++;\nconsole.log(a, b); //5, 6\n```\n\nIn the above code snippet, the value of a is assigned to b and the variable b has been incremented. Since there is a new space created for variable b, any update on this variable doesn't impact the variable a.\n\n**Pass by reference** doesn't create a new space in memory but the new variable adopts a memory address of an initial variable. Non-primitives such as objects, arrays and functions gets the reference of the initiable variable. i.e, updating one value will impact the other variable.\n\n```javascript\nlet user1 = {\n  name: \"John\",\n  age: 27,\n};\nlet user2 = user1;\nuser2.age = 30;\n\nconsole.log(user1.age, user2.age); // 30, 30\n```\n\nIn the above code snippet, updating the age property of one object will impact the other property due to the same reference."
+    },
+    {
+      "id": 406,
+      "question": "What are the differences between primitives and non-primitives?",
+      "answer": "JavaScript language has both primitives and non-primitives but there are few differences between them as below:\n\n| Primitives | Non-primitives |\n|------------|----------------|\n| These types are predefined | Created by developer |\n| These are immutable | Mutable |\n| Compare by value | Compare by reference |\n| Stored in Stack | Stored in heap |\n| Contain certain value | Can contain NULL too |"
+    },
+    {
+      "id": 407,
+      "question": "How do you create your own bind method using either call or apply method?",
+      "answer": "The custom bind function needs to be created on Function prototype in order to use it as other builtin functions. This custom function should return a function similar to original bind method and the implementation of inner function needs to use apply method call.\n\nThe function which is going to bind using custom myOwnBind method act as the attached function (boundTargetFunction) and argument as the object for apply method call.\n\n```javascript\nFunction.prototype.myOwnBind = function (whoIsCallingMe) {\n  if (typeof this !== \"function\") {\n    throw new Error(this + \"cannot be bound as it's not callable\");\n  }\n  const boundTargetFunction = this;\n  return function () {\n    boundTargetFunction.apply(whoIsCallingMe, arguments);\n  };\n};\n```"
+    },
+    {
+      "id": 408,
+      "question": "What are the differences between pure and impure functions?",
+      "answer": "Some of the major differences between pure and impure function are as below:\n\n| Pure function | Impure function |\n|---------------|------------------|\n| It has no side effects | It causes side effects |\n| It is always return the same result | It returns different result on each call |\n| Easy to read and debug | Difficult to read and debug because they are affected by external code |"
+    },
+    {
+      "id": 409,
+      "question": "What is referential transparency?",
+      "answer": "An expression in javascript that can be replaced by its value without affecting the behaviour of the program is called referential transparency. Pure functions are referentially transparent.\n\n```javascript\nconst add = (x, y) => x + y;\nconst multiplyBy2 = (x) => x * 2;\n\n//Now add (2, 3) can be replaced by 5.\n\nmultiplyBy2(add(2, 3));\n```"
+    },
+    {
+      "id": 410,
+      "question": "What are the possible side-effects in javascript?",
+      "answer": "A side effect is the modification of the state through the invocation of a function or expression. These side effects make our function impure by default. Below are some side effects which make function impure:\n\n1. Making an HTTP request. Asynchronous functions such as fetch and promise are impure.\n2. DOM manipulations\n3. Mutating the input data\n4. Printing to a screen or console: For example, console.log() and alert()\n5. Fetching the current time\n6. Math.random() calls: Modifies the internal state of Math object"
+    },
+    {
+      "id": 411,
+      "question": "What are compose and pipe functions?",
+      "answer": "The \"compose\" and \"pipe\" are two techniques commonly used in functional programming to simplify complex operations and make code more readable. They are not native to JavaScript and higher-order functions. the compose() applies right to left any number of functions to the output of the previous function."
+    },
+    {
+      "id": 412,
+      "question": "What is module pattern?",
+      "answer": "Module pattern is a designed pattern used to wrap a set of variables and functions together in a single scope returned as an object. JavaScript doesn't have access specifiers similar to other languages (Java, Python, etc) to provide private scope. It uses IIFE (Immediately invoked function expression) to allow for private scopes. i.e., a closure that protect variables and methods.\n\nThe module pattern looks like below:\n\n```javascript\n(function () {\n  // Private variables or functions goes here.\n\n  return {\n    // Return public variables or functions here.\n  };\n})();\n```\n\nLet's see an example of a module pattern for an employee with private and public access:\n\n```javascript\nconst createEmployee = (function () {\n  // Private\n  const name = \"John\";\n  const department = \"Sales\";\n  const getEmployeeName = () => name;\n  const getDepartmentName = () => department;\n\n  // Public\n  return {\n    name,\n    department,\n    getName: () => getEmployeeName(),\n    getDepartment: () => getDepartmentName(),\n  };\n})();\n\nconsole.log(createEmployee.name);\nconsole.log(createEmployee.department);\nconsole.log(createEmployee.getName());\nconsole.log(createEmployee.getDepartment());\n```\n\nNote: It mimic the concepts of classes with private variables and methods."
+    },
+    {
+      "id": 413,
+      "question": "What is Function Composition?",
+      "answer": "It is an approach where the result of one function is passed on to the next function, which is passed to another until the final function is executed for the final result.\n\n```javascript\n//example\nconst double = (x) => x * 2;\nconst square = (x) => x * x;\n\nvar output1 = double(2);\nvar output2 = square(output1);\nconsole.log(output2);\n\nvar output_final = square(double(2));\nconsole.log(output_final);\n```"
+    },
+    {
+      "id": 414,
+      "question": "How to use await outside of async function prior to ES2022?",
+      "answer": "Prior to ES2022, if you attempted to use an await outside of an async function resulted in a SyntaxError.\n\n```javascript\nawait Promise.resolve(console.log(\"Hello await\")); // SyntaxError: await is only valid in async function\n```\n\nBut you can fix this issue with an alternative IIFE (Immediately Invoked Function Expression) to get access to the feature.\n\n```javascript\n(async function () {\n  await Promise.resolve(console.log(\"Hello await\")); // Hello await\n})();\n```\n\nIn ES2022, you can write top-level await without writing any hacks.\n\n```javascript\nawait Promise.resolve(console.log(\"Hello await\")); //Hello await\n```"
+    },
+    {
+      "id": 415,
+      "question": "What is the purpose of the this keyword in JavaScript?",
+      "answer": "The this keyword in JavaScript refers to the object that is executing the current function. Its value is determined by how a function is called, not where it is defined. this is essential for writing object-oriented and event-driven code, as it allows methods to interact with the data of the object they belong to.\n\n**Example 1: this in a Global Context**\n\n```javascript\nconsole.log(this);\n```\n\nIn a global context, this refers to the global object (e.g., window in a browser).\n\n**Example 2: this in a Function**\n\n```javascript\nfunction displayThis() {\n  console.log(this);\n}\n\ndisplayThis();\n```\n\nIn a regular function, this refers to the global object (window in browser and global in nodejs) for non-strict mode. In strict mode, it's value is undefined.\n\n**Example 3: this in a Method**\n\n```javascript\nconst person = {\n  name: \"John\",\n  greet: function () {\n    console.log(\"Hello, \" + this.name);\n  },\n};\n\nperson.greet();\n```\n\nIn a method, this refers to the object that owns the method (person in the case).\n\n**Example 4: this in an Event Handler**\n\n```javascript\ndocument.getElementById(\"myButton\").addEventListener(\"click\", function () {\n  console.log(this);\n});\n```\n\nIn an event handler, this refers to the element that triggered the event (the button in this case).\n\n**Example 5: this with Arrow Functions**\n\n```javascript\nconst obj = {\n  age: 42,\n  regular: function() { console.log(this.age); },\n  arrow: () => { console.log(this.age); }\n};\nobj.regular(); // 42 (this refers to obj)\nobj.arrow();   // undefined (this refers to the outer scope, not obj)\n```\n\nArrow functions do not have their own this binding; they inherit it from their surrounding (lexical) context.\n\n**Example 6: this in Constructor Functions / Classes**\n\n```javascript\nfunction Person(name) {\n  this.name = name;\n}\n\nconst p1 = new Person('Sudheer');\nconsole.log(p1.name); // Sudheer\n```\n\nWhen used with new, this refers to the newly created object."
+    },
+    {
+      "id": 416,
+      "question": "What are the uses of closures?",
+      "answer": "Closures are a powerful feature in programming languages like JavaScript. They allow functions to retain access to variables from their containing (enclosing) scope even after the outer function has finished executing. This means that a function defined within another function can access variables from the outer function, even if the outer function has already returned. Here are some common use cases of closures:\n\n**Data Privacy:** Closures can be used to create private variables and methods. By defining variables within a function's scope and returning inner functions that have access to those variables, you can create a form of encapsulation, limiting access to certain data or functionality.\n\n**Function Factories:** Closures are often used to create functions with pre-set parameters. This is useful when you need to create multiple functions with similar behavior but different configurations.\n\n**Callback Functions:** Closures are frequently used in asynchronous programming, such as handling event listeners or AJAX requests. The inner function captures variables from the outer scope and can access them when the callback is invoked.\n\n**Memoization:** Closures can be used for memoization, a technique to optimize performance by caching the results of expensive function calls. The inner function can remember the results of previous calls and return the cached result if the same input is provided again.\n\n**Iterators and Generators:** Closures can be used to create iterators and generators, which are essential for working with collections of data in modern JavaScript."
+    },
+    {
+      "id": 417,
+      "question": "What are the phases of execution context?",
+      "answer": "The execution context in JavaScript is a data structure that stores the information necessary for executing a piece of code. It includes the code itself, the values of the variables used in the code, and the scope chain. The scope chain is a list of objects that are used to resolve variable names.\n\nThe execution context has two phases:\n\n**Creation phase:** In this phase, the JavaScript engine creates the execution context and sets up the script's environment. This includes creating the variable object and the scope chain.\n\n**Execution phase:** In this phase, the JavaScript engine executes the code in the execution context. This includes evaluating expressions, assigning values to variables, and calling functions.\n\nThe execution context is created when a function is called. The function's code is then executed in the execution context. When the function returns, the execution context is destroyed."
+    },
+    {
+      "id": 418,
+      "question": "What are the possible reasons for memory leaks?",
+      "answer": "Memory leaks can lead to poor performance, slow loading times and even crashes in web applications. Some of the common causes of memory leaks are listed below:\n\n1. The excessive usage of global variables or omitting the var keyword in local scope.\n2. Forgetting to clear the timers set up by setTimeout or setInterval.\n3. Closures retain references to variables from their parent scope, which leads to variables might not garbage collected even they are no longer used.\n\n**What are the optimization techniques of V8 engine?**\n\nV8 engine uses the below optimization techniques:\n\n**Inline expansion:** It is a compiler optimization by replacing the function calls with the corresponding function blocks.\n\n**Copy elision:** This is a compiler optimization method to prevent expensive extra objects from being duplicated or copied.\n\n**Inline caching:** It is a runtime optimization technique where it caches the execution of older tasks those can be lookup while executing the same task in the future."
+    },
+    {
+      "id": 419,
+      "question": "What are the examples of built-in higher order functions?",
+      "answer": "There are several built-in higher order functions exists on arrays, strings, DOM and promise methods in javascript. These higher order functions provides significant level of abstraction. The list of functions on these categories are listed below:\n\n- **arrays:** map, filter, reduce, sort, forEach, some etc.\n- **DOM:** The DOM method element.addEventListener(type, handler) also accepts the function handler as a second argument.\n- **Strings:** replace() method."
+    },
+    {
+      "id": 420,
+      "question": "What are the benefits higher order functions?",
+      "answer": "The main benefits of higher order functions are:\n\n1. **Abstraction**\n2. **Reusability**\n3. **Immutability**\n4. **Modularity**"
+    },
+    {
+      "id": 421,
+      "question": "How do you create polyfills for map, filter and reduce methods?",
+      "answer": "The polyfills for array methods such as map, filter and reduce methods can be created using array prototype.\n\n**map:**\n\nThe built-in Array.map method syntax will be helpful to write polyfill. The map method takes the callback function as an argument and that callback function can have below three arguments passed into it.\n\ni. Current value\nii. Index of current value (optional)\niii. array (optional)\n\nThe syntax would like below:\n\n```javascript\nlet newArray = arr.map(callback(currentValue[, index, arr) {\n   // return new array after executing the code\n})\n```\n\nLet's build our map polyfill based on the above syntax:\n\n```javascript\nArray.prototype.myMap = function (cb) {\n  let newArr = [];\n  for (let i = 0; i < this.length; i++) {\n    newArr.push(cb(this[i], i, this));\n  }\n  return newArr;\n};\n\nconst nums = [1, 2, 3, 4, 5];\nconst multiplyByTwo = nums.myMap((x) => x * 2);\nconsole.log(multiplyByTwo); // [2, 4, 6, 8, 10]\n```\n\nIn the above code, custom method name 'myMap' has been used to avoid conflicts with built-in method.\n\n**filter:** Similar to map method, Array.filter method takes callback function as an argument and the callback function can have three arguments passed into it.\n\ni. Current value\nii. Index of current value (optional)\niii. array (optional)\n\nThe syntax looks like below:\n\n```javascript\nlet newArray = arr.filter(callback(currentValue[, index, arr) {\n  // return new array whose elements satisfy the callback conditions\n})\n```\n\nLet's build our filter polyfill based on the above syntax:\n\n```javascript\nArray.prototype.myFilter = function (cb) {\n  let newArr = [];\n  for (let i = 0; i < this.length; i++) {\n    if (cb(this[i], i, this)) {\n      newArr.push(this[i]);\n    }\n  }\n  return newArr;\n};\n\nconst nums = [1, 2, 3, 4, 5, 6];\nconst evenNums = nums.myFilter((x) => x % 2);\nconsole.log(evenNums); // [2, 4, 6]\n```\n\n**reduce:**\n\nThe built-in `Array.reduce` method syntax will be helpful to write our own polyfill. The reduce method takes the callback function as first argument and the initial value as second argument.\n\nThe callback function can have four arguments passed into it.\ni. Accumulator\nii. Current value\niii. Index of current value (optional)\niv. array (optional)\n\nThe syntax would like below:\n\n```javascript\narr.reduce(callback((acc, curr, i, arr) => {}), initValue);\n```\n\nLet's build our reduce polyfill based on the above syntax:\n\n```javascript\nArray.prototype.myReduce = function(cb, initialValue) {\n    let accumulator = initialValue;\n    for(let i=0; i< this.length; i++) {\n        accumulator = accumulator ? cb(accumulator, this[i], i, this) : this[i];\n    }\n    return accumulator;\n}\nconst nums = [1, 2, 3, 4, 5, 6];\nconst sum = nums.myReduce((acc, curr, i, arr) => {\n  return acc += curr\n}, 0);\nconsole.log(sum); // 21\n```"
+    },
+    {
+      "id": 422,
+      "question": "What is the difference between map and forEach functions?",
+      "answer": "Both map and forEach functions are used to iterate over an arrays but there are some differences in their functionality.\n\n**1. Returning values:** The `map` method returns a new array with transformed elements whereas `forEach` method returns `undefined` even though both of them are doing the same job.\n\n```javascript\nconst arr = [1, 2, 3, 4, 5];\narr.map(x => x * x); // [1, 4, 9, 16, 25]\narr.forEach(x => x * x); // undefined\n\n// The forEach() method in JavaScript always returns undefined. This is because forEach() is used to iterate over arrays and perform side effects on each element, rather than returning a new array or transforming the original array\n```\n\n**2. Chaining methods:** The `map` method is chainable. i.e, It can be attached with `reduce`, `filter`, `sort` and other methods as well. Whereas `forEach` cannot be attached with any other methods because it returns `undefined` value.\n\n```javascript\nconst arr = [1, 2, 3, 4, 5];\narr.map((x) => x * x).reduce((total, cur) => total + cur); // 55\narr.forEach((x) => x * x).reduce((total, cur) => total + cur); //Uncaught TypeError: Cannot read properties of undefined (reading 'reduce')\n```\n\n**3. Mutation:** The `map` method doesn't mutate the original array by returning new array. Whereas `forEach` method also doesn't mutate the original array but it's callback is allowed to mutate the original array.\n\n**Note:** Both these methods existed since ES5 onwards."
     }
   ]
 }
