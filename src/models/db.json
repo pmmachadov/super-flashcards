@@ -1705,6 +1705,206 @@
       "id": 343,
       "question": "What is the easiest multi condition checking",
       "answer": "You can use indexOf to compare input with multiple values instead of checking each value as one condition.\n\n```javascript\n// Verbose approach\nif (\n  input === \"first\" ||\n  input === 1 ||\n  input === \"second\" ||\n  input === 2\n) {\n  someFunction();\n}\n// Shortcut\nif ([\"first\", 1, \"second\", 2].indexOf(input) !== -1) {\n  someFunction();\n}\n```"
+    },
+    {
+      "id": 344,
+      "question": "How do you capture browser back button",
+      "answer": "The beforeunload event is triggered when the window, the document and its resources are about to be unloaded. This event is helpful to warn users about losing the current data and detect back button event.\n\n```javascript\nwindow.addEventListener(\"beforeunload\", () => {\n  console.log(\"Clicked browser back button\");\n});\n```\n\nYou can also use popstate event to detect the browser back button. Note: The history entry has been activated using history.pushState method.\n\n```javascript\nwindow.addEventListener(\"popstate\", () => {\n  console.log(\"Clicked browser back button\");\n  box.style.backgroundColor = \"white\";\n});\n\nconst box = document.getElementById(\"div\");\n\nbox.addEventListener(\"click\", () => {\n  box.style.backgroundColor = \"blue\";\n  window.history.pushState({}, null, null);\n});\n```\n\nIn the preceeding code, When the box element clicked, its background color appears in blue color and changed to while color upon clicking the browser back button using `popstate` event handler. The `state` property of `popstate` contains the copy of history entry's state object."
+    },
+    {
+      "id": 345,
+      "question": "How do you disable right click in the web page",
+      "answer": "The right click on the page can be disabled by returning false from the oncontextmenu attribute on the body element.\n\n```html\n<body oncontextmenu=\"return false;\"></body>\n```"
+    },
+    {
+      "id": 346,
+      "question": "What are wrapper objects",
+      "answer": "Primitive Values like string, number and boolean don't have properties and methods but they are temporarily converted or coerced to an object (Wrapper object) when you try to perform actions on them. For example, if you apply toUpperCase() method on a primitive string value, it does not throw an error but returns uppercase of the string.\n\n```javascript\nlet name = \"john\";\n\nconsole.log(name.toUpperCase()); // Behind the scenes treated as console.log(new String(name).toUpperCase());\n```\n\ni.e, Every primitive except null and undefined have Wrapper Objects and the list of wrapper objects are String, Number, Boolean, Symbol and BigInt."
+    },
+    {
+      "id": 347,
+      "question": "What is AJAX",
+      "answer": "AJAX stands for Asynchronous JavaScript and XML and it is a group of related technologies (HTML, CSS, JavaScript, XMLHttpRequest API etc) used to display data asynchronously. i.e. We can send data to the server and get data from the server without reloading the web page."
+    },
+    {
+      "id": 348,
+      "question": "What are the different ways to deal with Asynchronous Code",
+      "answer": "Below are the list of different ways to deal with Asynchronous code:\n\n1. **Callbacks**\n2. **Promises**\n3. **Async/await**\n4. **Third-party libraries** such as async.js, bluebird etc"
+    },
+    {
+      "id": 349,
+      "question": "How to cancel a fetch request",
+      "answer": "Until a few days back, One shortcoming of native promises is no direct way to cancel a fetch request. But the new AbortController from js specification allows you to use a signal to abort one or multiple fetch calls. The basic flow of cancelling a fetch request would be as below:\n\n1. Create an AbortController instance\n2. Get the signal property of an instance and pass the signal as a fetch option for signal\n3. Call the AbortController's abort property to cancel all fetches that use that signal\n\nFor example, passing the same signal to multiple fetch calls will cancel all requests with that signal:\n\n```javascript\nconst controller = new AbortController();\nconst { signal } = controller;\n\nfetch(\"http://localhost:8000\", { signal })\n  .then((response) => {\n    console.log(`Request 1 is complete!`);\n  })\n  .catch((e) => {\n    if (e.name === \"AbortError\") {\n      // We know it's been canceled!\n    }\n  });\n\nfetch(\"http://localhost:8000\", { signal })\n  .then((response) => {\n    console.log(`Request 2 is complete!`);\n  })\n  .catch((e) => {\n    if (e.name === \"AbortError\") {\n      // We know it's been canceled!\n    }\n  });\n\n// Wait 2 seconds to abort both requests\nsetTimeout(() => controller.abort(), 2000);\n```"
+    },
+    {
+      "id": 350,
+      "question": "What is web speech API",
+      "answer": "Web speech API is used to enable modern browsers recognize and synthesize speech (i.e, voice data into web apps). This API was introduced by W3C Community in the year 2012. It has two main parts:\n\n**1. SpeechRecognition (Asynchronous Speech Recognition or Speech-to-Text):** It provides the ability to recognize voice context from an audio input and respond accordingly. This is accessed by the SpeechRecognition interface. The example below shows how to use this API to get text from speech:\n\n```javascript\nwindow.SpeechRecognition =\n  window.webkitSpeechRecognition || window.SpeechRecognition; // webkitSpeechRecognition for Chrome and SpeechRecognition for FF\nconst recognition = new window.SpeechRecognition();\nrecognition.onresult = (event) => {\n  // SpeechRecognitionEvent type\n  const speechToText = event.results[0][0].transcript;\n  console.log(speechToText);\n};\nrecognition.start();\n```\n\nIn this API, browser is going to ask you for permission to use your microphone\n\n**2. SpeechSynthesis (Text-to-Speech):** It provides the ability to recognize voice context from an audio input and respond. This is accessed by the SpeechSynthesis interface. For example, the below code is used to get voice/speech from text:\n\n```javascript\nif (\"speechSynthesis\" in window) {\n  var speech = new SpeechSynthesisUtterance(\"Hello World!\");\n  speech.lang = \"en-US\";\n  window.speechSynthesis.speak(speech);\n}\n```\n\nThe above examples can be tested on chrome(33+) browser's developer console. Note: This API is still a working draft and only available in Chrome and Firefox browsers (ofcourse Chrome only implemented the specification)"
+    },
+    {
+      "id": 351,
+      "question": "What is minimum timeout throttling",
+      "answer": "Both browser and NodeJS javascript environments throttles with a minimum delay that is greater than 0ms. That means even though setting a delay of 0ms will not happen instantaneously.\n\n**Browsers:** They have a minimum delay of 4ms. This throttle occurs when successive calls are triggered due to callback nesting (certain depth) or after a certain number of successive intervals. Note: The older browsers have a minimum delay of 10ms.\n\n**Nodejs:** They have a minimum delay of 1ms. This throttle happens when the delay is larger than 2147483647 or less than 1.\n\nThe best example to explain this timeout throttling behavior is the order of below code snippet:\n\n```javascript\nfunction runMeFirst() {\n  console.log(\"My script is initialized\");\n}\nsetTimeout(runMeFirst, 0);\nconsole.log(\"Script loaded\");\n```\n\nand the output would be:\n\n```\nScript loaded\nMy script is initialized\n```\n\nIf you don't use setTimeout, the order of logs will be sequential:\n\n```javascript\nfunction runMeFirst() {\n  console.log(\"My script is initialized\");\n}\nrunMeFirst();\nconsole.log(\"Script loaded\");\n```\n\nand the output is:\n\n```\nMy script is initialized\nScript loaded\n```"
+    },
+    {
+      "id": 352,
+      "question": "How do you implement zero timeout in modern browsers",
+      "answer": "You can't use setTimeout(fn, 0) to execute the code immediately due to minimum delay of greater than 0ms. But you can use window.postMessage() to achieve this behavior."
+    },
+    {
+      "id": 353,
+      "question": "What are tasks in event loop",
+      "answer": "A task is any javascript code/program which is scheduled to be run by the standard mechanisms such as initially starting to run a program, run an event callback, or an interval or timeout being fired. All these tasks are scheduled on a task queue. Below are the list of use cases to add tasks to the task queue:\n\n1. When a new javascript program is executed directly from console or running by the `<script>` element, the task will be added to the task queue.\n2. When an event fires, the event callback added to task queue\n3. When a setTimeout or setInterval is reached, the corresponding callback added to task queue"
+    },
+    {
+      "id": 354,
+      "question": "What is microtask",
+      "answer": "A microtask is a type of JavaScript callback that is scheduled to run immediately after the currently executing script and before the next event loop tick. Microtasks are executed after the current task completes and before any new tasks (macrotasks) are run. This ensures a fast and predictable update cycle.\n\nCommon sources of microtasks stored in the microtask queue include:\n\n**Promises:** When a Promise is resolved or rejected, its .then(), .catch(), and .finally() callbacks are placed in the microtask queue.\n\n```javascript\nPromise.resolve().then(() => {\n  console.log('Microtask from a Promise');\n});\n```\n\n**queueMicrotask():** A method that explicitly schedules a function to be run in the microtask queue.\n\n```javascript\nqueueMicrotask(() => {\n  console.log('Microtask from queueMicrotask');\n});\n```\n\n**MutationObserver callbacks:** Observers changes in the DOM and triggers a callback as a microtask.\n\n```javascript\nconst observer = new MutationObserver(() => {\n  console.log('Microtask from MutationObserver');\n})\nobserver.observe(document.body, {childList: true});\n```\n\n**await:** Await internally uses Promises, so the code after await is scheduled as a microtask.\n\n```javascript\nasync function asyncFunction() {\n  await null;\n  console.log('Microtask from Await'); // Schedule this code as microtask\n}\n```\n\nNote: All of these microtasks are processed in the same turn of the event loop."
+    },
+    {
+      "id": 355,
+      "question": "What are different event loops",
+      "answer": "In JavaScript, there are multiple event loops that can be used depending on the context of your application. The most common event loops are:\n\n**The Browser Event Loop:** The Browser Event Loop is used in client-side JavaScript applications and is responsible for handling events that occur within the browser environment, such as user interactions (clicks, keypresses, etc.), HTTP requests, and other asynchronous actions.\n\n**The Node.js Event Loop:** The Node.js Event Loop is used in server-side JavaScript applications and is responsible for handling events that occur within the Node.js runtime environment, such as file I/O, network I/O, and other asynchronous actions."
+    },
+    {
+      "id": 356,
+      "question": "What is the purpose of queueMicrotask",
+      "answer": "The queueMicrotask function is used to schedule a microtask, which is a function that will be executed asynchronously in the microtask queue. The purpose of queueMicrotask is to ensure that a function is executed after the current task has finished, but before the browser performs any rendering or handles user events.\n\nExample:\n\n```javascript\nconsole.log(\"Start\"); //1\n\nqueueMicrotask(() => {\n  console.log(\"Inside microtask\"); // 3\n});\n\nconsole.log(\"End\"); //2\n```\n\nBy using queueMicrotask, you can ensure that certain tasks or callbacks are executed at the earliest opportunity during the JavaScript event loop, making it useful for performing work that needs to be done asynchronously but with higher priority than regular setTimeout or setInterval callbacks."
+    },
+    {
+      "id": 357,
+      "question": "How do you use javascript libraries in typescript file",
+      "answer": "It is known that not all JavaScript libraries or frameworks have TypeScript declaration files. But if you still want to use libraries or frameworks in your TypeScript files without getting compilation errors, the only solution is declare keyword along with a variable declaration. For example, let's imagine you have a library called customLibrary that doesn't have a TypeScript declaration and have a namespace called customLibrary in the global namespace. You can use this library in typescript code as below:\n\n```typescript\ndeclare var customLibrary;\n```\n\nIn the runtime, typescript will provide the type to the customLibrary variable as any type. The another alternative without using declare keyword is below:\n\n```typescript\nvar customLibrary: any;\n```"
+    },
+    {
+      "id": 358,
+      "question": "What are the differences between promises and observables",
+      "answer": "Some of the major difference in a tabular form:\n\n| Promises | Observables |\n|----------|-------------|\n| Emits only a single value at a time | Emits multiple values over a period of time (stream of values ranging from 0 to multiple) |\n| Eager in nature; they are going to be called immediately | Lazy in nature; they require subscription to be invoked |\n| Promise is always asynchronous even though it resolved immediately | Observable can be either synchronous or asynchronous |\n| Doesn't provide any operators | Provides operators such as map, forEach, filter, reduce, retry, and retryWhen etc |\n| Cannot be canceled | Canceled by using unsubscribe() method |"
+    },
+    {
+      "id": 359,
+      "question": "What is heap",
+      "answer": "Heap (Or memory heap) is the memory location where objects are stored when we define variables. i.e, This is the place where all the memory allocations and de-allocation take place. Both heap and call-stack are two containers of JS runtime. Whenever runtime comes across variables and function declarations in the code it stores them in the Heap."
+    },
+    {
+      "id": 360,
+      "question": "What is an event table",
+      "answer": "Event Table is a data structure that stores and keeps track of all the events which will be executed asynchronously like after some time interval or after the resolution of some API requests. i.e Whenever you call a setTimeout function or invoke async operation, it is added to the Event Table. It doesn't not execute functions on it's own. The main purpose of the event table is to keep track of events and send them to the Event Queue."
+    },
+    {
+      "id": 361,
+      "question": "What is a microTask queue",
+      "answer": "Microtask Queue is the new queue where all the tasks initiated by promise objects get processed before the callback queue. The microtasks queue are processed before the next rendering and painting jobs. But if these microtasks are running for a long time then it leads to visual degradation."
+    },
+    {
+      "id": 362,
+      "question": "What is the difference between shim and polyfill",
+      "answer": "A **shim** is a library that brings a new API to an older environment, using only the means of that environment. It isn't necessarily restricted to a web application. For example, es5-shim.js is used to emulate ES5 features on older browsers (mainly pre IE9).\n\nWhereas **polyfill** is a piece of code (or plugin) that provides the technology that you, the developer, expect the browser to provide natively. In a simple sentence, a polyfill is a shim for a browser API."
+    },
+    {
+      "id": 363,
+      "question": "How do you detect primitive or non primitive value type",
+      "answer": "In JavaScript, primitive types include boolean, string, number, BigInt, null, Symbol and undefined. Whereas non-primitive types include the Objects. But you can easily identify them with the below function:\n\n```javascript\nvar myPrimitive = 30;\nvar myNonPrimitive = {};\nfunction isPrimitive(val) {\n  return Object(val) !== val;\n}\n\nisPrimitive(myPrimitive);\nisPrimitive(myNonPrimitive);\n```\n\nIf the value is a primitive data type, the Object constructor creates a new wrapper object for the value. But If the value is a non-primitive data type (an object), the Object constructor will give the same object."
+    },
+    {
+      "id": 364,
+      "question": "What is babel",
+      "answer": "Babel is a JavaScript transpiler to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. Some of the main features are listed below:\n\n1. Transform syntax\n2. Polyfill features that are missing in your target environment (using @babel/polyfill)\n3. Source code transformations (or codemods)"
+    },
+    {
+      "id": 365,
+      "question": "Is Node.js completely single threaded",
+      "answer": "Node is a single thread, but some of the functions included in the Node.js standard library (e.g, fs module functions) are not single threaded. i.e, Their logic runs outside of the Node.js single thread to improve the speed and performance of a program."
+    },
+    {
+      "id": 366,
+      "question": "What are the common use cases of observables",
+      "answer": "Some of the most common use cases of observables are web sockets with push notifications, user input changes, repeating intervals, etc"
+    },
+    {
+      "id": 367,
+      "question": "What is RxJS",
+      "answer": "RxJS (Reactive Extensions for JavaScript) is a library for implementing reactive programming using observables that makes it easier to compose asynchronous or callback-based code. It also provides utility functions for creating and working with observables."
+    },
+    {
+      "id": 368,
+      "question": "What is the difference between Function constructor and function declaration",
+      "answer": "The functions which are created with Function constructor do not create closures to their creation contexts but they are always created in the global scope. i.e, the function can access its own local variables and global scope variables only. Whereas function declarations can access outer function variables (closures) too.\n\nLet's see this difference with an example:\n\n**Function Constructor:**\n\n```javascript\nvar a = 100;\nfunction createFunction() {\n  var a = 200;\n  return new Function(\"return a;\");\n}\nconsole.log(createFunction()()); // 100\n```\n\n**Function declaration:**\n\n```javascript\nvar a = 100;\nfunction createFunction() {\n  var a = 200;\n  return function func() {\n    return a;\n  };\n}\nconsole.log(createFunction()()); // 200\n```"
+    },
+    {
+      "id": 369,
+      "question": "What is a Short circuit condition",
+      "answer": "Short circuit conditions are meant for condensed way of writing simple if statements. Let's demonstrate the scenario using an example. If you would like to login to a portal with an authentication condition, the expression would be as below:\n\n```javascript\nif (authenticate) {\n  loginToPorta();\n}\n```\n\nSince the javascript logical operators evaluated from left to right, the above expression can be simplified using && logical operator:\n\n```javascript\nauthenticate && loginToPorta();\n```"
+    },
+    {
+      "id": 370,
+      "question": "What is the easiest way to resize an array",
+      "answer": "The length property of an array is useful to resize or empty an array quickly. Let's apply length property on number array to resize the number of elements from 5 to 2:\n\n```javascript\nvar array = [1, 2, 3, 4, 5];\nconsole.log(array.length); // 5\n\narray.length = 2;\nconsole.log(array.length); // 2\nconsole.log(array); // [1,2]\n```\n\nand the array can be emptied too:\n\n```javascript\nvar array = [1, 2, 3, 4, 5];\narray.length = 0;\nconsole.log(array.length); // 0\nconsole.log(array); // []\n```"
+    },
+    {
+      "id": 371,
+      "question": "What is an observable",
+      "answer": "An Observable is basically a function that can return a stream of values either synchronously or asynchronously to an observer over time. The consumer can get the value by calling subscribe() method. Let's look at a simple example of an Observable:\n\n```javascript\nimport { Observable } from \"rxjs\";\n\nconst observable = new Observable((observer) => {\n  setTimeout(() => {\n    observer.next(\"Message from a Observable!\");\n  }, 3000);\n});\n\nobservable.subscribe((value) => console.log(value));\n```\n\nNote: Observables are not part of the JavaScript language yet but they are being proposed to be added to the language"
+    },
+    {
+      "id": 372,
+      "question": "What is the difference between function and class declarations",
+      "answer": "The main difference between function declarations and class declarations is hoisting. The function declarations are hoisted but not class declarations.\n\n**Classes:**\n\n```javascript\nconst user = new User(); // ReferenceError\n\nclass User {}\n```\n\n**Constructor Function:**\n\n```javascript\nconst user = new User(); // No error\n\nfunction User() {}\n```"
+    },
+    {
+      "id": 373,
+      "question": "What is an async function",
+      "answer": "An async function is a function declared with the async keyword which enables asynchronous, promise-based behavior to be written in a cleaner style by avoiding promise chains. These functions can contain zero or more await expressions.\n\nLet's take a below async function example:\n\n```javascript\nasync function logger() {\n  let data = await fetch(\"http://someapi.com/users\"); // pause until fetch returns\n  console.log(data);\n}\nlogger();\n```\n\nIt is basically syntax sugar over ES2015 promises and generators."
+    },
+    {
+      "id": 374,
+      "question": "How do you prevent promises swallowing errors",
+      "answer": "While using asynchronous code, JavaScript's ES6 promises can make your life a lot easier without having callback pyramids and error handling on every second line. But Promises have some pitfalls and the biggest one is swallowing errors by default.\n\nLet's say you expect to print an error to the console for all the below cases:\n\n```javascript\nPromise.resolve(\"promised value\").then(function () {\n  throw new Error(\"error\");\n});\n\nPromise.reject(\"error value\").catch(function () {\n  throw new Error(\"error\");\n});\n\nnew Promise(function (resolve, reject) {\n  throw new Error(\"error\");\n});\n```\n\nBut there are many modern JavaScript environments that won't print any errors. You can fix this problem in different ways:\n\n**1. Add catch block at the end of each chain:** You can add catch block to the end of each of your promise chains\n\n```javascript\nPromise.resolve(\"promised value\")\n  .then(function () {\n    throw new Error(\"error\");\n  })\n  .catch(function (error) {\n    console.error(error.stack);\n  });\n```\n\nBut it is quite difficult to type for each promise chain and verbose too.\n\n**2. Add done method:** You can replace first solution's then and catch blocks with done method\n\n```javascript\nPromise.resolve(\"promised value\").done(function () {\n  throw new Error(\"error\");\n});\n```\n\n**3. Extend ES6 Promises by Bluebird:** Bluebird extends the ES6 Promises API to avoid the issue in the second solution. This library has a \"default\" onRejection handler which will print all errors from rejected Promises to stderr."
+    },
+    {
+      "id": 375,
+      "question": "What is deno",
+      "answer": "Deno is a simple, modern and secure runtime for JavaScript and TypeScript that uses V8 JavaScript engine and the Rust programming language. It solves the inherent problems of Node.Js and has been officially released in May 2018. Unlike Node.JS, by default Deno executes the code in a sandbox, which means that runtime has no access to below areas:\n\n1. The file system\n2. The network\n3. Execution of other scripts\n4. The environment variables"
+    },
+    {
+      "id": 376,
+      "question": "How do you make an object iterable in javascript",
+      "answer": "By default, plain objects are not iterable. But you can make the object iterable by defining a Symbol.iterator property on it.\n\nLet's demonstrate this with an example:\n\n```javascript\nconst collection = {\n  one: 1,\n  two: 2,\n  three: 3,\n  [Symbol.iterator]() {\n    const values = Object.keys(this);\n    let i = 0;\n    return {\n      next: () => {\n        return {\n          value: this[values[i++]],\n          done: i > values.length,\n        };\n      },\n    };\n  },\n};\n\nconst iterator = collection[Symbol.iterator]();\n\nconsole.log(iterator.next()); // → {value: 1, done: false}\nconsole.log(iterator.next()); // → {value: 2, done: false}\nconsole.log(iterator.next()); // → {value: 3, done: false}\nconsole.log(iterator.next()); // → {value: undefined, done: true}\n```\n\nThe above process can be simplified using a generator function:\n\n```javascript\nconst collection = {\n  one: 1,\n  two: 2,\n  three: 3,\n  [Symbol.iterator]: function* () {\n    for (let key in this) {\n      yield this[key];\n    }\n  },\n};\nconst iterator = collection[Symbol.iterator]();\nconsole.log(iterator.next()); // {value: 1, done: false}\nconsole.log(iterator.next()); // {value: 2, done: false}\nconsole.log(iterator.next()); // {value: 3, done: false}\nconsole.log(iterator.next()); // {value: undefined, done: true}\n```"
+    },
+    {
+      "id": 377,
+      "question": "What is a Proper Tail Call",
+      "answer": "First, we should know about tail call before talking about \"Proper Tail Call\". A tail call is a subroutine or function call performed as the final action of a calling function. Whereas Proper tail call (PTC) is a technique where the program or code will not create additional stack frames for a recursion when the function call is a tail call.\n\nFor example, the below classic or head recursion of factorial function relies on stack for each step. Each step need to be processed upto n * factorial(n - 1):\n\n```javascript\nfunction factorial(n) {\n  if (n === 0) {\n    return 1;\n  }\n  return n * factorial(n - 1);\n}\nconsole.log(factorial(5)); //120\n```\n\nBut if you use Tail recursion functions, they keep passing all the necessary data it needs down the recursion without relying on the stack:\n\n```javascript\nfunction factorial(n, acc = 1) {\n  if (n === 0) {\n    return acc;\n  }\n  return factorial(n - 1, n * acc);\n}\nconsole.log(factorial(5)); //120\n```\n\nThe above pattern returns the same output as the first one. But the accumulator keeps track of total as an argument without using stack memory on recursive calls."
+    },
+    {
+      "id": 378,
+      "question": "How do you check an object is a promise or not",
+      "answer": "If you don't know if a value is a promise or not, wrapping the value as Promise.resolve(value) which returns a promise:\n\n```javascript\nfunction isPromise(object) {\n  if (Promise && Promise.resolve) {\n    return Promise.resolve(object) == object;\n  } else {\n    throw \"Promise not supported in your environment\";\n  }\n}\n\nvar i = 1;\nvar promise = new Promise(function (resolve, reject) {\n  resolve();\n});\n\nconsole.log(isPromise(i)); // false\nconsole.log(isPromise(promise)); // true\n```\n\nAnother way is to check for .then() handler type:\n\n```javascript\nfunction isPromise(value) {\n  return Boolean(value && typeof value.then === \"function\");\n}\nvar i = 1;\nvar promise = new Promise(function (resolve, reject) {\n  resolve();\n});\n\nconsole.log(isPromise(i)); // false\nconsole.log(isPromise(promise)); // true\n```"
+    },
+    {
+      "id": 379,
+      "question": "How to detect if a function is called as constructor",
+      "answer": "You can use new.target pseudo-property to detect whether a function was called as a constructor (using the new operator) or as a regular function call.\n\n- If a constructor or function invoked using the new operator, new.target returns a reference to the constructor or function.\n- For function calls, new.target is undefined.\n\n```javascript\nfunction Myfunc() {\n  if (new.target) {\n    console.log(\"called with new\");\n  } else {\n    console.log(\"not called with new\");\n  }\n}\n\nnew Myfunc(); // called with new\nMyfunc(); // not called with new\nMyfunc.call({}); // not called with new\n```"
+    },
+    {
+      "id": 380,
+      "question": "What are the differences between arguments object and rest parameter",
+      "answer": "There are three main differences between arguments object and rest parameters:\n\n1. The arguments object is an array-like but not an array. Whereas the rest parameters are array instances.\n2. The arguments object does not support methods such as sort, map, forEach, or pop. Whereas these methods can be used in rest parameters.\n3. The rest parameters are only the ones that haven't been given a separate name, while the arguments object contains all arguments passed to the function"
+    },
+    {
+      "id": 381,
+      "question": "What are the differences between spread operator and rest parameter",
+      "answer": "Rest parameter collects all remaining elements into an array. Whereas Spread operator allows iterables (arrays / objects / strings) to be expanded into single arguments/elements. i.e, Rest parameter is opposite to the spread operator."
+    },
+    {
+      "id": 382,
+      "question": "What are the different kinds of generators",
+      "answer": "There are five kinds of generators:\n\n**1. Generator function declaration:**\n\n```javascript\nfunction* myGenFunc() {\n  yield 1;\n  yield 2;\n  yield 3;\n}\nconst genObj = myGenFunc();\n```\n\n**2. Generator function expressions:**\n\n```javascript\nconst myGenFunc = function* () {\n  yield 1;\n  yield 2;\n  yield 3;\n};\nconst genObj = myGenFunc();\n```\n\n**3. Generator method definitions in object literals:**\n\n```javascript\nconst myObj = {\n  *myGeneratorMethod() {\n    yield 1;\n    yield 2;\n    yield 3;\n  },\n};\nconst genObj = myObj.myGeneratorMethod();\n```\n\n**4. Generator method definitions in class:**\n\n```javascript\nclass MyClass {\n  *myGeneratorMethod() {\n    yield 1;\n    yield 2;\n    yield 3;\n  }\n}\nconst myObject = new MyClass();\nconst genObj = myObject.myGeneratorMethod();\n```\n\n**5. Generator as a computed property:**\n\n```javascript\nconst SomeObj = {\n  *[Symbol.iterator]() {\n    yield 1;\n    yield 2;\n    yield 3;\n  },\n};\n\nconsole.log(Array.from(SomeObj)); // [ 1, 2, 3 ]\n```"
+    },
+    {
+      "id": 383,
+      "question": "What are the built-in iterables",
+      "answer": "Below are the list of built-in iterables in javascript:\n\n1. **Arrays and TypedArrays**\n2. **Strings:** Iterate over each character or Unicode code-points\n3. **Maps:** iterate over its key-value pairs\n4. **Sets:** iterates over their elements\n5. **arguments:** An array-like special variable in functions\n6. **DOM collection** such as NodeList"
     }
   ]
 }
