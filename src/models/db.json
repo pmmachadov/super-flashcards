@@ -2100,6 +2100,226 @@
       "id": 422,
       "question": "What is the difference between map and forEach functions?",
       "answer": "Both map and forEach functions are used to iterate over an arrays but there are some differences in their functionality.\n\n**1. Returning values:** The `map` method returns a new array with transformed elements whereas `forEach` method returns `undefined` even though both of them are doing the same job.\n\n```javascript\nconst arr = [1, 2, 3, 4, 5];\narr.map(x => x * x); // [1, 4, 9, 16, 25]\narr.forEach(x => x * x); // undefined\n\n// The forEach() method in JavaScript always returns undefined. This is because forEach() is used to iterate over arrays and perform side effects on each element, rather than returning a new array or transforming the original array\n```\n\n**2. Chaining methods:** The `map` method is chainable. i.e, It can be attached with `reduce`, `filter`, `sort` and other methods as well. Whereas `forEach` cannot be attached with any other methods because it returns `undefined` value.\n\n```javascript\nconst arr = [1, 2, 3, 4, 5];\narr.map((x) => x * x).reduce((total, cur) => total + cur); // 55\narr.forEach((x) => x * x).reduce((total, cur) => total + cur); //Uncaught TypeError: Cannot read properties of undefined (reading 'reduce')\n```\n\n**3. Mutation:** The `map` method doesn't mutate the original array by returning new array. Whereas `forEach` method also doesn't mutate the original array but it's callback is allowed to mutate the original array.\n\n**Note:** Both these methods existed since ES5 onwards."
+    },
+    {
+      "id": 423,
+      "question": "Give an example of statements affected by automatic semicolon insertion?",
+      "answer": "The javascript parser will automatically add a semicolon while parsing the source code. For example, the below common statements affected by Automatic Semicolon Insertion (ASI):\n\n1. **An empty statement**\n2. **var statement**\n3. **An expression statement**\n4. **do-while statement**\n5. **continue statement**\n6. **break statement**\n7. **return statement**\n8. **throw statement**"
+    },
+    {
+      "id": 424,
+      "question": "What are the event phases of a browser?",
+      "answer": "There are 3 phases in the lifecycle of an event propagation in JavaScript:\n\n**1. Capturing phase:** This phase goes down gradually from the top of the DOM tree to the target element when a nested element clicked. Before the click event reaching the final destination element, the click event of each parent's element must be triggered.\n\n**2. Target phase:** This is the phase where the event originally occurred reached the target element.\n\n**3. Bubbling phase:** This is reverse of the capturing phase. In this phase, the event bubbles up from the target element through it's parent element, an ancestor and goes all the way to the global window object."
+    },
+    {
+      "id": 425,
+      "question": "What are the real world use cases of proxy?",
+      "answer": "Proxies are not used in regular day to day JavaScript work but they enabled many exciting programming patterns. Some of the real world use cases are listed below:\n\n1. **Vue3** used proxy concept to implement reactive state\n2. **SolidJS** implemented reactive stores\n3. **Immerjs** built upon proxy to track updates to immutable updates\n4. **ZenStack** improved Prisma ORM for access control layer"
+    },
+    {
+      "id": 426,
+      "question": "What are hidden classes?",
+      "answer": "Since JavaScript is a dynamic programming language, you can add or remove properties and methods from objects on the fly at runtime. This nature of JavaScript increases the dynamic dictionary lookups (because objects implemented as HashTables in memory) for retrieving a property on an object.\n\nLet's consider the following example to see how the additional properties age and gender added at runtime:\n\n```javascript\nfunction Person(name) {\n  this.name = name;\n}\n\nvar person1 = new Person(\"John\");\nvar person2 = new Person(\"Randy\");\n\nperson1.age = 40;\nperson1.gender = \"Male\";\n\nperson2.gender = \"Female\";\nperson2.age = 50;\n```\n\nAs a result, this behavior leads to lower JavaScript performance compared to the contiguous buffer method used in non-dynamic languages. The V8 engine provided a solution named **hidden classes** to optimize the access time when retrieving a property on an object. This optimization is achieved by sharing hidden classes among objects created in a similar fashion. These hidden classes are attached to each and every object to track its shape.\n\nWhen V8 engine sees the constructor function (e.g, Person) is declared, it creates a hidden class (let's say Class01) without any offsets. Once the first property assignment statement (this.name = name) is executed, V8 engine will create a new hidden class (let's say Class02), inheriting all properties from the previous hidden class (Class01), and assign the property to offset 0. This process enables compiler to skip dictionary lookup when you try to retrieve the same property (i.e, name). Instead, V8 will directly point to Class02. The same procedure happens when you add new properties to the object.\n\nFor example, adding age and gender properties to Person constructor leads to transition of hidden classes (Class02 -> Class03 -> Class04). If you create a second object (Person2) based on the same Person object, both Class01 and Class02 hidden classes are going to be shared. However, the hidden classes Class03 and Class04 cannot be shared because second object has been modified with a different order of properties assignment.\n\nSince both the objects (person1 and person2) do not share the hidden classes, now V8 engine cannot use Inline Caching technique for the faster access of properties."
+    },
+    {
+      "id": 427,
+      "question": "What is inline caching?",
+      "answer": "Inline caching is an optimization technique based on the observation that repeated calls to same function tends to occur on same type of objects. The V8 compiler stores a cache of the type of objects that were passed as a parameter in recent method calls. Upon next time when same function is called, compiler can directly search for the type in cache.\n\nLet's consider an example where the compiler stores the shape type in cache for repeated calls in the loop:\n\n```javascript\nlet shape = { width: 30, height: 20 }; // Compiler store the type in cache as { width: <int>, height: <int>} after repeated calls\n\nfunction area(obj) {\n  //Calculate area\n}\nfor (let i = 0; i < 100; i++) {\n  area(shape);\n}\n```\n\nAfter few successful calls of the same area method to its same hidden class, V8 engine omits the hidden class lookup and simply adds the offset of the property to the object pointer itself. As a result, it increases the execution speed.\n\nThere are mainly 3 types of inline caching possible:\n\n**1. Monomorphic:** This is a optimized caching technique in which there can be always same type of objects passed.\n\n**2. Polymorphic:** This ia slightly optimized caching technique in which limited number of different types of objects can be passed.\n\n**3. Megamorphic:** It is an unoptimized caching in which any number of different objects can be passed."
+    },
+    {
+      "id": 428,
+      "question": "What are the different ways to execute external scripts?",
+      "answer": "There are three different ways to execute external scripts:\n\n**1. async:** The script is downloaded in parallel to parsing the page, and executed as soon as it is available even before parsing completes. The parsing of the page is going to be interrupted once the script is downloaded completely and then the script is executed. Thereafter, the parsing of the remaining page will continue.\n\n```html\n<script src=\"demo.js\" async></script>\n```\n\n**2. defer:** The script is downloaded in parallel to parsing the page, and executed after the page has finished parsing.\n\n```html\n<script src=\"demo.js\" defer></script>\n```\n\n**3. Neither async or defer:** The script is downloaded and executed immediately by blocking parsing of the page until the script execution is completed.\n\n**Note:** You should only use either async or defer attribute if the src attribute is present."
+    },
+    {
+      "id": 429,
+      "question": "What is Lexical Scope?",
+      "answer": "Lexical scope is the ability for a function scope to access variables from the parent scope.\n\n```javascript\nfunction x(){\n  var a=10;\n  function y(){\n      console.log(a); // will print a , because of lexical scope, it will first look 'a' in\n  //its local memory space and then in its parent functions memory space\n  }\n  y();\n}\nx();\n```"
+    },
+    {
+      "id": 430,
+      "question": "How to detect system dark mode in javascript?",
+      "answer": "The combination of Window.matchMedia() utility method along with media query is used to check if the user has selected a dark color scheme in their operating system settings or not. The CSS media query prefers-color-scheme needs to be passed to identify system color theme.\n\nThe following javascript code describes the usage:\n\n```javascript\nconst hasDarkColorScheme = () =>\n  window.matchMedia &&\n  window.matchMedia(\"(prefers-color-scheme: dark)\").matches;\n```\n\nYou can also watch changes to system color scheme using addEventListener:\n\n```javascript\nwindow\n  .matchMedia(\"(prefers-color-scheme: dark)\")\n  .addEventListener(\"change\", (event) => {\n    const theme = event.matches ? \"dark\" : \"light\";\n  });\n```\n\n**Note:** The matchMedia method returns MediaQueryList object stores information from a media query."
+    },
+    {
+      "id": 431,
+      "question": "What is the purpose of requestAnimationFrame method?",
+      "answer": "The requestAnimationFrame() method in JavaScript is used to schedule a function to be called before the next repaint of the browser window, allowing you to create smooth, efficient animations. It's primarily used for animations and visual updates, making it an essential tool for improving performance when you're animating elements on the web.\n\n```javascript\nconst element = document.getElementById(\"myElement\");\nfunction animate() {\n  let currentPosition = parseInt(window.getComputedStyle(element).left, 10);\n\n  // Move the element 2px per frame\n  currentPosition += 2;\n  element.style.left = currentPosition + \"px\";\n  // If the element hasn't moved off-screen, request the next frame\n  if (currentPosition < window.innerWidth) {\n    requestAnimationFrame(animate);\n  }\n}\n// Start the animation\nrequestAnimationFrame(animate);\n```"
+    },
+    {
+      "id": 432,
+      "question": "What is the difference between substring and substr methods?",
+      "answer": "Both substring and substr are used to extract parts of a string, but there are subtle differences between the substring() and substr() methods in terms of syntax and behavior.\n\n**substring(start, end)**\n\n**Parameters:**\n- start: The index to start extracting (inclusive).\n- end: The index to stop extracting (exclusive).\n\n**Behavior:**\n- If start > end, it swaps the arguments.\n- Negative values are treated as 0.\n\n```javascript\nlet str = \"Hello World\";\nconsole.log(str.substring(0, 5));   // \"Hello\"\nconsole.log(str.substring(5, 0));   // \"Hello\" (swapped)\nconsole.log(str.substring(-3, 4));  // \"Hell\" (negative = 0)\n```\n\n**substr(start, length) (Deprecated)**\n\n**Parameters:**\n- start: The index to start extracting.\n- length: The number of characters to extract.\n\n**Behavior:**\n- If start is negative, it counts from the end of the string.\n- If length is omitted, it extracts to the end of the string.\n\n```javascript\nlet str = \"Hello World\";\nconsole.log(str.substr(0, 5)); // \"Hello\"\nconsole.log(str.substr(-5, 3)); // \"Wor\" (starts from 'W')\n```\n\n**Note:** substr() is considered a legacy feature in ECMAScript, so it is best to avoid using it if possible."
+    },
+    {
+      "id": 433,
+      "question": "How to find the number of parameters expected by a function?",
+      "answer": "The function's object has a length property which tells you how many formal parameters expected by a function. This is a static value defined by the function, not the number of arguments the function is called with (arguments.length). The basic usage of length property is:\n\n```javascript\nfunction multiply(x, y) {\n  return x * y;\n}\n\nfunction sum(a, b, c) {\n  return a + b + c;\n}\n\nconsole.log(multiply.length); //2\nconsole.log(sum.length); //3\n```\n\nBut there are few important rules which needs to be noted while using length property:\n\n**Default values:** Only the parameters which exists before a default value are considered.\n\n```javascript\nfunction sum(a, b = 2, c = 3) {\n  return a + b + c;\n}\nconsole.log(sum.length); // 1\n```\n\n**Rest params:** The rest parameters are excluded with in length property.\n\n```javascript\nfunction sum(a, b, ...moreArgs) {\n  let total = a + b;\n  for (const arg of moreArgs) {\n    total += arg;\n  }\n  return total;\n}\nconsole.log(sum.length); // 2\n```\n\n**Destructuring patterns:** Each destructuring pattern counted as a single parameter.\n\n```javascript\nfunction func([a, b], { x, y }) {\n  console.log(a + b, x, y);\n}\n\nconsole.log(func.length); // 2\n```\n\n**Note:** The Function constructor is itself a function object and it has a length property of 1."
+    },
+    {
+      "id": 434,
+      "question": "What is globalThis, and what is the importance of it?",
+      "answer": "Nowadays JavaScript language is used in a wide variety of environments and each environment has its own object model. Due to this fact, there are different ways (syntax) to access the global object.\n\n- In web browser, the global object is accessible via window, self, or frames.\n- In Node environment, you have to use global.\n- In Web workers, the global object is available through self.\n\nThe globalThis property provides a standard way of accessing the global object without writing various code snippet to support multiple environments. For example, the global object returned from multiple environments as shown below:\n\n```javascript\n//1. browser environment\nconsole.log(globalThis); // => Window {...}\n\n//2. node.js environment\nconsole.log(globalThis); // => Object [global] {...}\n\n//3. web worker environment\nconsole.log(globalThis); // => DedicatedWorkerGlobalScope {...}\n```"
+    },
+    {
+      "id": 435,
+      "question": "What are the array mutation methods?",
+      "answer": "JavaScript array methods can be categorized into two groups:\n- **Mutating methods:** These are the methods that directly modify the original array.\n- **Non-mutating methods:** These methods return a new array without altering the original one.\n\nThere are 9 methods in total that mutate the arrays:\n\n1. **push:** Adds one or more elements to the end of the array and returns the new length.\n2. **pop:** Removes the last element from the array and returns that element.\n3. **unshift:** Adds one or more elements to the beginning of the array and returns the new length.\n4. **shift:** Removes the first element from the array and returns that element.\n5. **splice:** Adds or removes elements from the array at a specific index position.\n6. **sort:** Sorts the elements of the array in-place based on a given sorting criteria.\n7. **reverse:** Reverses the order of elements in the given array.\n8. **fill:** Fills all elements of the array with a specific value.\n9. **copyWithIn:** Copies a sequence of elements within the array to a specified target index in the same array."
+    },
+    {
+      "id": 436,
+      "question": "What is module scope in JavaScript?",
+      "answer": "Module scope is a feature introduced with ES6 (ES2015) modules that creates a scope specific to a module file, isolating variables and functions declared within it from the global scope and other modules. Variables and functions declared in a module are private by default and can only be accessed by other modules if they are explicitly exported.\n\n**Key characteristics of module scope:**\n\n- Variables declared in a module are scoped to that module only.\n- Each module has its own top-level scope\n- Variables and functions need to be explicitly exported to be used in other modules\n- The global scope cannot access module variables unless they are explicitly exported and imported\n- Modules are always executed in strict mode\n\n```javascript\n// moduleA.js\n\n// This variable is PRIVATE to moduleA. It's like a tool inside a closed box.\nconst privateVariable = \"I am private\";\n\n// This variable is PUBLIC because it's exported. Others can use it when they import moduleA.\nexport const publicVariable = \"I am public\";\n\n// PUBLIC function because it's exported. But it can still access privateVariable inside moduleA.\nexport function publicFunction() {\n  console.log(privateVariable); // ✅ This works because we're inside the same module.\n  return \"Hello from publicFunction!\";\n}\n\n// moduleB.js\n\n// Importing PUBLIC items from moduleA.\nimport { publicVariable, publicFunction } from \"./moduleA.js\";\n\nconsole.log(publicVariable); // ✅ \"I am public\" - Works because it's exported.\nconsole.log(publicFunction()); // ✅ \"Hello from publicFunction!\" - Works as well.\n\n// ❌ This will cause an ERROR because privateVariable was NOT exported from moduleA.\n// console.log(privateVariable);   // ❌ ReferenceError: privateVariable is not defined\n```\n\n**Common use cases and benefits:**\n\n- Encapsulation of module-specific code\n- Prevention of global scope pollution\n- Better code organization and maintenance\n- Explicit dependency management\n- Protection of private implementation details"
+    },
+    {
+      "id": 437,
+      "question": "What are shadowing and illegal shadowing?",
+      "answer": "Both shadowing and illegal shadowing refer to how variable names can \"hide\" or override others within nested scopes.\n\n**Shadowing** occurs when a variable declared within a certain scope (like a function or block) has the same name as a variable declared in an outer scope. The inner variable shadows the outer one — meaning, the inner variable takes precedence in its own scope.\n\nLet's take an example where the inner a inside func() shadows the outer variable a:\n\n```javascript\nlet a = 10;\n\nfunction func() {\n  let a = 20; // Shadows the outer 'a'\n  console.log(a); // 20\n}\n\nfunc();\nconsole.log(a); // 10\n```\n\n**Illegal shadowing** in JavaScript refers to a syntax error that happens when you try to declare a block-scoped variable (let or const) with the same name as a variable declared using var in the same or an overlapping scope.\n\nFor example, if you declare both block-scoped variable and function scoped variable using the same name inside a function causes an illegal shadowing:\n\n```javascript\nfunction test() {\n  var a = 10;\n  let a = 20; // SyntaxError: Identifier 'a' has already been declared\n}\n```\n\nAs another example, if you declare a variable with let or const in an outer scope, and then try to redeclare it with var inside a nested block, JavaScript throws an error — even though var is supposed to be function-scoped. Since the var appears in a block, it ends up trying to overwrite the let in the outer scope, which causes a conflict:\n\n```javascript\nlet a = 10;\n{\n  var a = 20; // SyntaxError: Identifier 'a' has already been declared\n  console.log(a);\n}\n```"
+    },
+    {
+      "id": 438,
+      "question": "Why is it important to remove event listeners after use?",
+      "answer": "In JavaScript, you need to be mindful of removing event listeners to avoid memory leaks — especially in long-lived apps like single-page applications (SPAs) or when working with frameworks/libraries. Even though JavaScript has automatic garbage collection, memory leaks can still happen if:\n\n- A DOM element is removed, but a listener still references it.\n- A callback (event listener) holds a reference to a large object or closure that can't be cleaned up.\n- Global objects like window, document etc retain listeners indefinitely unless manually removed.\n\nSo if you add any event listeners to DOM element, it is a good practice to remove it after its usage as shown below:\n\n```javascript\nconst button = document.getElementById(\"btn\");\n\nfunction handleClick() {\n  console.log(\"Clicked!\");\n}\n\nbutton.addEventListener(\"click\", handleClick);\n\n// Always remove when done\nbutton.removeEventListener(\"click\", handleClick);\n```"
+    },
+    {
+      "id": 439,
+      "question": "Coding Exercise 1: What is the output of this code?",
+      "answer": "```javascript\nvar car = new Vehicle(\"Honda\", \"white\", \"2010\", \"UK\");\nconsole.log(car);\n\nfunction Vehicle(model, color, year, country) {\n  this.model = model;\n  this.color = color;\n  this.year = year;\n  this.country = country;\n}\n```\n\n**Answer: 4** - `{model: \"Honda\", color: \"white\", year: \"2010\", country: \"UK\"}`\n\n**Explanation:** This is an example of hoisting. Function declarations are hoisted to the top of their scope, so the Vehicle constructor function is available before its declaration in the code. The new operator creates a new object and the constructor assigns the properties to it."
+    },
+    {
+      "id": 440,
+      "question": "Coding Exercise 2: What is the output of this code?",
+      "answer": "```javascript\nfunction foo() {\n  let x = (y = 0);\n  x++;\n  y++;\n  return x;\n}\n\nconsole.log(foo(), typeof x, typeof y);\n```\n\n**Answer: 3** - `1, undefined and number`\n\n**Explanation:** Inside the function, `let x = (y = 0)` creates a local variable `x` and a global variable `y` (since `y` is not declared with `let`, `const`, or `var`). After the function executes, `x` is not accessible outside the function (hence `undefined`), but `y` is a global variable of type `number`."
+    },
+    {
+      "id": 441,
+      "question": "Coding Exercise 3: What is the output of this code?",
+      "answer": "```javascript\nfunction main() {\n  console.log(\"A\");\n  setTimeout(function print() {\n    console.log(\"B\");\n  }, 0);\n  console.log(\"C\");\n}\nmain();\n```\n\n**Answer: 4** - `A, C and B`\n\n**Explanation:** Even though setTimeout has a delay of 0ms, it's still asynchronous and goes to the event queue. The synchronous code (`console.log(\"A\")` and `console.log(\"C\")`) executes first, then the setTimeout callback executes."
+    },
+    {
+      "id": 442,
+      "question": "Coding Exercise 4: What is the output of this equality check?",
+      "answer": "```javascript\nconsole.log(0.1 + 0.2 === 0.3);\n```\n\n**Answer: 1** - `false`\n\n**Explanation:** This is due to floating-point precision issues in JavaScript. The result of `0.1 + 0.2` is actually `0.30000000000000004`, not exactly `0.3`."
+    },
+    {
+      "id": 443,
+      "question": "Coding Exercise 5: What is the output of this code?",
+      "answer": "```javascript\nvar y = 1;\nif (function f() {}) {\n  y += typeof f;\n}\nconsole.log(y);\n```\n\n**Answer: 4** - `1undefined`\n\n**Explanation:** The function expression `function f() {}` is truthy, so the if condition executes. However, function expressions don't create a binding in the surrounding scope, so `f` is undefined outside the function expression itself. `typeof undefined` returns `\"undefined\"`."
+    },
+    {
+      "id": 444,
+      "question": "Coding Exercise 6: What is the output of this code?",
+      "answer": "```javascript\nfunction foo() {\n  return;\n  {\n    message: \"Hello World\";\n  }\n}\nconsole.log(foo());\n```\n\n**Answer: 3** - `Undefined`\n\n**Explanation:** Due to Automatic Semicolon Insertion (ASI), JavaScript automatically inserts a semicolon after the `return` statement, making the function return `undefined`. The object literal below is unreachable code."
+    },
+    {
+      "id": 445,
+      "question": "Coding Exercise 7: What is the output of this code?",
+      "answer": "```javascript\nvar myChars = [\"a\", \"b\", \"c\", \"d\"];\ndelete myChars[0];\nconsole.log(myChars);\nconsole.log(myChars[0]);\nconsole.log(myChars.length);\n```\n\n**Answer: 3** - `[empty, 'b', 'c', 'd'], undefined, 4`\n\n**Explanation:** The `delete` operator removes the property from the array but doesn't change the array's length. It creates a \"hole\" in the array (sparse array). The deleted element becomes `undefined` when accessed."
+    },
+    {
+      "id": 446,
+      "question": "Coding Exercise 8: What is the output of this code in latest Chrome?",
+      "answer": "```javascript\nvar array1 = new Array(3);\nconsole.log(array1);\n\nvar array2 = [];\narray2[2] = 100;\nconsole.log(array2);\n\nvar array3 = [, , ,];\nconsole.log(array3);\n```\n\n**Answer: 2** - `[empty × 3], [empty × 2, 100], [empty × 3]`\n\n**Explanation:** All three arrays are sparse arrays with empty slots. Modern Chrome displays these as `[empty × n]` to indicate holes in the array rather than `undefined`."
+    },
+    {
+      "id": 447,
+      "question": "Coding Exercise 9: What is the output of this code?",
+      "answer": "```javascript\nconst obj = {\n  prop1: function () {\n    return 0;\n  },\n  prop2() {\n    return 1;\n  },\n  [\"prop\" + 3]() {\n    return 2;\n  },\n};\n\nconsole.log(obj.prop1());\nconsole.log(obj.prop2());\nconsole.log(obj.prop3());\n```\n\n**Answer: 1** - `0, 1, 2`\n\n**Explanation:** All three are valid ways to define methods in an object. `prop1` uses function expression, `prop2` uses method shorthand, and `prop3` uses computed property name with method shorthand. All return their respective values when called."
+    },
+    {
+      "id": 448,
+      "question": "Coding Exercise 10: What is the output of this code?",
+      "answer": "```javascript\nconsole.log(1 < 2 < 3);\nconsole.log(3 > 2 > 1);\n```\n\n**Answer: 2** - `true, false`\n\n**Explanation:** These expressions are evaluated left to right. `1 < 2` returns `true`, then `true < 3` becomes `1 < 3` which is `true`. For the second: `3 > 2` returns `true`, then `true > 1` becomes `1 > 1` which is `false`."
+    },
+    {
+      "id": 449,
+      "question": "Coding Exercise 11: What is the output of this code in non-strict mode?",
+      "answer": "```javascript\nfunction printNumbers(first, second, first) {\n  console.log(first, second, first);\n}\nprintNumbers(1, 2, 3);\n```\n\n**Answer: 2** - `3, 2, 3`\n\n**Explanation:** In non-strict mode, duplicate parameter names are allowed. The last parameter with the same name overwrites the previous ones. So both `first` parameters refer to the value `3`."
+    },
+    {
+      "id": 450,
+      "question": "Coding Exercise 12: What is the output of this code?",
+      "answer": "```javascript\nconst printNumbersArrow = (first, second, first) => {\n  console.log(first, second, first);\n};\nprintNumbersArrow(1, 2, 3);\n```\n\n**Answer: 3** - `SyntaxError: Duplicate parameter name not allowed in this context`\n\n**Explanation:** Arrow functions don't allow duplicate parameter names, regardless of strict mode. This will throw a syntax error."
+    },
+    {
+      "id": 451,
+      "question": "Coding Exercise 13: What is the output of this code?",
+      "answer": "```javascript\nconst arrowFunc = () => arguments.length;\nconsole.log(arrowFunc(1, 2, 3));\n```\n\n**Answer: 1** - `ReferenceError: arguments is not defined`\n\n**Explanation:** Arrow functions don't have their own `arguments` object. Attempting to access `arguments` inside an arrow function will result in a ReferenceError."
+    },
+    {
+      "id": 452,
+      "question": "Coding Exercise 14: What is the output of this code?",
+      "answer": "```javascript\nconsole.log(String.prototype.trimLeft.name === \"trimLeft\");\nconsole.log(String.prototype.trimLeft.name === \"trimStart\");\n```\n\n**Answer: 2** - `False, True`\n\n**Explanation:** `trimLeft` is an alias for `trimStart`. The actual function name is `trimStart`, so the `name` property returns `\"trimStart\"`."
+    },
+    {
+      "id": 453,
+      "question": "Coding Exercise 15: What is the output of this code?",
+      "answer": "```javascript\nconsole.log(Math.max());\n```\n\n**Answer: 4** - `-Infinity`\n\n**Explanation:** When `Math.max()` is called without arguments, it returns `-Infinity`. This is because the initial value for comparison is `-Infinity`, and since there are no arguments to compare, it returns this initial value."
+    },
+    {
+      "id": 454,
+      "question": "Coding Exercise 16: What is the output of this code?",
+      "answer": "```javascript\nconsole.log(10 == [10]);\nconsole.log(10 == [[[[[[[10]]]]]]]);\n```\n\n**Answer: 1** - `True, True`\n\n**Explanation:** When comparing with `==`, arrays are converted to primitives. Both `[10]` and `[[[[[[[10]]]]]]]` convert to the string `\"10\"`, which then converts to the number `10` for comparison."
+    },
+    {
+      "id": 455,
+      "question": "Coding Exercise 17: What is the output of this code?",
+      "answer": "```javascript\nconsole.log(10 + \"10\");\nconsole.log(10 - \"10\");\n```\n\n**Answer: 2** - `1010, 0`\n\n**Explanation:** The `+` operator performs string concatenation when one operand is a string, so `10 + \"10\"` becomes `\"1010\"`. The `-` operator only works with numbers, so `\"10\"` is converted to number `10`, making `10 - 10 = 0`."
+    },
+    {
+      "id": 456,
+      "question": "Coding Exercise 18: What is the output of this code?",
+      "answer": "```javascript\nconsole.log([0] == false);\nif ([0]) {\n  console.log(\"I'm True\");\n} else {\n  console.log(\"I'm False\");\n}\n```\n\n**Answer: 1** - `True, I'm True`\n\n**Explanation:** For the equality check, `[0]` converts to `\"0\"` then to `0`, and `false` converts to `0`, so they're equal. In the if statement, any non-empty array is truthy, so `[0]` evaluates to `true`."
+    },
+    {
+      "id": 457,
+      "question": "Coding Exercise 19: What is the output of this code?",
+      "answer": "```javascript\nconsole.log([1, 2] + [3, 4]);\n```\n\n**Answer: 4** - `1,23,4`\n\n**Explanation:** When using the `+` operator with arrays, both arrays are converted to strings. `[1, 2]` becomes `\"1,2\"` and `[3, 4]` becomes `\"3,4\"`. String concatenation results in `\"1,23,4\"`."
+    },
+    {
+      "id": 458,
+      "question": "Coding Exercise 20: What is the output of this code?",
+      "answer": "```javascript\nconst numbers = new Set([1, 1, 2, 3, 4]);\nconsole.log(numbers);\n\nconst browser = new Set(\"Firefox\");\nconsole.log(browser);\n```\n\n**Answer: 2** - `{1, 2, 3, 4}, {\"F\", \"i\", \"r\", \"e\", \"o\", \"x\"}`\n\n**Explanation:** Sets automatically remove duplicates. The first Set removes the duplicate `1`. The second Set treats the string as an iterable of characters, and removes the duplicate `f` characters."
+    },
+    {
+      "id": 459,
+      "question": "Coding Exercise 21: What is the output of this code?",
+      "answer": "```javascript\nconsole.log(NaN === NaN);\n```\n\n**Answer: 2** - `False`\n\n**Explanation:** `NaN` is the only value in JavaScript that is not equal to itself. This is defined by the IEEE 754 standard for floating-point arithmetic."
+    },
+    {
+      "id": 460,
+      "question": "Coding Exercise 22: What is the output of this code?",
+      "answer": "```javascript\nlet numbers = [1, 2, 3, 4, NaN];\nconsole.log(numbers.indexOf(NaN));\n```\n\n**Answer: 4** - `-1`\n\n**Explanation:** The `indexOf` method uses strict equality (`===`) for comparison. Since `NaN === NaN` is `false`, `indexOf` cannot find `NaN` and returns `-1`. Use `findIndex` with `Number.isNaN()` to find NaN values."
+    },
+    {
+      "id": 461,
+      "question": "Coding Exercise 23: What is the output of this code?",
+      "answer": "```javascript\nlet [a, ...b] = [1, 2, 3, 4, 5];\nconsole.log(a, b);\n```\n\n**Answer: 1** - `1, [2, 3, 4, 5]`\n\n**Explanation:** This is array destructuring with rest syntax. `a` gets the first element (`1`), and `b` gets the rest of the elements as an array `[2, 3, 4, 5]`."
+    },
+    {
+      "id": 462,
+      "question": "Coding Exercise 25: What is the output of this code?",
+      "answer": "```javascript\nasync function func() {\n  return 10;\n}\nconsole.log(func());\n```\n\n**Answer: 1** - `Promise {<fulfilled>: 10}`\n\n**Explanation:** Async functions always return a Promise, even when you return a primitive value. The returned value becomes the resolved value of the Promise."
+    },
+    {
+      "id": 463,
+      "question": "Coding Exercise 26: What is the output of this code?",
+      "answer": "```javascript\nasync function func() {\n  await 10;\n}\nconsole.log(func());\n```\n\n**Answer: 4** - `Promise {<resolved>: undefined}`\n\n**Explanation:** The function doesn't explicitly return anything, so it returns `undefined`. Since it's an async function, this `undefined` is wrapped in a resolved Promise."
+    },
+    {
+      "id": 464,
+      "question": "Coding Exercise 27: What is the output of this code?",
+      "answer": "```javascript\nfunction delay() {\n  return new Promise(resolve => setTimeout(resolve, 2000));\n}\n\nasync function delayedLog(item) {\n  await delay();\n  console.log(item);\n}\n\nasync function processArray(array) {\n  array.forEach(item => {\n    await delayedLog(item);\n  })\n}\n\nprocessArray([1, 2, 3, 4]);\n```\n\n**Answer: 1** - `SyntaxError`\n\n**Explanation:** You cannot use `await` inside a non-async function. The callback function passed to `forEach` is not marked as `async`, so using `await` inside it causes a syntax error."
+    },
+    {
+      "id": 465,
+      "question": "Coding Exercise 28: What is the output of this code?",
+      "answer": "```javascript\nfunction delay() {\n  return new Promise((resolve) => setTimeout(resolve, 2000));\n}\n\nasync function delayedLog(item) {\n  await delay();\n  console.log(item);\n}\n\nasync function process(array) {\n  array.forEach(async (item) => {\n    await delayedLog(item);\n  });\n  console.log(\"Process completed!\");\n}\nprocess([1, 2, 3, 5]);\n```\n\n**Answer: 4** - `Process completed! and 1 2 3 5`\n\n**Explanation:** The `forEach` method doesn't wait for async callbacks to complete. \"Process completed!\" logs immediately, then after 2 seconds, all the numbers log simultaneously (since all the delays started at the same time)."
+    },
+    {
+      "id": 466,
+      "question": "Coding Exercise 29: What is the output of this code?",
+      "answer": "```javascript\nvar set = new Set();\nset.add(\"+0\").add(\"-0\").add(NaN).add(undefined).add(NaN);\nconsole.log(set);\n```\n\n**Answer: 1** - `Set(4) {\"+0\", \"-0\", NaN, undefined}`\n\n**Explanation:** Sets remove duplicates based on the SameValueZero algorithm. `+0` and `-0` are considered different values in Sets, unlike regular equality. The duplicate `NaN` is removed since `NaN` is considered equal to itself in Sets."
     }
   ]
 }
