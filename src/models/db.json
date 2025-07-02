@@ -1460,6 +1460,251 @@
       "id": 294,
       "question": "Can I avoid using postMessages completely",
       "answer": "You cannot avoid using postMessages completely(or 100%). Even though your application doesn't use postMessage considering the risks, a lot of third party scripts use postMessage to communicate with the third party service. So your application might be using postMessage without your knowledge."
+    },
+    {
+      "id": 295,
+      "question": "Is postMessages synchronous",
+      "answer": "The postMessages are synchronous in IE8 browser but they are asynchronous in IE9 and all other modern browsers (i.e, IE9+, Firefox, Chrome, Safari). Due to this asynchronous behaviour, we use a callback mechanism when the postMessage is returned."
+    },
+    {
+      "id": 296,
+      "question": "What paradigm is Javascript",
+      "answer": "JavaScript is a multi-paradigm language, supporting imperative/procedural programming, Object-Oriented Programming and functional programming. JavaScript supports Object-Oriented Programming with prototypical inheritance."
+    },
+    {
+      "id": 297,
+      "question": "What is the difference between internal and external javascript",
+      "answer": "**Internal JavaScript:** It is the source code within the script tag.\n\n**External JavaScript:** The source code is stored in an external file (stored with .js extension) and referred with in the tag."
+    },
+    {
+      "id": 298,
+      "question": "Is JavaScript faster than server side script",
+      "answer": "Yes, JavaScript is faster than server side scripts. Because JavaScript is a client-side script it does not require any web server's help for its computation or calculation. So JavaScript is always faster than any server-side script like ASP, PHP, etc."
+    },
+    {
+      "id": 299,
+      "question": "How do you get the status of a checkbox",
+      "answer": "You can apply the checked property on the selected checkbox in the DOM. If the value is true it means the checkbox is checked, otherwise it is unchecked. For example, the below HTML checkbox element can be access using javascript as below:\n\n```html\n<input type=\"checkbox\" id=\"checkboxname\" value=\"Agree\" />\nAgree the conditions\n<br />\n```\n\n```javascript\nconsole.log(document.getElementById('checkboxname').checked); // true or false\n```"
+    },
+    {
+      "id": 300,
+      "question": "What is the purpose of double tilde operator",
+      "answer": "The double tilde operator(~~) is known as double NOT bitwise operator. This operator is a slightly quicker substitute for Math.floor()."
+    },
+    {
+      "id": 301,
+      "question": "How do you convert character to ASCII code",
+      "answer": "You can use the String.prototype.charCodeAt() method to convert string characters to ASCII numbers. For example, let's find ASCII code for the first letter of 'ABC' string:\n\n```javascript\n\"ABC\".charCodeAt(0); // returns 65\n```\n\nWhereas String.fromCharCode() method converts numbers to equal ASCII characters:\n\n```javascript\nString.fromCharCode(65, 66, 67); // returns 'ABC'\n```"
+    },
+    {
+      "id": 302,
+      "question": "What is ArrayBuffer",
+      "answer": "An ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer. You can create it as below:\n\n```javascript\nlet buffer = new ArrayBuffer(16); // create a buffer of length 16\nalert(buffer.byteLength); // 16\n```\n\nTo manipulate an ArrayBuffer, we need to use a \"view\" object:\n\n```javascript\n//Create a DataView referring to the buffer\nlet view = new DataView(buffer);\n```"
+    },
+    {
+      "id": 303,
+      "question": "What is the output of below string expression",
+      "answer": "```javascript\nconsole.log(\"Welcome to JS world\"[0]);\n```\n\nThe output of the above expression is \"W\". \n\n**Explanation:** The bracket notation with specific index on a string returns the character at a specific location. Hence, it returns the character \"W\" of the string. Since this is not supported in IE7 and below versions, you may need to use the .charAt() method to get the desired result."
+    },
+    {
+      "id": 304,
+      "question": "What is the purpose of Error object",
+      "answer": "The Error constructor creates an error object and the instances of error objects are thrown when runtime errors occur. The Error object can also be used as a base object for user-defined exceptions. The syntax of error object would be as below:\n\n```javascript\nnew Error([message[, fileName[, lineNumber]]])\n```\n\nYou can throw user defined exceptions or errors using Error object in try...catch block as below:\n\n```javascript\ntry {\n  if (withdraw > balance)\n    throw new Error(\"Oops! You don't have enough balance\");\n} catch (e) {\n  console.log(e.name + \": \" + e.message);\n}\n```"
+    },
+    {
+      "id": 305,
+      "question": "What is the purpose of EvalError object",
+      "answer": "The EvalError object indicates an error regarding the global eval() function. Even though this exception is not thrown by JavaScript anymore, the EvalError object remains for compatibility. The syntax of this expression would be as below:\n\n```javascript\nnew EvalError([message[, fileName[, lineNumber]]])\n```\n\nYou can throw EvalError with in try...catch block as below:\n\n```javascript\ntry {\n  throw new EvalError('Eval function error', 'someFile.js', 100);\n} catch (e) {\n  console.log(e.message, e.name, e.fileName); // \"Eval function error\", \"EvalError\", \"someFile.js\"\n}\n```"
+    },
+    {
+      "id": 306,
+      "question": "What are the list of cases error thrown from non-strict mode to strict mode",
+      "answer": "When you apply 'use strict'; syntax, some of the below cases will throw a SyntaxError before executing the script:\n\n1. **When you use Octal syntax**\n```javascript\nvar n = 022;\n```\n\n2. **Using with statement**\n\n3. **When you use delete operator on a variable name**\n\n4. **Using eval or arguments as variable or function argument name**\n\n5. **When you use newly reserved keywords**\n\n6. **When you declare a function in a block and access it from outside of the block**\n```javascript\nif (someCondition) {\n  function f() {}\n}\nf(); // ReferenceError: f is not defined\n```\n\nHence, the errors from above cases are helpful to avoid errors in development/production environments."
+    },
+    {
+      "id": 307,
+      "question": "Do all objects have prototypes",
+      "answer": "No. All objects have prototypes except two exceptions:\n\n1. **Object.prototype itself** — This is the base object in the prototype chain, and its prototype is null.\n2. **Objects created with Object.create(null)** — These are deliberately created with no prototype, so they don't inherit from Object.prototype.\n\nAll other standard objects do have a prototype."
+    },
+    {
+      "id": 308,
+      "question": "What is the difference between a parameter and an argument",
+      "answer": "**Parameter** is the variable name of a function definition whereas an **argument** represents the value given to a function when it is invoked. Let's explain this with a simple function:\n\n```javascript\nfunction myFunction(parameter1, parameter2, parameter3) {\n  console.log(arguments[0]); // \"argument1\"\n  console.log(arguments[1]); // \"argument2\"\n  console.log(arguments[2]); // \"argument3\"\n}\nmyFunction(\"argument1\", \"argument2\", \"argument3\");\n```"
+    },
+    {
+      "id": 309,
+      "question": "What is the purpose of some method in arrays",
+      "answer": "The some() method is used to test whether at least one element in the array passes the test implemented by the provided function. The method returns a boolean value. Let's take an example to test for any odd elements:\n\n```javascript\nvar array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\n\nvar odd = (element) => element % 2 !== 0;\n\nconsole.log(array.some(odd)); // true (the odd element exists)\n```"
+    },
+    {
+      "id": 310,
+      "question": "How do you combine two or more arrays",
+      "answer": "The concat() method is used to join two or more arrays by returning a new array containing all the elements. The syntax would be as below:\n\n```javascript\narray1.concat(array2, array3, ..., arrayX)\n```\n\nLet's take an example of array's concatenation with veggies and fruits arrays:\n\n```javascript\nvar veggies = [\"Tomato\", \"Carrot\", \"Cabbage\"];\nvar fruits = [\"Apple\", \"Orange\", \"Pears\"];\nvar veggiesAndFruits = veggies.concat(fruits);\nconsole.log(veggiesAndFruits); // Tomato, Carrot, Cabbage, Apple, Orange, Pears\n```"
+    },
+    {
+      "id": 311,
+      "question": "What is the difference between Shallow and Deep copy",
+      "answer": "There are two ways to copy an object:\n\n**Shallow Copy:** Shallow copy is a bitwise copy of an object. A new object is created that has an exact copy of the values in the original object. If any of the fields of the object are references to other objects, just the reference addresses are copied i.e., only the memory address is copied.\n\n**Example:**\n```javascript\nvar empDetails = {\n  name: \"John\",\n  age: 25,\n  expertise: \"Software Developer\",\n};\n// Create a duplicate\nvar empDetailsShallowCopy = empDetails; //Shallow copying!\n// If we change some property value in the duplicate one:\nempDetailsShallowCopy.name = \"Johnson\";\n```\nThe above statement will also change the name of empDetails, since we have a shallow copy.\n\n**Deep copy:** A deep copy copies all fields, and makes copies of dynamically allocated memory pointed to by the fields. A deep copy occurs when an object is copied along with the objects to which it refers.\n\n**Example:**\n```javascript\nvar empDetails = {\n  name: \"John\",\n  age: 25,\n  expertise: \"Software Developer\",\n};\n// Create a deep copy by using the properties from the original object into new variable\nvar empDetailsDeepCopy = {\n  name: empDetails.name,\n  age: empDetails.age,\n  expertise: empDetails.expertise,\n};\n```\nNow if you change empDetailsDeepCopy.name, it will only affect empDetailsDeepCopy & not empDetails."
+    },
+    {
+      "id": 312,
+      "question": "How do you create specific number of copies of a string",
+      "answer": "The repeat() method is used to construct and return a new string which contains the specified number of copies of the string on which it was called, concatenated together. Remember that this method has been added to the ECMAScript 2015 specification. Let's take an example of Hello string to repeat it 4 times:\n\n```javascript\n\"Hello\".repeat(4); // 'HelloHelloHelloHello'\n```"
+    },
+    {
+      "id": 313,
+      "question": "How do you return all matching strings against a regular expression",
+      "answer": "The matchAll() method can be used to return an iterator of all results matching a string against a regular expression. For example, the below example returns an array of matching string results against a regular expression:\n\n```javascript\nlet regexp = /Hello(\\d?)/g;\nlet greeting = \"Hello1Hello2Hello3\";\n\nlet greetingList = [...greeting.matchAll(regexp)];\n\nconsole.log(greetingList[0][0]); //Hello1\nconsole.log(greetingList[1][0]); //Hello2\nconsole.log(greetingList[2][0]); //Hello3\n```"
+    },
+    {
+      "id": 314,
+      "question": "How do you trim a string at the beginning or ending",
+      "answer": "The trim method of string prototype is used to trim on both sides of a string. But if you want to trim especially at the beginning or ending of the string then you can use trimStart/trimLeft and trimEnd/trimRight methods. Let's see an example of these methods on a greeting message:\n\n```javascript\nvar greeting = \"   Hello, Goodmorning!   \";\n\nconsole.log(greeting); // \"   Hello, Goodmorning!   \"\nconsole.log(greeting.trimStart()); // \"Hello, Goodmorning!   \"\nconsole.log(greeting.trimLeft()); // \"Hello, Goodmorning!   \"\n\nconsole.log(greeting.trimEnd()); // \"   Hello, Goodmorning!\"\nconsole.log(greeting.trimRight()); // \"   Hello, Goodmorning!\"\n```"
+    },
+    {
+      "id": 315,
+      "question": "What is the output of below console statement with unary operator",
+      "answer": "Let's take console statement with unary operator as given below:\n\n```javascript\nconsole.log(+\"Hello\"); // NaN\n```\n\nThe output of the above console log statement returns NaN. Because the element is prefixed by the unary operator and the JavaScript interpreter will try to convert that element into a number type. Since the conversion fails, the value of the statement results in NaN value."
+    },
+    {
+      "id": 316,
+      "question": "Does javascript uses mixins",
+      "answer": "JavaScript does not have built-in support for mixins as a formal language feature. However, developers commonly implement mixins using various patterns to enable code reuse and composition.\n\nA mixin is a way to add reusable functionality from one or more objects into a class or another object, without using classical inheritance. It promotes object composition by combining behaviors or properties from different sources into a single destination.\n\n**Mixin Example using Object composition:**\n```javascript\n// Define a mixin\nconst canEat = {\n  eat() {\n    console.log(\"Eating...\");\n  }\n};\n\nconst canWalk = {\n  walk() {\n    console.log(\"Walking...\");\n  }\n};\n\nconst canRead = {\n  read() {\n    console.log(\"Reading...\");\n  }\n};\n\n// Create a class\nclass Person {\n  constructor(name) {\n    this.name = name;\n  }\n}\n\n// Apply mixins\nObject.assign(Person.prototype, canEat, canWalk, canRead);\n\n// Use it\nconst person = new Person(\"Sudheer\");\nperson.eat();  // Output: Eating...\nperson.walk(); // Output: Walking...\nperson.read(); // Output: Reading...\n```\n\n**Benefits:**\n- Avoids deep inheritance hierarchies\n- Encourages composition over inheritance\n- Promotes reusable and modular code\n\nModern JavaScript favors mixin alternatives like composition, delegation, higher-order functions, and class mixins to promote reusable and modular code."
+    },
+    {
+      "id": 317,
+      "question": "What is a thunk function",
+      "answer": "A thunk is just a function which delays the evaluation of the value. It doesn't take any arguments but gives the value whenever you invoke the thunk. i.e, It is used not to execute now but it will be sometime in the future. Let's take a synchronous example:\n\n```javascript\nconst add = (x, y) => x + y;\n\nconst thunk = () => add(2, 3);\n\nthunk(); // 5\n```"
+    },
+    {
+      "id": 318,
+      "question": "What are asynchronous thunks",
+      "answer": "The asynchronous thunks are useful to make network requests. Let's see an example of network requests:\n\n```javascript\nfunction fetchData(fn) {\n  fetch(\"https://jsonplaceholder.typicode.com/todos/1\")\n    .then((response) => response.json())\n    .then((json) => fn(json));\n}\n\nconst asyncThunk = function () {\n  return fetchData(function getData(data) {\n    console.log(data);\n  });\n};\n\nasyncThunk();\n```\n\nThe getData function won't be called immediately but it will be invoked only when the data is available from API endpoint. The setTimeout function is also used to make our code asynchronous. The best real time example is redux state management library which uses the asynchronous thunks to delay the actions to dispatch."
+    },
+    {
+      "id": 319,
+      "question": "What is the output of below function calls",
+      "answer": "Code snippet:\n\n```javascript\nconst circle = {\n  radius: 20,\n  diameter() {\n    return this.radius * 2;\n  },\n  perimeter: () => 2 * Math.PI * this.radius,\n};\nconsole.log(circle.diameter());\nconsole.log(circle.perimeter());\n```\n\n**Output:** The output is 40 and NaN.\n\n**Explanation:** Remember that diameter is a regular function, whereas the value of perimeter is an arrow function. The this keyword of a regular function (i.e, diameter) refers to the surrounding scope which is a class (i.e, Shape object). Whereas this keyword of perimeter function refers to the surrounding scope which is a window object. Since there is no radius property on window objects it returns an undefined value and the multiple of number value returns NaN value."
+    },
+    {
+      "id": 320,
+      "question": "How to remove all line breaks from a string",
+      "answer": "The easiest approach is using regular expressions to detect and replace newlines in the string. In this case, we use replace function along with string to replace with, which in our case is an empty string.\n\n```javascript\nfunction remove_linebreaks(var message) {\n    return message.replace(/[\\r\\n]+/gm, \"\");\n}\n```\n\nIn the above expression, g and m are for global and multiline flags."
+    },
+    {
+      "id": 321,
+      "question": "What is the difference between reflow and repaint",
+      "answer": "A **repaint** occurs when changes are made which affect the visibility of an element, but not its layout. Examples of this include outline, visibility, or background color.\n\nA **reflow** involves changes that affect the layout of a portion of the page (or the whole page). Resizing the browser window, changing the font, content changing (such as user typing text), using JavaScript methods involving computed styles, adding or removing elements from the DOM, and changing an element's classes are a few of the things that can trigger reflow.\n\nReflow of an element causes the subsequent reflow of all child and ancestor elements as well as any elements following it in the DOM."
+    },
+    {
+      "id": 322,
+      "question": "What happens with negating an array",
+      "answer": "Negating an array with ! character will coerce the array into a boolean. Since Arrays are considered to be truthy So negating it will return false.\n\n```javascript\nconsole.log(![]); // false\n```"
+    },
+    {
+      "id": 323,
+      "question": "What happens if we add two arrays",
+      "answer": "If you add two arrays together, it will convert them both to strings and concatenate them. For example, the result of adding arrays would be as below:\n\n```javascript\nconsole.log([\"a\"] + [\"b\"]); // \"ab\"\nconsole.log([] + []); // \"\"\nconsole.log(![] + []); // \"false\", because ![] returns false.\n```"
+    },
+    {
+      "id": 324,
+      "question": "What is the output of prepend additive operator on falsy values",
+      "answer": "If you prepend the additive(+) operator on falsy values(null, undefined, NaN, false, \"\"), the falsy value converts to a number value zero. Let's display them on browser console as below:\n\n```javascript\nconsole.log(+null); // 0\nconsole.log(+undefined); // NaN\nconsole.log(+false); // 0\nconsole.log(+NaN); // NaN\nconsole.log(+\"\"); // 0\n```"
+    },
+    {
+      "id": 325,
+      "question": "How do you create self string using special characters",
+      "answer": "The self string can be formed with the combination of []()!+ characters. You need to remember the below conventions to achieve this pattern:\n\n1. Since Arrays are truthful values, negating the arrays will produce false: ![] === false\n2. As per JavaScript coercion rules, the addition of arrays together will toString them: [] + [] === \"\"\n3. Prepend an array with + operator will convert an array to false, the negation will make it true and finally converting the result will produce value '1': +(!(+[])) === 1\n\nBy applying the above rules, we can derive below conditions:\n\n```javascript\n(![] + [] === \"false\" + !+[]) === 1;\n```\n\nNow the character pattern would be created as below:\n\n```javascript\n      s               e               l               f\n ^^^^^^^^^^^^^   ^^^^^^^^^^^^^   ^^^^^^^^^^^^^   ^^^^^^^^^^^^^\n\n (![] + [])[3] + (![] + [])[4] + (![] + [])[2] + (![] + [])[0]\n ^^^^^^^^^^^^^   ^^^^^^^^^^^^^   ^^^^^^^^^^^^^   ^^^^^^^^^^^^^\n(![] + [])[+!+[]+!+[]+!+[]] +\n(![] + [])[+!+[]+!+[]+!+[]+!+[]] +\n(![] + [])[+!+[]+!+[]] +\n(![] + [])[+[]]\n```"
+    },
+    {
+      "id": 326,
+      "question": "How do you remove falsy values from an array",
+      "answer": "You can apply the filter method on the array by passing Boolean as a parameter. This way it removes all falsy values(0, undefined, null, false and \"\") from the array.\n\n```javascript\nconst myArray = [false, null, 1, 5, undefined];\nmyArray.filter(Boolean); // [1, 5] // is same as myArray.filter(x => x);\n```"
+    },
+    {
+      "id": 327,
+      "question": "How do you get unique values of an array",
+      "answer": "You can get unique values of an array with the combination of Set and rest expression/spread(...) syntax.\n\n```javascript\nconsole.log([...new Set([1, 2, 4, 4, 3])]); // [1, 2, 4, 3]\n```"
+    },
+    {
+      "id": 328,
+      "question": "What is destructuring aliases",
+      "answer": "Sometimes you would like to have a destructured variable with a different name than the property name. In that case, you'll use a : newName to specify a name for the variable. This process is called destructuring aliases.\n\n```javascript\nconst obj = { x: 1 };\n// Grabs obj.x as { otherName }\nconst { x: otherName } = obj;\n```"
+    },
+    {
+      "id": 329,
+      "question": "How do you map the array values without using map method",
+      "answer": "You can map the array values without using the map method by just using the from method of Array. Let's map city names from Countries array:\n\n```javascript\nconst countries = [\n  { name: \"India\", capital: \"Delhi\" },\n  { name: \"US\", capital: \"Washington\" },\n  { name: \"Russia\", capital: \"Moscow\" },\n  { name: \"Singapore\", capital: \"Singapore\" },\n  { name: \"China\", capital: \"Beijing\" },\n  { name: \"France\", capital: \"Paris\" },\n];\n\nconst cityNames = Array.from(countries, ({ capital }) => capital);\nconsole.log(cityNames); // ['Delhi, 'Washington', 'Moscow', 'Singapore', 'Beijing', 'Paris']\n```"
+    },
+    {
+      "id": 330,
+      "question": "How do you empty an array",
+      "answer": "You can empty an array quickly by setting the array length to zero.\n\n```javascript\nlet cities = [\"Singapore\", \"Delhi\", \"London\"];\ncities.length = 0; // cities becomes []\n```"
+    },
+    {
+      "id": 331,
+      "question": "How do you round numbers to certain decimals",
+      "answer": "You can round numbers to a certain number of decimals using toFixed method from native javascript.\n\n```javascript\nlet pie = 3.141592653;\npie = pie.toFixed(3); // 3.142\n```"
+    },
+    {
+      "id": 332,
+      "question": "What is the easiest way to convert an array to an object",
+      "answer": "You can convert an array to an object with the same data using spread(...) operator.\n\n```javascript\nvar fruits = [\"banana\", \"apple\", \"orange\", \"watermelon\"];\nvar fruitsObject = { ...fruits };\nconsole.log(fruitsObject); // {0: \"banana\", 1: \"apple\", 2: \"orange\", 3: \"watermelon\"}\n```"
+    },
+    {
+      "id": 333,
+      "question": "How do you create an array with some data",
+      "answer": "You can create an array with some data or an array with the same values using fill method.\n\n```javascript\nvar newArray = new Array(5).fill(\"0\");\nconsole.log(newArray); // [\"0\", \"0\", \"0\", \"0\", \"0\"]\n```"
+    },
+    {
+      "id": 334,
+      "question": "What are the placeholders from console object",
+      "answer": "Below are the list of placeholders available from console object:\n\n- **%o** — It takes an object\n- **%s** — It takes a string\n- **%d** — It is used for a decimal or integer\n\nThese placeholders can be represented in the console.log as below:\n\n```javascript\nconst user = { name: \"John\", id: 1, city: \"Delhi\" };\nconsole.log(\n  \"Hello %s, your details %o are available in the object form\",\n  \"John\",\n  user\n); // Hello John, your details {name: \"John\", id: 1, city: \"Delhi\"} are available in object\n```"
+    },
+    {
+      "id": 335,
+      "question": "Is it possible to add CSS to console messages",
+      "answer": "Yes, you can apply CSS styles to console messages similar to html text on the web page.\n\n```javascript\nconsole.log(\n  \"%c The text has blue color, with large font and red background\",\n  \"color: blue; font-size: x-large; background: red\"\n);\n```\n\n**Note:** All CSS styles can be applied to console messages."
+    },
+    {
+      "id": 336,
+      "question": "What is the purpose of dir method of console object",
+      "answer": "The console.dir() is used to display an interactive list of the properties of the specified JavaScript object as JSON.\n\n```javascript\nconst user = { name: \"John\", id: 1, city: \"Delhi\" };\nconsole.dir(user);\n```\n\nThe user object displayed in JSON representation."
+    },
+    {
+      "id": 337,
+      "question": "Is it possible to debug HTML elements in console",
+      "answer": "Yes, it is possible to get and debug HTML elements in the console just like inspecting elements.\n\n```javascript\nconst element = document.getElementsByTagName(\"body\")[0];\nconsole.log(element);\n```\n\nIt prints the HTML element in the console."
+    },
+    {
+      "id": 338,
+      "question": "How do you display data in a tabular format using console object",
+      "answer": "The console.table() is used to display data in the console in a tabular format to visualize complex arrays or objects.\n\n```javascript\nconst users = [\n  { name: \"John\", id: 1, city: \"Delhi\" },\n  { name: \"Max\", id: 2, city: \"London\" },\n  { name: \"Rod\", id: 3, city: \"Paris\" },\n];\nconsole.table(users);\n```\n\nThe data visualized in a table format.\n\n**Note:** Remember that console.table() is not supported in IE."
+    },
+    {
+      "id": 339,
+      "question": "How do you verify that an argument is a Number or not",
+      "answer": "The combination of IsNaN and isFinite methods are used to confirm whether an argument is a number or not.\n\n```javascript\nfunction isNumber(n) {\n  return !isNaN(parseFloat(n)) && isFinite(n);\n}\n```"
+    },
+    {
+      "id": 340,
+      "question": "How do you create copy to clipboard button",
+      "answer": "You need to select the content (using .select() method) of the input element and execute the copy command with execCommand (i.e, execCommand('copy')). You can also execute other system commands like cut and paste.\n\n```javascript\ndocument.querySelector(\"#copy-button\").onclick = function () {\n  // Select the content\n  document.querySelector(\"#copy-input\").select();\n  // Copy to the clipboard\n  document.execCommand(\"copy\");\n};\n```"
+    },
+    {
+      "id": 341,
+      "question": "What is the shortcut to get timestamp",
+      "answer": "You can use new Date().getTime() to get the current timestamp. There is an alternative shortcut to get the value.\n\n```javascript\nconsole.log(+new Date());\nconsole.log(Date.now());\n```"
+    },
+    {
+      "id": 342,
+      "question": "How do you flattening multi dimensional arrays",
+      "answer": "Flattening bi-dimensional arrays is trivial with Spread operator.\n\n```javascript\nconst biDimensionalArr = [11, [22, 33], [44, 55], [66, 77], 88, 99];\nconst flattenArr = [].concat(...biDimensionalArr); // [11, 22, 33, 44, 55, 66, 77, 88, 99]\n```\n\nBut you can make it work with multi-dimensional arrays by recursive calls:\n\n```javascript\nfunction flattenMultiArray(arr) {\n  const flattened = [].concat(...arr);\n  return flattened.some((item) => Array.isArray(item))\n    ? flattenMultiArray(flattened)\n    : flattened;\n}\nconst multiDimensionalArr = [\n  11,\n  [22, 33],\n  [44, [55, 66, [77, [88]], 99]],\n];\nconst flatArr = flattenMultiArray(multiDimensionalArr); // [11, 22, 33, 44, 55, 66, 77, 88, 99]\n```\n\nAlso you can use the flat method of Array:\n\n```javascript\nconst arr = [1, [2, 3], 4, 5, [6, 7]];\nconst fllattenArr = arr.flat(); // [1, 2, 3, 4, 5, 6, 7]\n\n// And for multiDimensional arrays\nconst multiDimensionalArr = [\n  11,\n  [22, 33],\n  [44, [55, 66, [77, [88]], 99]],\n];\nconst oneStepFlat = multiDimensionalArr.flat(1); // [11, 22, 33, 44, [55, 66, [77, [88]], 99]]\nconst towStep = multiDimensionalArr.flat(2); // [11, 22, 33, 44, 55, 66, [77, [88]], 99]\nconst fullyFlatArray = multiDimensionalArr.flat(Infinity); // [11, 22, 33, 44, 55, 66, 77, 88, 99]\n```"
+    },
+    {
+      "id": 343,
+      "question": "What is the easiest multi condition checking",
+      "answer": "You can use indexOf to compare input with multiple values instead of checking each value as one condition.\n\n```javascript\n// Verbose approach\nif (\n  input === \"first\" ||\n  input === 1 ||\n  input === \"second\" ||\n  input === 2\n) {\n  someFunction();\n}\n// Shortcut\nif ([\"first\", 1, \"second\", 2].indexOf(input) !== -1) {\n  someFunction();\n}\n```"
     }
   ]
 }
