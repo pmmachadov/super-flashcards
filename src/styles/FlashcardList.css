@@ -151,10 +151,10 @@
 }
 
 .random-button {
-  background-image: var(--gradient-teal-green);
+  background: #5422ab !important;
   color: white;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 6px 12px rgba(13, 148, 136, 0.4),
+  box-shadow: 0 6px 12px rgba(84, 34, 171, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   padding: 1.2rem 2.5rem;
   font-size: 1.2rem;
