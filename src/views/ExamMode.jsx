@@ -15,6 +15,16 @@ const ExamMode = ({ onExit }) => {
   const [examDuration, setExamDuration] = useState(30); // minutos
   const [numQuestions, setNumQuestions] = useState(10);
   const [score, setScore] = useState(0);
+  const [maxQuestions, setMaxQuestions] = useState(50);
+
+  useEffect(() => {
+    const allFlashcards = FlashcardController.getFlashcards();
+    const totalCards = allFlashcards.length;
+    setMaxQuestions(totalCards > 0 ? totalCards : 50);
+    if (numQuestions > totalCards) {
+      setNumQuestions(Math.min(10, totalCards));
+    }
+  }, [numQuestions]);
 
   const finishExam = useCallback((answers = userAnswers) => {
     const correctAnswers = answers.filter((a) => a === true).length;
@@ -106,24 +116,28 @@ const ExamMode = ({ onExit }) => {
 
           <div className="exam-settings">
             <div className="setting-group">
-              <label htmlFor="numQuestions">Número de preguntas:</label>
+              <label htmlFor="numQuestions">
+                Número de preguntas: <strong>{numQuestions}</strong> de {maxQuestions}
+              </label>
               <input
                 id="numQuestions"
-                type="number"
+                type="range"
                 min="3"
-                max="50"
+                max={maxQuestions}
                 value={numQuestions}
                 onChange={(e) => setNumQuestions(parseInt(e.target.value))}
               />
             </div>
 
             <div className="setting-group">
-              <label htmlFor="examDuration">Duración (minutos):</label>
+              <label htmlFor="examDuration">
+                Duración: <strong>{examDuration} minutos</strong>
+              </label>
               <input
                 id="examDuration"
-                type="number"
-                min="5"
-                max="120"
+                type="range"
+                min="1"
+                max="60"
                 value={examDuration}
                 onChange={(e) => setExamDuration(parseInt(e.target.value))}
               />

@@ -1,14 +1,17 @@
 // Estadísticas avanzadas para DAW
-export const getSubjectProgress = (subjectId) => {
+export const getSubjectProgress = (subjectId, totalCards = null) => {
   const keys = Object.keys(localStorage);
   const prefix = `card-stats-${subjectId}-`;
   const cardStatsKeys = keys.filter((key) => key.startsWith(prefix));
 
+  // Usar el total real de tarjetas si se proporciona, sino usar las que tienen stats
+  const actualTotal = totalCards !== null ? totalCards : cardStatsKeys.length;
+
   const stats = {
-    total: cardStatsKeys.length,
+    total: actualTotal,
     remembered: 0,
     learning: 0,
-    notStarted: 0,
+    notStarted: actualTotal, // Inicialmente todas sin empezar
     totalAttempts: 0,
     successRate: 0,
   };
@@ -23,14 +26,16 @@ export const getSubjectProgress = (subjectId) => {
     stats.totalAttempts += total;
 
     if (total === 0) {
-      stats.notStarted++;
+      // Ya está en notStarted
     } else if (
       cardStats.remembered > cardStats.notRemembered &&
       cardStats.remembered > 0
     ) {
       stats.remembered++;
+      stats.notStarted--; // Restar de las no empezadas
     } else {
       stats.learning++;
+      stats.notStarted--; // Restar de las no empezadas
     }
   });
 
