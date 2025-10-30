@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué es un Sistema Gestor de Bases de Datos (SGBD)?",
+      "answer": "Un SGBD es un software que permite crear, gestionar y administrar bases de datos. Proporciona una interfaz entre los usuarios/aplicaciones y los datos almacenados. FUNCIONES PRINCIPALES: 1) Definición de datos (DDL), 2) Manipulación de datos (DML), 3) Control de concurrencia, 4) Seguridad y permisos, 5) Copias de seguridad y recuperación. Ejemplos: MySQL, PostgreSQL, Oracle, SQL Server, MongoDB.",
+      "tags": ["UF1", "fundamentos", "teoria"]
+    },
+    {
+      "id": 2,
+      "question": "Diferencias entre SQL y NoSQL",
+      "answer": "SQL (Relacional): Estructura de tablas con filas y columnas, esquema rígido, relaciones mediante claves foráneas, ACID, escalabilidad vertical. Ejemplos: MySQL, PostgreSQL.\n\nNoSQL: Estructura flexible (documentos, clave-valor, grafos, columnar), esquema dinámico, sin relaciones estrictas, BASE, escalabilidad horizontal. Ejemplos: MongoDB, Redis, Cassandra.\n\nUSAR SQL: Datos estructurados, transacciones complejas. USAR NoSQL: Big Data, alta escalabilidad, estructura variable.",
+      "tags": ["UF1", "sql", "nosql", "teoria"]
+    },
+    {
+      "id": 3,
+      "question": "Normalización de bases de datos: Formas normales básicas",
+      "answer": "La normalización elimina redundancia y dependencias inadecuadas.\n\n1NF (Primera Forma Normal): Eliminar grupos repetitivos, cada campo contiene valores atómicos.\n\n2NF: Cumplir 1NF + eliminar dependencias parciales (todos los atributos no clave dependen de la clave completa).\n\n3NF: Cumplir 2NF + eliminar dependencias transitivas (atributos no clave no dependen de otros atributos no clave).\n\nOBJETIVO: Reducir redundancia, evitar anomalías de inserción/actualización/borrado.",
+      "tags": ["UF2", "normalizacion", "diseño"]
+    }
+  ]
+}

@@ -1,22 +1,100 @@
 {
   "subjects": [
     {
+      "id": "sistemas-informaticos",
+      "name": "Sistemas Informáticos",
+      "code": "M01",
+      "file": "sistemas-informaticos.json",
+      "color": "#00d4aa",
+      "hours": 198
+    },
+    {
+      "id": "bases-datos",
+      "name": "Bases de Datos",
+      "code": "M02",
+      "file": "bases-datos.json",
+      "color": "#0ea5e9",
+      "hours": 198
+    },
+    {
       "id": "programacion",
       "name": "Programación",
+      "code": "M03A",
       "file": "programacion.json",
-      "color": "#2C5282"
+      "color": "#3b82f6",
+      "hours": 99
     },
     {
-      "id": "matematicas",
-      "name": "Matemáticas",
-      "file": "matematicas.json",
-      "color": "#2C5282"
+      "id": "programacion-poo",
+      "name": "Programación Orientada a Objetos",
+      "code": "M03B",
+      "file": "programacion-poo.json",
+      "color": "#6366f1",
+      "hours": 99
     },
     {
-      "id": "ingles",
-      "name": "Inglés",
-      "file": "ingles.json",
-      "color": "#2C5282"
+      "id": "lenguajes-marcas",
+      "name": "Lenguaje de Marcas y Sistemas de Gestión de Información",
+      "code": "M04",
+      "file": "lenguajes-marcas.json",
+      "color": "#8b5cf6",
+      "hours": 132
+    },
+    {
+      "id": "entornos-desarrollo",
+      "name": "Entornos de Desarrollo",
+      "code": "M05",
+      "file": "entornos-desarrollo.json",
+      "color": "#a855f7",
+      "hours": 99
+    },
+    {
+      "id": "desarrollo-cliente",
+      "name": "Desarrollo Web en el Entorno Cliente",
+      "code": "M06",
+      "file": "desarrollo-cliente.json",
+      "color": "#ec4899",
+      "hours": 165
+    },
+    {
+      "id": "desarrollo-servidor",
+      "name": "Desarrollo Web en el Entorno Servidor",
+      "code": "M07",
+      "file": "desarrollo-servidor.json",
+      "color": "#f43f5e",
+      "hours": 198
+    },
+    {
+      "id": "despliegue",
+      "name": "Despliegue de Aplicaciones Web",
+      "code": "M08",
+      "file": "despliegue.json",
+      "color": "#f97316",
+      "hours": 99
+    },
+    {
+      "id": "diseno-interfaces",
+      "name": "Diseño de Interfaces Web",
+      "code": "M09",
+      "file": "diseno-interfaces.json",
+      "color": "#eab308",
+      "hours": 165
+    },
+    {
+      "id": "fol",
+      "name": "Formación y Orientación Laboral",
+      "code": "M10",
+      "file": "fol.json",
+      "color": "#84cc16",
+      "hours": 99
+    },
+    {
+      "id": "eie",
+      "name": "Empresa e Iniciativa Emprendedora",
+      "code": "M11",
+      "file": "eie.json",
+      "color": "#10b981",
+      "hours": 66
     }
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué es un IDE y qué funcionalidades ofrece?",
+      "answer": "IDE (Integrated Development Environment) es un entorno integrado de desarrollo que combina múltiples herramientas.\n\nCOMPONENTES PRINCIPALES:\n1. EDITOR DE CÓDIGO:\n- Resaltado de sintaxis\n- Autocompletado inteligente (IntelliSense)\n- Detección de errores en tiempo real\n\n2. COMPILADOR/INTÉRPRETE:\n- Traducción de código\n- Gestión de dependencias\n\n3. DEPURADOR (Debugger):\n- Breakpoints\n- Inspección de variables\n- Ejecución paso a paso\n\n4. OTRAS HERRAMIENTAS:\n- Control de versiones (Git integrado)\n- Gestión de proyectos\n- Terminal integrada\n- Extensiones y plugins\n\nEJEMPLOS: Visual Studio Code, IntelliJ IDEA, Eclipse, NetBeans, PyCharm.\n\nVENTAJAS: Mayor productividad, menos errores, desarrollo más rápido.",
+      "tags": ["UF1", "herramientas", "fundamentos"]
+    },
+    {
+      "id": 2,
+      "question": "Control de versiones con Git: Comandos esenciales y flujo de trabajo",
+      "answer": "Git es un sistema de control de versiones distribuido.\n\nCOMANDOS BÁSICOS:\n```bash\n# Configuración inicial\ngit config --global user.name \"Tu Nombre\"\ngit config --global user.email \"email@ejemplo.com\"\n\n# Crear repositorio\ngit init\ngit clone <url>\n\n# Flujo de trabajo\ngit status              # Ver estado\ngit add <archivo>       # Añadir al staging\ngit add .               # Añadir todos\ngit commit -m \"mensaje\" # Confirmar cambios\ngit push origin main    # Subir a remoto\ngit pull                # Descargar cambios\n\n# Ramas\ngit branch <nombre>     # Crear rama\ngit checkout <rama>     # Cambiar rama\ngit merge <rama>        # Fusionar rama\ngit branch -d <rama>    # Eliminar rama\n```\n\nFLUJO GITFLOW:\nmain/master → develop → feature/nombre → develop → release → main",
+      "tags": ["UF2", "git", "control-versiones"]
+    },
+    {
+      "id": 3,
+      "question": "Testing: Pirámide de pruebas y tipos principales",
+      "answer": "PIRÁMIDE DE PRUEBAS (de abajo hacia arriba):\n\n1. PRUEBAS UNITARIAS (Base - Muchas):\n- Prueban funciones/métodos individuales\n- Rápidas y aisladas\n- Framework: JUnit, Jest, pytest\n```java\n@Test\npublic void testSuma() {\n  assertEquals(5, Calculator.suma(2, 3));\n}\n```\n\n2. PRUEBAS DE INTEGRACIÓN (Medio):\n- Prueban interacción entre componentes\n- APIs, bases de datos\n\n3. PRUEBAS E2E (Cima - Pocas):\n- Prueban flujos completos de usuario\n- Más lentas y complejas\n- Tools: Selenium, Cypress, Playwright\n\n4. OTROS TIPOS:\n- Regresión: Verificar que cambios no rompan código existente\n- Aceptación: Validar requisitos del usuario\n- Rendimiento: Medir velocidad y carga\n\nREGLA: 70% unitarias, 20% integración, 10% E2E.",
+      "tags": ["UF3", "testing", "qa", "calidad"]
+    }
+  ]
+}

@@ -23,34 +23,187 @@
 
 .subject-button {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 0.875rem 2rem;
-  border: 2px solid;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.05);
+  gap: 0.25rem;
+  padding: 0.875rem 1.5rem;
+  border: 3px solid var(--subject-color);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
   color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: 150px;
+  min-width: 160px;
   justify-content: center;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   letter-spacing: 0.025em;
+  position: relative;
+  overflow: hidden;
+}
+
+.subject-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--subject-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.subject-button:hover::before {
+  opacity: 0.1;
 }
 
 .subject-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  border-width: 3px;
 }
 
 .subject-button.active {
+  background: #1e40af;
+  border: 4px solid #1e40af;
   color: white;
   font-weight: 600;
-  transform: scale(1.02);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+
+
+
+
+@keyframes backgroundFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes holographicFlow {
+  0% {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    transform: scale(1.05);
+  }
+  25% {
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    transform: scale(1.06);
+  }
+  50% {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    transform: scale(1.07);
+  }
+  75% {
+    background: linear-gradient(135deg, #ec4899, #ef4444);
+    transform: scale(1.06);
+  }
+  100% {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotateStars {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes floatStars {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(0) translateX(-5px);
+  }
+  75% {
+    transform: translateY(10px) translateX(5px);
+  }
+}
+
+@keyframes changeStarColor {
+  0% {
+    color: #fbbf24;
+    filter: drop-shadow(0 0 8px #fbbf24);
+  }
+  33% {
+    color: #10b981;
+    filter: drop-shadow(0 0 8px #10b981);
+  }
+  66% {
+    color: #3b82f6;
+    filter: drop-shadow(0 0 8px #3b82f6);
+  }
+  100% {
+    color: #ef4444;
+    filter: drop-shadow(0 0 8px #ef4444);
+  }
+}
+
+@keyframes changeStarColor2 {
+  0% {
+    color: #3b82f6;
+    filter: drop-shadow(0 0 8px #3b82f6);
+  }
+  33% {
+    color: #ef4444;
+    filter: drop-shadow(0 0 8px #ef4444);
+  }
+  66% {
+    color: #fbbf24;
+    filter: drop-shadow(0 0 8px #fbbf24);
+  }
+  100% {
+    color: #10b981;
+    filter: drop-shadow(0 0 8px #10b981);
+  }
+}
+
+@keyframes rotateBorder {
+  0% {
+    --angle: 0deg;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.02);
+  }
+  100% {
+    --angle: 360deg;
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
 .subject-button:disabled {
@@ -59,7 +212,21 @@
 }
 
 .subject-name {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.subject-code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}
+
+.subject-button.active .subject-code {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .loading {
@@ -67,6 +234,16 @@
   color: white;
   margin-top: 1rem;
   font-style: italic;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 @media (max-width: 768px) {

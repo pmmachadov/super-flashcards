@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Componentes principales de un sistema informático",
+      "answer": "Un sistema informático se compone de:\n\n1. HARDWARE:\n- CPU (Unidad Central de Procesamiento)\n- Memoria RAM\n- Almacenamiento (HDD/SSD)\n- Periféricos de entrada/salida\n- Placa base y buses de datos\n\n2. SOFTWARE:\n- Sistema Operativo (Windows, Linux, macOS)\n- Software de aplicación\n- Drivers y firmware\n\n3. DATOS:\n- Información que procesa el sistema\n\n4. USUARIOS:\n- Personas que interactúan con el sistema\n\nTodos estos componentes trabajan conjuntamente para realizar las funciones del sistema.",
+      "tags": ["UF1", "fundamentos", "hardware", "teoria"]
+    },
+    {
+      "id": 2,
+      "question": "Diferencias entre BIOS y UEFI",
+      "answer": "BIOS (Basic Input/Output System):\n- Sistema tradicional (desde 1975)\n- Modo de arranque: MBR (Master Boot Record)\n- Interfaz de texto\n- Límite: discos de 2TB\n- Arranque más lento\n- Modo 16 bits\n\nUEFI (Unified Extensible Firmware Interface):\n- Sistema moderno\n- Modo de arranque: GPT (GUID Partition Table)\n- Interfaz gráfica con ratón\n- Soporta discos >2TB\n- Arranque más rápido (Secure Boot)\n- Modo 32/64 bits\n- Mayor seguridad\n\nTENDENCIA: UEFI está reemplazando a BIOS en equipos nuevos.",
+      "tags": ["UF1", "firmware", "arranque"]
+    },
+    {
+      "id": 3,
+      "question": "Niveles RAID más comunes y sus características",
+      "answer": "RAID (Redundant Array of Independent Disks) - Configuraciones:\n\nRAID 0 (Striping):\n- Mínimo 2 discos\n- Sin redundancia\n- Máximo rendimiento\n- Si falla 1 disco, se pierde todo\n\nRAID 1 (Mirroring):\n- Mínimo 2 discos\n- Copia exacta en ambos discos\n- Alta redundancia\n- Capacidad = 1 disco\n\nRAID 5 (Striping con paridad):\n- Mínimo 3 discos\n- Paridad distribuida\n- Tolera fallo de 1 disco\n- Buen equilibrio rendimiento/seguridad\n- Capacidad = (N-1) discos\n\nRAID 10 (1+0):\n- Mínimo 4 discos\n- Combina RAID 1 y RAID 0\n- Alto rendimiento y redundancia\n- Tolera fallo de varios discos",
+      "tags": ["UF2", "almacenamiento", "raid", "avanzado"]
+    }
+  ]
+}

@@ -2,23 +2,37 @@ import { useState, useEffect } from "react";
 import FlashcardController from "../controllers/FlashcardController";
 import Flashcard from "./Flashcard";
 import MemoryCounter from "../components/MemoryCounter";
+import TagFilter from "./TagFilter";
 import "../styles/FlashcardList.css";
 import "../styles/MemoryCounter.css";
 
 const FlashcardList = () => {
   const [flashcards, setFlashcards] = useState([]);
+  const [allFlashcards, setAllFlashcards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const loadFlashcards = () => {
       const cards = FlashcardController.getFlashcards();
       setFlashcards(cards);
+      setAllFlashcards(cards);
     };
 
     loadFlashcards();
 
     FlashcardController.addChangeListener(loadFlashcards);
   }, []);
+
+  const handleFilterChange = (filteredCards) => {
+    if (filteredCards === null) {
+      // Mostrar todas las flashcards
+      setFlashcards(allFlashcards);
+    } else {
+      // Mostrar solo las filtradas
+      setFlashcards(filteredCards);
+    }
+    setCurrentIndex(0); // Reset al inicio al cambiar filtro
+  };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => {
@@ -44,11 +58,18 @@ const FlashcardList = () => {
   };
 
   if (flashcards.length === 0) {
-    return <div className="flashcard-loading">Loading flashcards...</div>;
+    return (
+      <div className="flashcard-list-container">
+        <TagFilter onFilterChange={handleFilterChange} />
+        <div className="flashcard-loading">
+          No hay flashcards disponibles con este filtro.
+        </div>
+      </div>
+    );
   }
   return (
     <div className="flashcard-list-container">
-      {" "}
+      <TagFilter onFilterChange={handleFilterChange} />
       <div className="progress-bar">
         <div
           className="progress"

@@ -51,12 +51,11 @@ const SubjectSelector = ({ onSubjectChange }) => {
             onClick={() => handleSubjectSelect(subject.id)}
             disabled={loading}
             style={{
-              borderColor: subject.color,
-              backgroundColor:
-                currentSubject === subject.id ? subject.color : "transparent",
+              '--subject-color': subject.color,
             }}
           >
             <span className="subject-name">{subject.name}</span>
+            <span className="subject-code">{subject.code}</span>
           </button>
         ))}
       </div>

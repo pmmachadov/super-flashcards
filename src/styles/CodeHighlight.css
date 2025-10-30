@@ -67,6 +67,42 @@
   color: var(--vscode-bracket);
 }
 
+/* PHP specific */
+.variable {
+  color: #9cdcfe;
+  text-shadow: 0 0 8px rgba(156, 220, 254, 0.4);
+}
+
+.tag {
+  color: #ff6b6b;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+}
+
+/* Python specific */
+.decorator {
+  color: #f39c12;
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(243, 156, 18, 0.4);
+}
+
+/* HTML/CSS specific */
+.attribute {
+  color: #9cdcfe;
+  font-style: italic;
+}
+
+.property {
+  color: #9cdcfe;
+  font-weight: 500;
+}
+
+.value {
+  color: #ce9178;
+}
+
+/* SQL specific - keywords ya definidos tienen buen color */
+
 .code-line {
   counter-increment: line;
   position: relative;

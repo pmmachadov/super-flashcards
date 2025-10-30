@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Tipos de contratos laborales en España",
+      "answer": "CONTRATOS PRINCIPALES:\n\n1. INDEFINIDO:\n- Sin fecha de finalización\n- Mayor estabilidad\n- Indemnización 20 días/año por despido improcedente\n\n2. TEMPORAL (Duración determinada):\n- Máximo 3 años (+ 12 meses prórroga)\n- Causas: sustitución, circunstancias producción, formativo\n\n3. FORMATIVO:\n- Formación y aprendizaje (FP)\n- Prácticas (universitarios)\n- Duración: 3 meses - 2 años\n\n4. PARCIAL:\n- Menos horas que jornada completa\n- Puede ser indefinido o temporal\n\nNUEVA REFORMA LABORAL 2022: Limita contratos temporales, fomenta indefinidos.",
+      "tags": ["UF1", "contratos", "legislacion"]
+    },
+    {
+      "id": 2,
+      "question": "Nómina: Conceptos básicos y estructura",
+      "answer": "ESTRUCTURA DE LA NÓMINA:\n\n1. DEVENGOS (ingresos):\n- Salario base\n- Complementos (antigüedad, nocturnidad, peligrosidad)\n- Horas extra\n- Pagas extra (prorrateadas o no)\n\n2. DEDUCCIONES:\n- IRPF (Impuesto Renta): varía según salario\n- Seguridad Social (≈6.35% trabajador)\n  · Contingencias comunes: 4.70%\n  · Desempleo: 1.55%\n  · Formación: 0.10%\n\nCÁLCULO:\nSalario bruto - Deducciones = Salario neto (líquido)\n\nEjemplo:\nBruto: 1.500€\nIRPF: -150€ (10%)\nSS: -95€ (6.35%)\nNeto: 1.255€",
+      "tags": ["UF2", "nomina", "salario", "economia"]
+    },
+    {
+      "id": 3,
+      "question": "Prevención de Riesgos Laborales: Obligaciones básicas",
+      "answer": "PRL protege la seguridad y salud de los trabajadores.\n\nOBLIGACIONES EMPRESA:\n1. Evaluación de riesgos\n2. Planificación de la prevención\n3. Información y formación a trabajadores\n4. Proporcionar EPIs (Equipos Protección Individual)\n5. Vigilancia de la salud (exámenes médicos)\n6. Investigar accidentes\n\nOBLIGACIONES TRABAJADOR:\n1. Usar correctamente equipos y EPIs\n2. Informar de situaciones de riesgo\n3. Contribuir a la seguridad\n\nRIESGOS SECTOR IT:\n- Ergonómicos (posturas, pantallas)\n- Estrés y fatiga mental\n- Síndrome Visual Informático\n\nSOLUCIÓN: Pausas, ergonomía, iluminación adecuada.",
+      "tags": ["UF3", "prl", "seguridad", "salud"]
+    }
+  ]
+}

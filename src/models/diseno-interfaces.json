@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Box Model en CSS: Componentes y cálculo de dimensiones",
+      "answer": "El Box Model define cómo se calculan las dimensiones de un elemento.\n\nCOMPONENTES (de dentro hacia fuera):\n1. CONTENT: Contenido del elemento\n2. PADDING: Espacio interno entre contenido y borde\n3. BORDER: Borde del elemento\n4. MARGIN: Espacio externo entre elementos\n\nCÁLCULO:\nAncho total = width + padding-left + padding-right + border-left + border-right + margin-left + margin-right\n\nbox-sizing:\n```css\n/* Por defecto */\nbox-sizing: content-box; /* width solo incluye content */\n\n/* Recomendado */\nbox-sizing: border-box; /* width incluye content + padding + border */\n```",
+      "tags": ["UF1", "css", "fundamentos"]
+    },
+    {
+      "id": 2,
+      "question": "Flexbox vs CSS Grid: ¿Cuándo usar cada uno?",
+      "answer": "FLEXBOX (1 dimensión):\n- Alineación en una dirección (fila o columna)\n- Componentes que se adaptan al espacio disponible\n- Navegación, toolbars, centrado\n```css\n.container {\n  display: flex;\n  justify-content: center; /* horizontal */\n  align-items: center; /* vertical */\n  gap: 1rem;\n}\n```\n\nCSS GRID (2 dimensiones):\n- Layouts complejos con filas y columnas\n- Control preciso de posicionamiento\n- Páginas completas, galerías\n```css\n.container {\n  display: grid;\n  grid-template-columns: 1fr 2fr 1fr;\n  gap: 20px;\n}\n```\n\nREGLA: Flexbox para componentes, Grid para layouts.",
+      "tags": ["UF2", "css", "layout", "responsive"]
+    },
+    {
+      "id": 3,
+      "question": "Accesibilidad Web (WCAG): Principios POUR",
+      "answer": "WCAG (Web Content Accessibility Guidelines) define estándares de accesibilidad.\n\nPRINCIPIOS POUR:\n\n1. PERCEPTIBLE:\n- Alternativas texto para imágenes (alt)\n- Subtítulos para vídeos\n- Contraste suficiente (4.5:1 texto normal)\n\n2. OPERABLE:\n- Navegación por teclado\n- Tiempo suficiente para interacciones\n- No provocar convulsiones (sin flashes)\n\n3. COMPRENSIBLE:\n- Texto legible y predecible\n- Mensajes de error claros\n- Etiquetas en formularios\n\n4. ROBUSTO:\n- Compatible con tecnologías asistivas\n- HTML semántico válido\n```html\n<button aria-label=\"Cerrar menú\">\n```",
+      "tags": ["UF3", "accesibilidad", "wcag", "semantica"]
+    }
+  ]
+}

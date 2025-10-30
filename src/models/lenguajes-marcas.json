@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "XML vs JSON: Diferencias y casos de uso",
+      "answer": "XML (eXtensible Markup Language):\n- Basado en etiquetas <tag></tag>\n- Más verboso\n- Soporta atributos y namespaces\n- Validación con XSD/DTD\n- Uso: SOAP, configuraciones, documentos complejos\n```xml\n<usuario id=\"1\">\n  <nombre>Juan</nombre>\n</usuario>\n```\n\nJSON (JavaScript Object Notation):\n- Sintaxis ligera clave:valor\n- Menos verboso, más legible\n- Tipos de datos nativos (number, boolean, null)\n- Uso: APIs REST, configuración moderna, NoSQL\n```json\n{\"id\": 1, \"nombre\": \"Juan\"}\n```\n\nTENDENCIA: JSON para APIs web, XML para sistemas legacy.",
+      "tags": ["UF1", "xml", "json", "fundamentos"]
+    },
+    {
+      "id": 2,
+      "question": "XPath: Sintaxis básica para consultar XML",
+      "answer": "XPath es un lenguaje para navegar y seleccionar nodos en documentos XML.\n\nSINTAXIS BÁSICA:\n```xpath\n/bookstore/book           # Selecciona todos los book hijos directos\n//book                    # Selecciona todos los book (cualquier nivel)\n/bookstore/book[1]        # Primer libro\n/bookstore/book[price<10] # Libros con precio < 10\n//book[@category='web']   # Libros con atributo category='web'\n//book/title/text()       # Texto del título\n```\n\nEJES:\n- child:: (por defecto)\n- descendant::\n- parent::\n- ancestor::\n- following-sibling::\n\nFUNCIONES: count(), sum(), string-length(), contains()",
+      "tags": ["UF2", "xml", "xpath", "consultas"]
+    },
+    {
+      "id": 3,
+      "question": "YAML: Características y sintaxis básica",
+      "answer": "YAML (YAML Ain't Markup Language) es un formato de serialización legible para configuraciones.\n\nCARACTERÍSTICAS:\n- Indentación con espacios (NO tabs)\n- Sensible a mayúsculas\n- Soporta comentarios con #\n- Tipos: escalares, listas, diccionarios\n\nSINTAXIS:\n```yaml\n# Clave-valor\nname: Mi Aplicación\nversion: 1.0.0\n\n# Lista\ncolors:\n  - red\n  - blue\n  - green\n\n# Diccionario anidado\nserver:\n  host: localhost\n  port: 3000\n  ssl: true\n\n# Lista de objetos\nusers:\n  - name: Juan\n    role: admin\n  - name: Ana\n    role: user\n```\n\nUSO: Docker Compose, CI/CD (GitHub Actions), Kubernetes.",
+      "tags": ["UF3", "yaml", "configuracion"]
+    }
+  ]
+}

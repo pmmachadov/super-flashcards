@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Diferencias entre GET y POST en HTTP",
+      "answer": "GET:\n- Solicita datos del servidor\n- Parámetros en URL (query string)\n- Visible en historial y logs\n- Limitado en longitud (~2KB)\n- Idempotente y cacheable\n- Uso: búsquedas, obtener recursos\n```\nGET /usuarios?id=123\n```\n\nPOST:\n- Envía datos al servidor\n- Parámetros en body (no visible en URL)\n- No cacheable por defecto\n- Sin límite de tamaño\n- No idempotente\n- Uso: formularios, crear recursos\n```\nPOST /usuarios\nBody: {nombre: 'Juan'}\n```",
+      "tags": ["UF2", "http", "fundamentos"]
+    },
+    {
+      "id": 2,
+      "question": "¿Qué es una API RESTful y sus principios?",
+      "answer": "REST (Representational State Transfer) es un estilo arquitectónico para APIs web.\n\nPRINCIPIOS:\n1. Cliente-Servidor: Separación de responsabilidades\n2. Sin estado: Cada petición es independiente\n3. Cacheable: Respuestas pueden almacenarse\n4. Interfaz uniforme: URLs y métodos HTTP estándar\n5. Sistema en capas: Arquitectura modular\n\nMÉTODOS HTTP:\n- GET: Leer\n- POST: Crear\n- PUT: Actualizar completo\n- PATCH: Actualizar parcial\n- DELETE: Eliminar\n\nEjemplo:\n```\nGET /api/usuarios/123\nPOST /api/usuarios\nDELETE /api/usuarios/123\n```",
+      "tags": ["UF3", "rest", "api", "arquitectura"]
+    },
+    {
+      "id": 3,
+      "question": "Sesiones vs Tokens (JWT) para autenticación",
+      "answer": "SESIONES:\n- Servidor almacena datos de sesión\n- Cookie con ID de sesión\n- Estado en servidor (stateful)\n- Escalabilidad limitada\n- Uso: Aplicaciones monolíticas\n\nTOKENS (JWT):\n- Servidor NO almacena estado\n- Token contiene información (payload)\n- Sin estado (stateless)\n- Escalable horizontalmente\n- Uso: APIs, microservicios, SPAs\n\nESTRUCTURA JWT:\n```\nheader.payload.signature\neyJhbGc...\n```\n\nVENTAJAS JWT: Cross-domain, mobile-friendly, microservicios.\nDESVENTAJAS: No revocable fácilmente, tamaño mayor.",
+      "tags": ["UF4", "autenticacion", "seguridad", "jwt"]
+    }
+  ]
+}

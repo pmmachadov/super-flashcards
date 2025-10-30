@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "DOM (Document Object Model): ¿Qué es y cómo se manipula?",
+      "answer": "El DOM es una interfaz de programación que representa la estructura HTML/XML como un árbol de objetos. Permite acceder y manipular elementos dinámicamente.\n\nMÉTODOS DE ACCESO:\n```javascript\ndocument.getElementById('miId')\ndocument.querySelector('.miClase')\ndocument.querySelectorAll('div')\n```\n\nMANIPULACIÓN:\n```javascript\nelement.innerHTML = 'nuevo contenido'\nelement.style.color = 'blue'\nelement.classList.add('activo')\nelement.addEventListener('click', función)\n```",
+      "tags": ["UF2", "javascript", "dom"]
+    },
+    {
+      "id": 2,
+      "question": "Event Loop en JavaScript: ¿Cómo funciona?",
+      "answer": "JavaScript es single-threaded pero maneja operaciones asíncronas mediante el Event Loop.\n\nCOMPONENTES:\n1. Call Stack: Pila de ejecución\n2. Web APIs: Operaciones asíncronas (setTimeout, fetch, eventos)\n3. Callback Queue: Cola de callbacks\n4. Microtask Queue: Promesas (mayor prioridad)\n\nFLUJO:\n1. Ejecuta código síncrono (Call Stack)\n2. Operaciones async → Web APIs\n3. Callbacks → Queue\n4. Event Loop verifica si Call Stack está vacío\n5. Mueve callbacks a Call Stack",
+      "tags": ["UF2", "javascript", "asincronia", "avanzado"]
+    },
+    {
+      "id": 3,
+      "question": "React: Diferencia entre Props y State",
+      "answer": "PROPS (Properties):\n- Datos pasados de padre a hijo\n- Inmutables (read-only)\n- Configuración del componente\n```javascript\nfunction Hijo({nombre}) {\n  return <h1>{nombre}</h1>\n}\n```\n\nSTATE:\n- Datos internos del componente\n- Mutables (con setState/useState)\n- Cambia en respuesta a eventos\n```javascript\nconst [count, setCount] = useState(0)\nsetCount(count + 1)\n```\n\nREGLA: Props bajan, eventos suben.",
+      "tags": ["UF3", "react", "componentes"]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué es Docker y cuáles son sus componentes principales?",
+      "answer": "Docker es una plataforma de contenedorización que empaqueta aplicaciones con sus dependencias.\n\nCOMPONENTES:\n1. IMAGEN: Plantilla inmutable con la aplicación y dependencias\n2. CONTENEDOR: Instancia ejecutable de una imagen\n3. DOCKERFILE: Archivo con instrucciones para crear imagen\n4. DOCKER HUB: Registro de imágenes\n5. DOCKER COMPOSE: Gestiona múltiples contenedores\n\nVENTAJAS:\n- Portabilidad (funciona igual en desarrollo y producción)\n- Aislamiento\n- Ligereza vs VMs\n- Escalabilidad\n\nEjemplo Dockerfile:\n```dockerfile\nFROM node:18\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install\nCOPY . .\nEXPOSE 3000\nCMD [\"npm\", \"start\"]\n```",
+      "tags": ["UF2", "docker", "contenedores"]
+    },
+    {
+      "id": 2,
+      "question": "CI/CD: Integración y Despliegue Continuo",
+      "answer": "CI/CD automatiza el proceso de desarrollo, testing y despliegue.\n\nCI (Continuous Integration):\n- Integración frecuente de código al repositorio\n- Tests automáticos en cada commit\n- Detección temprana de errores\n- Herramientas: GitHub Actions, Jenkins, GitLab CI\n\nCD (Continuous Delivery/Deployment):\n- Delivery: Código listo para producción\n- Deployment: Despliegue automático a producción\n- Rollback automático si falla\n\nPIPELINE TÍPICO:\n1. Commit → 2. Build → 3. Test → 4. Deploy Staging → 5. Deploy Production\n\nBENEFICIOS: Mayor velocidad, menos errores, feedback rápido.",
+      "tags": ["UF3", "ci-cd", "devops", "automatizacion"]
+    },
+    {
+      "id": 3,
+      "question": "Servidor Web vs Servidor de Aplicaciones",
+      "answer": "SERVIDOR WEB:\n- Maneja peticiones HTTP/HTTPS\n- Sirve contenido estático (HTML, CSS, JS, imágenes)\n- Ejemplos: Apache, Nginx, IIS\n- Funciones: hosting, SSL, load balancing, reverse proxy\n\nSERVIDOR DE APLICACIONES:\n- Ejecuta lógica de negocio\n- Genera contenido dinámico\n- Gestiona transacciones, conexiones BD, sesiones\n- Ejemplos: Tomcat (Java), Node.js, PHP-FPM\n\nARQUITECTURA COMÚN:\nCliente → Nginx (web server) → Node.js/PHP (app server) → Base de Datos\n\nNginx: Maneja static files, SSL, load balancing\nNode.js: Ejecuta aplicación",
+      "tags": ["UF1", "servidores", "arquitectura"]
+    }
+  ]
+}

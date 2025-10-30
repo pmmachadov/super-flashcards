@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Tipos de sociedades mercantiles en España",
+      "answer": "FORMAS JURÍDICAS PRINCIPALES:\n\n1. AUTÓNOMO:\n- Sin capital mínimo\n- Responsabilidad ilimitada (patrimonio personal)\n- Tributación: IRPF\n- Simplificado para freelancers\n\n2. SL (Sociedad Limitada):\n- Capital mínimo: 3.000€\n- Responsabilidad limitada al capital aportado\n- Mínimo 1 socio\n- Tributación: Impuesto Sociedades (25%)\n- Más común para PYMEs\n\n3. SA (Sociedad Anónima):\n- Capital mínimo: 60.000€\n- Responsabilidad limitada\n- Para grandes empresas\n- Acciones libremente transmisibles\n\n4. SOCIEDAD COOPERATIVA:\n- Mínimo 3 socios\n- Gestión democrática\n- Beneficios fiscales",
+      "tags": ["UF1", "sociedades", "emprendimiento"]
+    },
+    {
+      "id": 2,
+      "question": "Plan de Empresa: Estructura básica",
+      "answer": "Un plan de empresa es un documento que describe el proyecto empresarial.\n\nESTRUCTURA:\n\n1. RESUMEN EJECUTIVO:\n- Idea de negocio\n- Objetivos\n- Ventajas competitivas\n\n2. DESCRIPCIÓN DE LA EMPRESA:\n- Actividad y productos/servicios\n- Forma jurídica\n- Ubicación\n\n3. ANÁLISIS DE MERCADO:\n- DAFO (Debilidades, Amenazas, Fortalezas, Oportunidades)\n- Competencia\n- Público objetivo\n\n4. PLAN DE MARKETING:\n- 4Ps: Producto, Precio, Distribución, Promoción\n\n5. PLAN FINANCIERO:\n- Inversión inicial\n- Previsión ingresos/gastos\n- Punto de equilibrio\n- Financiación",
+      "tags": ["UF2", "plan-empresa", "estrategia"]
+    },
+    {
+      "id": 3,
+      "question": "Marketing Digital: Estrategias principales para startups",
+      "answer": "ESTRATEGIAS CLAVE:\n\n1. SEO (Search Engine Optimization):\n- Posicionamiento orgánico en buscadores\n- Keywords, contenido de calidad, enlaces\n\n2. SEM (Search Engine Marketing):\n- Publicidad de pago (Google Ads)\n- Resultados inmediatos\n\n3. CONTENT MARKETING:\n- Blog, vídeos, infografías\n- Aportar valor al usuario\n\n4. REDES SOCIALES:\n- Instagram, LinkedIn, Twitter, TikTok\n- Comunidad y engagement\n\n5. EMAIL MARKETING:\n- Newsletter, automatizaciones\n- Alto ROI\n\n6. ANALYTICS:\n- Google Analytics, métricas\n- Tomar decisiones basadas en datos\n\nFUNNEL: Awareness → Consideration → Conversion → Loyalty",
+      "tags": ["UF2", "marketing", "digital", "estrategia"]
+    }
+  ]
+}

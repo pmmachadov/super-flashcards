@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Los 4 Pilares de la Programación Orientada a Objetos",
+      "answer": "1. ENCAPSULACIÓN:\n- Ocultar detalles internos de implementación\n- Acceso controlado mediante getters/setters\n- Modificadores: private, protected, public\n```java\nprivate String nombre;\npublic String getNombre() {\n  return nombre;\n}\n```\n\n2. ABSTRACCIÓN:\n- Mostrar solo lo esencial\n- Ocultar complejidad\n- Clases abstractas e interfaces\n\n3. HERENCIA:\n- Reutilización de código\n- Relación \"es-un\"\n- extends en Java\n```java\nclass Perro extends Animal { }\n```\n\n4. POLIMORFISMO:\n- Mismo método, comportamiento diferente\n- Sobrecarga (overload) y sobrescritura (override)\n```java\n@Override\npublic void hacerSonido() {\n  System.out.println(\"Guau\");\n}\n```",
+      "tags": ["UF1", "fundamentos", "poo", "teoria"]
+    },
+    {
+      "id": 2,
+      "question": "Diferencia entre Clase Abstracta e Interfaz en Java",
+      "answer": "CLASE ABSTRACTA:\n- Puede tener métodos abstractos y concretos\n- Puede tener atributos de instancia\n- Puede tener constructores\n- Una clase solo puede heredar de una\n- Usa: abstract class\n```java\nabstract class Animal {\n  protected String nombre;\n  abstract void hacerSonido();\n  public void dormir() { }\n}\n```\n\nINTERFAZ:\n- Solo métodos abstractos (antes Java 8)\n- Desde Java 8: default y static methods\n- Solo constantes (public static final)\n- Sin constructores\n- Una clase puede implementar múltiples\n- Usa: interface\n```java\ninterface Volador {\n  void volar();\n  default void aterrizar() { }\n}\n```\n\nUSO: Interfaz para contratos, clase abstracta para herencia con código común.",
+      "tags": ["UF2", "poo", "java", "interfaces"]
+    },
+    {
+      "id": 3,
+      "question": "Patrones de Diseño: Singleton, Factory y Observer",
+      "answer": "SINGLETON:\n- Garantiza una única instancia de clase\n- Acceso global a esa instancia\n```java\npublic class Database {\n  private static Database instance;\n  private Database() {}\n  public static Database getInstance() {\n    if (instance == null)\n      instance = new Database();\n    return instance;\n  }\n}\n```\n\nFACTORY:\n- Crea objetos sin especificar clase exacta\n- Centraliza la creación\n\nOBSERVER:\n- Notifica cambios a múltiples objetos\n- Patrón pub-sub\n- Usado en eventos, listeners\n\nBENEFICIOS: Código más mantenible, reutilizable y escalable.",
+      "tags": ["UF3", "patrones", "diseño", "avanzado"]
+    }
+  ]
+}
