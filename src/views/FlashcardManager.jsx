@@ -20,9 +20,10 @@ const FlashcardManager = () => {
   useEffect(() => {
     const loadFlashcards = () => {
       const cards = FlashcardController.getFlashcards();
+      const subjectId = FlashcardController.getCurrentSubject();
       setFlashcards(cards);
 
-      const remembered = getRememberedCards(cards);
+      const remembered = getRememberedCards(cards, subjectId);
       setRememberedCards(remembered);
     };
 
@@ -76,8 +77,9 @@ const FlashcardManager = () => {
   };
 
   const handleResetAllStats = () => {
-    const count = resetAllCardStats();
-    alert(`Statistics reset for ${count} cards.`);
+    const subjectId = FlashcardController.getCurrentSubject();
+    const count = resetAllCardStats(subjectId);
+    alert(`Statistics reset for ${count} cards in this subject.`);
   };
 
   const handleTabChange = (tab) => {

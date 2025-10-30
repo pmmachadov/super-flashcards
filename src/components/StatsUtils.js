@@ -1,7 +1,8 @@
-export const resetAllCardStats = () => {
+export const resetAllCardStats = (subjectId) => {
   const keys = Object.keys(localStorage);
 
-  const cardStatsKeys = keys.filter((key) => key.startsWith("card-stats-"));
+  const prefix = subjectId ? `card-stats-${subjectId}-` : "card-stats-";
+  const cardStatsKeys = keys.filter((key) => key.startsWith(prefix));
 
   cardStatsKeys.forEach((key) => {
     localStorage.setItem(
@@ -13,12 +14,13 @@ export const resetAllCardStats = () => {
   return cardStatsKeys.length;
 };
 
-export const getCardsWithStats = () => {
+export const getCardsWithStats = (subjectId) => {
   const keys = Object.keys(localStorage);
-  const cardStatsKeys = keys.filter((key) => key.startsWith("card-stats-"));
+  const prefix = subjectId ? `card-stats-${subjectId}-` : "card-stats-";
+  const cardStatsKeys = keys.filter((key) => key.startsWith(prefix));
 
   return cardStatsKeys.map((key) => {
-    const cardId = key.replace("card-stats-", "");
+    const cardId = key.replace(prefix, "");
     const stats = JSON.parse(localStorage.getItem(key)) || {
       remembered: 0,
       notRemembered: 0,
@@ -33,8 +35,8 @@ export const getCardsWithStats = () => {
   });
 };
 
-export const getRememberedCards = (allCards) => {
-  const cardsWithStats = getCardsWithStats();
+export const getRememberedCards = (allCards, subjectId) => {
+  const cardsWithStats = getCardsWithStats(subjectId);
 
   const rememberedCardIds = cardsWithStats
     .filter((card) => card.isRemembered)

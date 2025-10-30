@@ -9,9 +9,12 @@ const MemoryCounter = ({ flashcardId }) => {
 
   useEffect(() => {
     const loadStats = () => {
-      const stats = JSON.parse(
-        localStorage.getItem(`card-stats-${flashcardId}`)
-      ) || {
+      const subjectId = FlashcardController.getCurrentSubject();
+      const storageKey = subjectId
+        ? `card-stats-${subjectId}-${flashcardId}`
+        : `card-stats-${flashcardId}`;
+
+      const stats = JSON.parse(localStorage.getItem(storageKey)) || {
         remembered: 0,
         notRemembered: 0,
       };
@@ -26,8 +29,13 @@ const MemoryCounter = ({ flashcardId }) => {
   }, [flashcardId]);
 
   useEffect(() => {
+    const subjectId = FlashcardController.getCurrentSubject();
+    const storageKey = subjectId
+      ? `card-stats-${subjectId}-${flashcardId}`
+      : `card-stats-${flashcardId}`;
+
     const stats = { remembered, notRemembered };
-    localStorage.setItem(`card-stats-${flashcardId}`, JSON.stringify(stats));
+    localStorage.setItem(storageKey, JSON.stringify(stats));
     setIsRemembered(remembered > notRemembered && remembered > 0);
   }, [remembered, notRemembered, flashcardId]);
 
@@ -53,7 +61,11 @@ const MemoryCounter = ({ flashcardId }) => {
       FlashcardController.deleteFlashcard(cardId);
 
       // Clear the card stats from localStorage
-      localStorage.removeItem(`card-stats-${flashcardId}`);
+      const subjectId = FlashcardController.getCurrentSubject();
+      const storageKey = subjectId
+        ? `card-stats-${subjectId}-${flashcardId}`
+        : `card-stats-${flashcardId}`;
+      localStorage.removeItem(storageKey);
     }
   };
 

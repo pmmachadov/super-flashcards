@@ -34,7 +34,11 @@ function App() {
 
       <main className="main-content">
         {currentSubject && (
-          currentView === "study" ? <FlashcardList /> : <FlashcardManager />
+          currentView === "study" ? (
+            <FlashcardList key={currentSubject} />
+          ) : (
+            <FlashcardManager key={currentSubject} />
+          )
         )}
         {!currentSubject && (
           <div style={{ textAlign: "center", padding: "2rem", color: "#666" }}>

@@ -4,13 +4,13 @@
       "id": "programacion",
       "name": "Programación",
       "file": "programacion.json",
-      "color": "#2D3748"
+      "color": "#2C5282"
     },
     {
       "id": "matematicas",
       "name": "Matemáticas",
       "file": "matematicas.json",
-      "color": "#1A365D"
+      "color": "#2C5282"
     },
     {
       "id": "ingles",
