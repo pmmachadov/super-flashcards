@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué es una derivada?",
+      "answer": "La derivada de una función representa la tasa de cambio instantánea de dicha función. Geométricamente, es la pendiente de la recta tangente a la curva en un punto dado."
+    },
+    {
+      "id": 2,
+      "question": "Teorema de Pitágoras",
+      "answer": "En un triángulo rectángulo, el cuadrado de la hipotenusa es igual a la suma de los cuadrados de los catetos: a² + b² = c²"
+    },
+    {
+      "id": 3,
+      "question": "¿Qué es una integral?",
+      "answer": "La integral es la operación inversa a la derivada. Representa el área bajo una curva o la acumulación de cantidades infinitesimales."
+    }
+  ]
+}

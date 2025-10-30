@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Present Perfect - Structure",
+      "answer": "Subject + have/has + past participle. Example: I have studied English for 5 years. Used for actions that started in the past and continue to the present, or have present relevance."
+    },
+    {
+      "id": 2,
+      "question": "Difference between 'make' and 'do'",
+      "answer": "MAKE: Used for creating/producing something (make a cake, make a decision, make money). DO: Used for actions/activities (do homework, do exercise, do the dishes)."
+    },
+    {
+      "id": 3,
+      "question": "Past Simple vs Past Continuous",
+      "answer": "Past Simple: Completed action (I walked). Past Continuous: Action in progress in the past (I was walking). Often used together: I was walking when it started to rain."
+    }
+  ]
+}

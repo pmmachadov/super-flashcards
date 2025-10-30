@@ -1,0 +1,22 @@
+{
+  "subjects": [
+    {
+      "id": "programacion",
+      "name": "Programación",
+      "file": "programacion.json",
+      "color": "#2D3748"
+    },
+    {
+      "id": "matematicas",
+      "name": "Matemáticas",
+      "file": "matematicas.json",
+      "color": "#1A365D"
+    },
+    {
+      "id": "ingles",
+      "name": "Inglés",
+      "file": "ingles.json",
+      "color": "#2C5282"
+    }
+  ]
+}

@@ -6,6 +6,19 @@ class FlashcardController {
     this.listeners = [];
   }
 
+  async loadSubject(subjectId) {
+    await this.model.loadSubjectData(subjectId);
+    this.notifyListeners();
+  }
+
+  getSubjects() {
+    return this.model.getSubjects();
+  }
+
+  getCurrentSubject() {
+    return this.model.getCurrentSubject();
+  }
+
   getFlashcards() {
     return this.model.getAllFlashcards();
   }

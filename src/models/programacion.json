@@ -1,0 +1,504 @@
+﻿{
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué es un programa informático?",
+      "answer": "Un programa informático es una serie de órdenes que se llevan a cabo secuencialmente, aplicadas sobre un conjunto de datos. Transforma información o datos mediante instrucciones que el ordenador ejecuta de forma autónoma. Ejemplo: un editor procesa documentos de texto, una hoja de cálculo procesa datos numéricos, etc."
+    },
+  {
+    "id": 2,
+    "question": "Componentes básicos de un ordenador y sus funciones",
+    "answer": "1. Procesador (CPU): Realiza transformaciones de datos (operaciones aritméticas, lógicas). 2. Memoria (RAM): Almacena datos temporalmente durante la ejecución del programa. 3. Sistema de E/S: Permite intercambio de datos con periféricos (teclado, pantalla, disco duro). 4. Almacenamiento persistente: Guarda datos permanentemente (disco duro)."
+  },
+  {
+    "id": 3,
+    "question": "Diferencia entre lenguaje compilado e interpretado",
+    "answer": "COMPILADO: El código fuente se traduce completamente a código objeto (binario) antes de ejecutarse. Ejemplos: C, Pascal, C++. VENTAJAS: Mayor velocidad de ejecución. INTERPRETADO: Se ejecuta línea por línea mediante un intérprete. Ejemplos: JavaScript, Python. VENTAJAS: Portabilidad, facilidad de depuración. Java es híbrido: compila a bytecode que luego interpreta la JVM."
+  },
+  {
+    "id": 4,
+    "question": "Proceso de compilación y enlazamiento en lenguajes compilados",
+    "answer": "1. ESCRITURA: Crear archivos de código fuente (.java). 2. COMPILACIÓN: Traducir código fuente a código objeto (.class en Java). 3. ENLAZAMIENTO: Combinar múltiples archivos objeto y bibliotecas en un ejecutable único. En Java: javac archivo.java → archivo.class → java archivo"
+  },
+  {
+    "id": 5,
+    "question": "¿Qué es un IDE y qué ventajas ofrece?",
+    "answer": "IDE (Integrated Development Environment): Entorno integrado de desarrollo que combina editor, compilador, depurador y otras herramientas. VENTAJAS: Resaltado de sintaxis, autocompletado, depuración integrada, gestión de proyectos, detección de errores en tiempo real, acceso a documentación. Ejemplos: NetBeans, Eclipse, IntelliJ IDEA."
+  },
+  {
+    "id": 6,
+    "question": "Características principales del lenguaje Java",
+    "answer": "1. Popular y ampliamente usado. 2. Fuertemente tipado con compilador estricto. 3. Multiplataforma (\"write once, run anywhere\"). 4. Orientado a objetos. 5. Interpretado con bytecode (JVM). 6. Gestión automática de memoria (garbage collector). 7. Rico ecosistema de bibliotecas."
+  },
+  {
+    "id": 7,
+    "question": "Estructura básica de un programa Java",
+    "answer": "```java\n// Comentarios\npublic class NombreArchivo {\n    public static void main(String[] args) {\n        // Instrucciones del programa\n        System.out.println(\"Hola mundo\");\n    }\n}\n```\nREGLAS: Nombre archivo = Nombre clase, método main obligatorio, sensibilidad a mayúsculas/minúsculas."
+  },
+  {
+    "id": 8,
+    "question": "Proceso de compilación y ejecución en Java",
+    "answer": "1. Escribir código: Archivo .java (ej: HolaMon.java)\n2. Compilar: javac HolaMon.java → genera HolaMon.class (bytecode)\n3. Ejecutar: java HolaMon (sin extensión)\nHERRAMIENTAS: JDK (desarrollo - javac), JRE (ejecución - java)"
+  },
+  {
+    "id": 9,
+    "question": "Tipos de comentarios en Java",
+    "answer": "1. UNA LÍNEA: // Comentario de una línea\n2. MÚLTIPLES LÍNEAS: /* Línea 1\n                      Línea 2 */\n3. DOCUMENTACIÓN: /** \n                  * Comentario para javadoc\n                  * @param descripción\n                  */\nLos comentarios son ignorados por el compilador."
+  },
+  {
+    "id": 10,
+    "question": "Convenciones de nomenclatura en Java",
+    "answer": "CLASES: UpperCamelCase (Ej: MiClase, HolaMundo)\nVARIABLES: lowerCamelCase (Ej: miVariable, contadorLineas)\nCONSTANTES: MAYÚSCULAS_CON_GUIONES (Ej: IVA, MAX_INTENTOS)\nMÉTODOS: lowerCamelCase (Ej: calcularTotal, main)\nPAQUETES: minúsculas.con.puntos (Ej: java.util, mi.paquete)"
+  },
+  {
+    "id": 11,
+    "question": "Los 4 tipos de datos primitivos fundamentales en Java",
+    "answer": "1. boolean: Valores true/false (1 bit)\n2. int: Enteros 32-bit (-2³¹ a 2³¹-1)\n3. double: Reales de doble precisión 64-bit (±4.9e-324 a ±1.8e308)\n4. char: Carácter Unicode 16-bit (0 a 65535)\nCada tipo define valores válidos y operaciones permitidas."
+  },
+  {
+    "id": 12,
+    "question": "Tipo de dato boolean: valores y uso",
+    "answer": "VALORES: Solo true o false.\nUSOS TÍPICOS: Interruptores (encendido/apagado), estados (casado/soltero), verificaciones (contraseña correcta).\nLITERALES: true, false\nOPERACIONES: Lógicas (!, &&, ||) y relacionales (==, !=)\nDECLARACIÓN: boolean estado = true;"
+  },
+  {
+    "id": 13,
+    "question": "Tipo de dato int: características y rangos",
+    "answer": "TAMAÑO: 32 bits (4 bytes)\nRANGO: -2,147,483,648 a 2,147,483,647\nLITERALES: 5, 0, -345, 2000000\nOPERACIONES: Aritméticas (+, -, *, /, %) y relacionales (==, !=, >, <, >=, <=)\nDIVISIÓN: Entre enteros trunca decimales (10/3 = 3)"
+  },
+  {
+    "id": 14,
+    "question": "Tipo de dato double: características y precisión",
+    "answer": "TAMAÑO: 64 bits (8 bytes)\nRANGO: ±4.94065645841246544×10⁻³²⁴ a ±1.79769313486231570×10³⁰⁸\nPRECISIÓN: 15-16 dígitos decimales\nLITERALES: 3.14, -2.5, 4.0 (con punto decimal)\nOPERACIONES: Mismas que int excepto módulo (%)\nDIFERENCIA CON INT: 4 ≠ 4.0 (tipos diferentes)"
+  },
+  {
+    "id": 15,
+    "question": "Tipo de dato char: representación y codificación",
+    "answer": "TAMAÑO: 16 bits (2 bytes)\nCODIFICACIÓN: Unicode (65,536 caracteres, compatible ASCII)\nLITERALES: Entre comillas simples 'a', 'A', '5', 'ñ', 'Γ'\nOPERACIONES: Solo relacionales (==, !=, >, <, >=, <=)\nCARACTERES ESPECIALES: Usar secuencias de escape: '\\t', '\\n', '\\'', '\\\"', '\\\\'"
+  },
+  {
+    "id": 16,
+    "question": "¿Por qué diferenciar entre tipos enteros y reales?",
+    "answer": "1. EFICIENCIA: Operaciones con enteros son más rápidas y requieren menos memoria.\n2. PRECISIÓN: Enteros representan valores exactos, reales pueden tener errores de redondeo.\n3. SEMÁNTICA: Si un dato no tiene decimales (edad, año), usar entero es más apropiado.\n4. RANGO: Tipos diferentes para optimizar uso de memoria (byte, short, int, long, float, double)."
+  },
+  {
+    "id": 17,
+    "question": "Tabla completa de tipos primitivos numéricos en Java",
+    "answer": "ENTEROS:\n- byte: 8-bit (-128 a 127)\n- short: 16-bit (-32,768 a 32,767)\n- int: 32-bit (-2³¹ a 2³¹-1)\n- long: 64-bit (-2⁶³ a 2⁶³-1), literal con L: 3000000000L\n\nREALES:\n- float: 32-bit (±1.4e-45 a ±3.4e38), literal con F: 3.14F\n- double: 64-bit (±4.9e-324 a ±1.8e308), literal por defecto"
+  },
+  {
+    "id": 18,
+    "question": "Operadores aritméticos en Java para tipos numéricos",
+    "answer": "UNARIOS: - (cambio de signo)\nBINARIOS: \n+ (suma), - (resta), * (multiplicación), / (división), % (módulo/residuo)\n\nEJEMPLOS:\n- -5 (cambio signo)\n- 3 + 2 = 5\n- 10 - 4 = 6\n- 3 * 4 = 12\n- 10 / 3 = 3 (enteros), 10.0 / 3.0 = 3.333... (reales)\n- 10 % 3 = 1 (residuo)"
+  },
+  {
+    "id": 19,
+    "question": "Operadores relacionales en Java",
+    "answer": "== (igual), != (diferente), > (mayor), < (menor), >= (mayor o igual), <= (menor o igual)\n\nRESULTADO: Siempre boolean (true/false)\n\nEJEMPLOS:\n- 5 == 5 → true\n- 5 != 5 → false\n- 10 > 5 → true\n- 3 < 2 → false\n- 5 >= 5 → true\n- 4 <= 3 → false"
+  },
+  {
+    "id": 20,
+    "question": "Operadores lógicos en Java para booleanos",
+    "answer": "! (negación/NOT), && (conjunción/AND), || (disyunción/OR)\n\nTABLAS DE VERDAD:\n!true = false, !false = true\ntrue && true = true, true && false = false, etc.\ntrue || false = true, false || false = false, etc.\n\nEJEMPLOS:\n- !(5 > 3) → false\n- (5 > 3) && (4 < 2) → false\n- (5 > 3) || (4 < 2) → true"
+  },
+  {
+    "id": 21,
+    "question": "Precedencia de operadores en Java (orden de evaluación)",
+    "answer": "1. - (cambio signo unario)\n2. *, /, %\n3. +, -\n4. >, <, <=, >=\n5. ==, !=\n6. ! (negación)\n7. &&\n8. ||\n\nEN CASO DE EMPATE: Izquierda a derecha\nMEJOR PRÁCTICA: Usar paréntesis para claridad"
+  },
+  {
+    "id": 22,
+    "question": "Evaluación de expresiones complejas con precedencia",
+    "answer": "EJEMPLO: ((3 + 4) == 7) && !(12.3 > 2.11) || ('a' == 'b')\n\nPASOS:\n1. (3 + 4) = 7\n2. (7 == 7) = true\n3. (12.3 > 2.11) = true\n4. !true = false\n5. true && false = false\n6. ('a' == 'b') = false\n7. false || false = false\n\nRESULTADO FINAL: false"
+  },
+  {
+    "id": 23,
+    "question": "Errores de desbordamiento (overflow) en tipos numéricos",
+    "answer": "OCURRE CUANDO: Un cálculo excede el rango del tipo de dato.\n\nEJEMPLOS:\n- int: 2000000000 + 2000000000 = -294967296 (incorrecto)\n- byte: 127 + 1 = -128 (da la vuelta)\n\nSOLUCIONES:\n- Usar tipos con mayor rango (long, double)\n- Verificar rangos antes de operaciones críticas\n- Usar bibliotecas para números grandes (BigInteger)"
+  },
+  {
+    "id": 24,
+    "question": "Errores de precisión en tipos reales",
+    "answer": "PROBLEMA: Algunos números decimales no se pueden representar exactamente en binario.\n\nEJEMPLO: 0.1 + 0.2 = 0.30000000000000004 (no exactamente 0.3)\n\nCAUSA: Representación finita en punto flotante.\n\nSOLUCIONES:\n- Usar BigDecimal para cálculos exactos\n- Redondear resultados cuando sea necesario\n- Evitar comparaciones exactas con == (usar margen de error)"
+  },
+  {
+    "id": 25,
+    "question": "¿Qué es una variable en programación?",
+    "answer": "DEFINICIÓN: Un dato almacenado en memoria que puede ver modificado su valor durante la ejecución del programa.\n\nCARACTERÍSTICAS:\n- Tiene un tipo de dato definido\n- Tiene un identificador único\n- Ocupa espacio en memoria\n- Su valor puede cambiar\n- Tiene un ámbito de visibilidad\n\nUSO: Almacenar valores desconocidos, resultados intermedios, datos que evolucionan."
+  },
+  {
+    "id": 26,
+    "question": "Declaración e inicialización de variables en Java",
+    "answer": "```java\nSINTAXIS: tipo identificador = valorInicial;\n\nEJEMPLOS:\n- int edad = 25;\n- double precio = 19.99;\n- boolean activo = true;\n- char letra = 'A';\n\nMÚLTIPLES VARIABLES: int a = 1, b = 2, c = 3;\n\nIMPORTANTE: Siempre inicializar variables para evitar valores indeterminados.\n```"
+  },
+  {
+    "id": 27,
+    "question": "Reglas para identificadores de variables en Java",
+    "answer": "VÁLIDOS:\n- Letras, números, _ y $\n- No puede empezar con número\n- Sensibles a mayúsculas/minúsculas\n\nNO VÁLIDOS:\n- Espacios ni caracteres especiales (@, #, etc.)\n- Palabras reservadas (if, class, public, etc.)\n- Empezar con número\n\nCONVENCIONES: lowerCamelCase (miVariable, contadorTotal)"
+  },
+  {
+    "id": 28,
+    "question": "Palabras reservadas (keywords) en Java",
+    "answer": "abstract, assert, boolean, break, byte, case, catch, char, class, const, continue, default, do, double, else, enum, extends, final, finally, float, for, goto, if, implements, import, instanceof, int, interface, long, native, new, package, private, protected, public, return, short, static, strictfp, super, switch, synchronized, this, throw, throws, transient, try, void, volatile, while\n\nNO se pueden usar como identificadores."
+  },
+  {
+    "id": 29,
+    "question": "Ámbito (scope) de las variables en Java",
+    "answer": "DEFINICIÓN: Contexto donde una variable es visible y puede ser usada.\n\nREGLAS:\n- Declarada dentro de un bloque {} → visible solo en ese bloque\n- Variables locales (en métodos) → solo en el método\n- Variables de instancia → en toda la clase\n\nEJEMPLO:\n{\n    int x = 5; // visible solo aquí\n    System.out.println(x); // OK\n}\nSystem.out.println(x); // ERROR: x no existe"
+  },
+  {
+    "id": 30,
+    "question": "Operador de asignación (=) y su funcionamiento",
+    "answer": "SINTAXIS: variable = expresión;\n\nFUNCIONAMIENTO:\n1. Se evalúa la expresión del lado derecho\n2. El resultado se almacena en la variable del lado izquierdo\n3. Si la variable ya tenía valor, se sobreescribe\n\nEJEMPLO:\nint x = 5;\nx = x + 3; // x vale 5, evalúa 5+3=8, asigna 8 a x\n\nNO CONFUNDIR: = (asignación) vs == (comparación)"
+  },
+  {
+    "id": 31,
+    "question": "Operadores de operación y asignación combinada",
+    "answer": "SINTAXIS: variable op= expresión ≡ variable = variable op expresión\n\nOPERADORES: +=, -=, *=, /=, %=, &=, |=, etc.\n\nEJEMPLOS:\n- x += 5; ≡ x = x + 5;\n- y *= 2; ≡ y = y * 2;\n- contador++; ≡ contador += 1; ≡ contador = contador + 1;\n\nVENTAJA: Código más compacto y legible"
+  },
+  {
+    "id": 32,
+    "question": "¿Qué es una constante y cómo se declara en Java?",
+    "answer": "```java\nDEFINICIÓN: Variable cuyo valor no puede modificarse después de inicializarse.\n\nSINTAXIS: private static final tipo IDENTIFICADOR = valor;\n\nEJEMPLOS:\n- private static final double IVA = 0.21;\n- private static final int MAX_USUARIOS = 100;\n- private static final String NOMBRE_APP = \"MiApp\";\n\nCONVENCIONES: MAYÚSCULAS_CON_GUIONES_BAJOS\nVENTAJAS: Código más legible, fácil mantenimiento, prevención de errores.\n```"
+  },
+  {
+    "id": 33,
+    "question": "Ventajas de usar constantes vs literales directos",
+    "answer": "1. LEGIBILIDAD: IVA vs 0.21 (más claro el propósito)\n2. MANTENIBILIDAD: Cambio en un solo lugar vs buscar/reemplazar\n3. PREVENCIÓN DE ERRORES: Compilador detecta identificadores mal escritos\n4. REUTILIZACIÓN: Mismo valor en múltiples lugares\n5. DOCUMENTACIÓN: El nombre explica el significado del valor\n\nEJEMPLO: precioFinal = precioBase * IVA; vs precioFinal = precioBase * 0.21;"
+  },
+  {
+    "id": 34,
+    "question": "Conversión implícita (automática) de tipos en Java",
+    "answer": "OCURRE CUANDO: Asignar un tipo de menor rango a uno de mayor rango.\n\nJERARQUÍA: byte → short → int → long → float → double\n               char → int\n\nEJEMPLOS VÁLIDOS:\n- int a = 100; float b = a; // 100 → 100.0\n- char c = 'A'; int d = c; // 'A' → 65\n- float e = 5.0f; double f = e; // 5.0 → 5.0\n\nEL COMPILADOR realiza la conversión automáticamente."
+  },
+  {
+    "id": 35,
+    "question": "Conversión explícita (casting) de tipos en Java",
+    "answer": "```java\nSINTAXIS: (tipoDestino) expresión\n\nUSO: Forzar conversión cuando no es automática (pérdida de información).\n\nEJEMPLOS:\n- double a = 9.75; int b = (int) a; // b = 9 (pierde decimales)\n- long c = 3000000000L; int d = (int) c; // d = -1294967296 (overflow)\n- int e = 65; char f = (char) e; // f = 'A'\n\nPRECAUCIÓN: Puede causar pérdida de datos o overflow.\n```"
+  },
+  {
+    "id": 36,
+    "question": "Instrucciones de salida por pantalla en Java: print vs println",
+    "answer": "```java\nSystem.out.print(expresión); → Muestra sin salto de línea\nSystem.out.println(expresión); → Muestra con salto de línea\nSystem.out.println(); → Salto de línea vacío\n\nCARACTERÍSTICAS:\n- Aceptan cualquier tipo primitivo (conversión automática a texto)\n- Pueden mostrar expresiones complejas\n- println() es equivalente a print() + salto de línea\n\nEJEMPLO: System.out.println(\"Resultado: \" + (5 + 3));\n```"
+  },
+  {
+    "id": 37,
+    "question": "Tipo String (cadena de texto) en Java",
+    "answer": "```java\nDEFINICIÓN: Tipo no primitivo para secuencias de caracteres.\nLITERALES: Entre comillas dobles \"texto\"\nOPERADOR: + (concatenación)\n\nEJEMPLOS:\n- String nombre = \"Juan\";\n- String saludo = \"Hola \" + nombre; // \"Hola Juan\"\n- String resultado = \"Valor: \" + 5; // \"Valor: 5\" (conversión automática)\n\nCARACTERÍSTICAS: Inmutable, uso frecuente en E/S\n```"
+  },
+  {
+    "id": 38,
+    "question": "Secuencias de escape (caracteres especiales) en Java",
+    "answer": "```java\n\\t → Tabulación\n\\n → Nueva línea (salto de línea)\n\\r → Retorno de carro\n\\' → Comilla simple\n\\\" → Comilla doble\n\\\\ → Barra invertida\n\nEJEMPLOS:\n- \"Línea1\\nLínea2\" → Salto de línea\n- \"Texto\\ttabulado\" → Tabulación\n- \"C:\\\\Users\\\\Juan\" → Rutas en Windows\n- \"Dijo: \\\"Hola\\\"\" → Comillas dentro de texto\n```"
+  },
+  {
+    "id": 39,
+    "question": "Entrada de datos por teclado usando Scanner en Java",
+    "answer": "```java\nIMPORTAR: import java.util.Scanner;\nINICIALIZAR: Scanner lector = new Scanner(System.in);\nMÉTODOS:\n- lector.nextInt() → int\n- lector.nextDouble() → double\n- lector.nextBoolean() → boolean\n- lector.next() → String (una palabra)\n- lector.nextLine() → String (línea completa)\n\nSIEMPRE: lector.nextLine(); después de nextXxx() para consumir salto de línea\n```"
+  },
+  {
+    "id": 40,
+    "question": "Ejemplo completo de entrada/salida con Scanner",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class EjemploEntrada {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"Introduce tu nombre: \");\n        String nombre = lector.nextLine();\n        \n        System.out.print(\"Introduce tu edad: \");\n        int edad = lector.nextInt();\n        lector.nextLine(); // Consumir salto de línea\n        \n        System.out.println(\"Hola \" + nombre + \", tienes \" + edad + \" años.\");\n    }\n}\n```"
+  },
+  {
+    "id": 41,
+    "question": "Control de errores en entrada básica con Scanner",
+    "answer": "PROBLEMAS COMUNES:\n- Entrar tipo incorrecto (ej: texto cuando espera número)\n- Desbordamiento de rango\n- Caracteres no esperados\n\nSOLUCIONES BÁSICAS:\n- Verificar con hasNextXxx() antes de leer\n- Usar try-catch para excepciones\n- Mensajes claros al usuario\n- Validar rangos después de lectura\n\nEJEMPLO: if (lector.hasNextInt()) { int valor = lector.nextInt(); }"
+  },
+  {
+    "id": 42,
+    "question": "¿Qué es un algoritmo en programación?",
+    "answer": "DEFINICIÓN: Conjunto de pasos ordenados y finitos para resolver un problema.\n\nCARACTERÍSTICAS:\n- Preciso (instrucciones no ambiguas)\n- Definido (mismo resultado con mismas entradas)\n- Finito (termina en tiempo finito)\n- Efectivo (resuelve el problema)\n\nEJEMPLO: Receta de cocina, instrucciones de montaje, solución matemática paso a paso."
+  },
+  {
+    "id": 43,
+    "question": "Fases del desarrollo de software",
+    "answer": "1. DEFINICIÓN: Analizar y comprender el problema\n2. DISEÑO: Crear algoritmo (pseudocódigo, diagramas de flujo)\n3. IMPLEMENTACIÓN: Escribir código en lenguaje de programación\n4. PRUEBAS: Verificar que funciona correctamente\n5. MANTENIMIENTO: Corregir errores, mejorar, adaptar\n\nCICLO ITERATIVO: Cada fase puede requerir volver a fases anteriores."
+  },
+  {
+    "id": 44,
+    "question": "Programación estructurada: principios fundamentales",
+    "answer": "METODOLOGÍA: Dividir programas complejos en partes más simples usando:\n\n1. SECUENCIA: Ejecutar instrucciones en orden\n2. SELECCIÓN: Ejecutar diferentes bloques según condiciones (if, switch)\n3. REPETICIÓN: Ejecutar bloques múltiples veces (while, for, do-while)\n\nVENTAJAS: Código más legible, mantenible, menos propenso a errores, más fácil de depurar."
+  },
+  {
+    "id": 45,
+    "question": "Representación de algoritmos: pseudocódigo y diagramas de flujo",
+    "answer": "PSEUDOCÓDIGO: Lenguaje informal similar a español/inglés para describir pasos.\nEJEMPLO: \n   Leer número\n   Si número > 0 entonces\n      Escribir \"Positivo\"\n   Fin Si\n\nDIAGRAMA DE FLUJO: Símbolos gráficos:\n- Óvalo: Inicio/Fin\n- Rectángulo: Proceso\n- Rombo: Decisión\n- Flechas: Flujo\n- Paralelogramo: Entrada/Salida"
+  },
+  {
+    "id": 46,
+    "question": "Estructura de selección simple: sintaxis if en Java",
+    "answer": "```java\nSINTAXIS:\nif (condición) {\n    // bloque de instrucciones\n}\n\nFUNCIONAMIENTO:\n- Evalúa condición (debe ser boolean)\n- Si es true → ejecuta bloque\n- Si es false → salta bloque\n\nEJEMPLO:\nif (edad >= 18) {\n    System.out.println(\"Mayor de edad\");\n}\n```"
+  },
+  {
+    "id": 47,
+    "question": "Ejemplo práctico: calcular descuento con if simple",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class DescuentoSimple {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"Introduce el precio: \");\n        double precio = lector.nextDouble();\n        \n        if (precio > 100) {\n            double descuento = precio * 0.10;\n            precio = precio - descuento;\n            System.out.println(\"Descuento aplicado: \" + descuento);\n        }\n        \n        System.out.println(\"Precio final: \" + precio);\n    }\n}\n```"
+  },
+  {
+    "id": 48,
+    "question": "Aspectos importantes de la selección simple en Java",
+    "answer": "```java\n1. CONDICIÓN: Debe evaluar a boolean (no como en C/C++)\n2. BLOQUE: Si es una sola instrucción, se pueden omitir {}\n3. INDENTACIÓN: Muy importante para legibilidad\n4. ALCANCE: Variables declaradas dentro del bloque solo existen ahí\n\nEJEMPLO:\nif (x > 5)\n    System.out.println(\"Mayor\"); // Una instrucción, sin {}\n\nif (x > 5) {\n    int temp = x * 2; // temp solo existe aquí\n    System.out.println(temp);\n}\n```"
+  },
+  {
+    "id": 49,
+    "question": "Estructura if-else: dos caminos alternativos",
+    "answer": "```java\nSINTAXIS:\nif (condición) {\n    // bloque si true\n} else {\n    // bloque si false\n}\n\nFUNCIONAMIENTO:\n- Evalúa condición\n- true → ejecuta bloque if\n- false → ejecuta bloque else\n\nEJEMPLO:\nif (nota >= 5) {\n    System.out.println(\"Aprobado\");\n} else {\n    System.out.println(\"Suspenso\");\n}\n```"
+  },
+  {
+    "id": 50,
+    "question": "Ejemplo: adivinar número secreto con if-else",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class AdivinaNumero {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        final int NUMERO_SECRETO = 42;\n        \n        System.out.print(\"Adivina el número (1-100): \");\n        int intento = lector.nextInt();\n        \n        if (intento == NUMERO_SECRETO) {\n            System.out.println(\"¡Correcto! Has adivinado.\");\n        } else {\n            System.out.println(\"Incorrecto. El número era \" + NUMERO_SECRETO);\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 51,
+    "question": "Estructura if-else if-else: múltiples caminos",
+    "answer": "```java\nSINTAXIS:\nif (condición1) {\n    // bloque 1\n} else if (condición2) {\n    // bloque 2\n} else if (condición3) {\n    // bloque 3\n} else {\n    // bloque por defecto\n}\n\nFUNCIONAMIENTO: Evalúa condiciones en orden, ejecuta el primer bloque cuya condición sea true.\n```"
+  },
+  {
+    "id": 52,
+    "question": "Ejemplo: transformar evaluación numérica a texto",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class CalificacionTexto {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"Introduce la nota (0-10): \");\n        double nota = lector.nextDouble();\n        \n        if (nota >= 9) {\n            System.out.println(\"Sobresaliente\");\n        } else if (nota >= 7) {\n            System.out.println(\"Notable\");\n        } else if (nota >= 6) {\n            System.out.println(\"Bien\");\n        } else if (nota >= 5) {\n            System.out.println(\"Suficiente\");\n        } else {\n            System.out.println(\"Insuficiente\");\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 53,
+    "question": "Combinación de estructuras de selección (anidamiento)",
+    "answer": "```java\nCONCEPTO: Poner estructuras if dentro de otras estructuras if.\n\nEJEMPLO:\nif (edad >= 18) {\n    if (tieneCarnet) {\n        System.out.println(\"Puede conducir\");\n    } else {\n        System.out.println(\"Necesita carnet\");\n    }\n} else {\n    System.out.println(\"Menor de edad\");\n}\n\nEQUIVALENTE CON &&:\nif (edad >= 18 && tieneCarnet) {\n    System.out.println(\"Puede conducir\");\n}\n```"
+  },
+  {
+    "id": 54,
+    "question": "Ejemplo complejo: descuento máximo con control de errores",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class DescuentoComplejo {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"Precio: \");\n        if (lector.hasNextDouble()) {\n            double precio = lector.nextDouble();\n            \n            if (precio > 0) {\n                double descuento = 0;\n                \n                if (precio > 500) {\n                    descuento = 0.25;\n                } else if (precio > 200) {\n                    descuento = 0.15;\n                } else if (precio > 100) {\n                    descuento = 0.10;\n                }\n                \n                double final = precio * (1 - descuento);\n                System.out.println(\"Precio final: \" + final);\n            } else {\n                System.out.println(\"Precio debe ser positivo\");\n            }\n        } else {\n            System.out.println(\"Entrada inválida\");\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 55,
+    "question": "Ámbito de variables en bloques anidados",
+    "answer": "```java\nREGLAS:\n- Variable declarada en bloque externo → visible en bloques internos\n- Variable declarada en bloque interno → NO visible en bloques externos\n- Mismo nombre en diferentes bloques → shadowing (la interna oculta la externa)\n\nEJEMPLO:\nint x = 5; // Externa\nif (condicion) {\n    int y = 10; // Interna - solo visible aquí\n    x = 7; // OK - modifica x externa\n    System.out.println(y); // OK\n}\nSystem.out.println(x); // OK - vale 7\nSystem.out.println(y); // ERROR - y no existe aquí\n```"
+  },
+  {
+    "id": 56,
+    "question": "Estructura switch: sintaxis básica",
+    "answer": "```java\nSINTAXIS:\nswitch (expresión) {\n    case valor1:\n        // instrucciones\n        break;\n    case valor2:\n        // instrucciones\n        break;\n    default:\n        // instrucciones\n}\n\nEXPRESIÓN: byte, short, int, char, String, enum\nBREAK: Evita que se ejecuten casos siguientes (fall-through)\n```"
+  },
+  {
+    "id": 57,
+    "question": "Comportamiento del switch con y sin break",
+    "answer": "```java\nCON BREAK:\nswitch (opcion) {\n    case 1: System.out.println(\"Uno\"); break;\n    case 2: System.out.println(\"Dos\"); break;\n}\n// Opción 1 → \"Uno\", Opción 2 → \"Dos\"\n\nSIN BREAK (fall-through):\nswitch (opcion) {\n    case 1: System.out.println(\"Uno\");\n    case 2: System.out.println(\"Dos\");\n}\n// Opción 1 → \"Uno\" \"Dos\", Opción 2 → \"Dos\"\n\nUSO INTENCIONAL: Múltiples casos con mismo comportamiento.\n```"
+  },
+  {
+    "id": 58,
+    "question": "Ejemplo simple: menú de opciones con switch",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class MenuOpciones {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.println(\"1. Sumar\");\n        System.out.println(\"2. Restar\");\n        System.out.println(\"3. Salir\");\n        System.out.print(\"Elige opción: \");\n        \n        int opcion = lector.nextInt();\n        \n        switch (opcion) {\n            case 1:\n                System.out.println(\"Sumando...\");\n                break;\n            case 2:\n                System.out.println(\"Restando...\");\n                break;\n            case 3:\n                System.out.println(\"Saliendo...\");\n                break;\n            default:\n                System.out.println(\"Opción inválida\");\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 59,
+    "question": "Ejemplo avanzado: días del mes con switch y propagación",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class DiasDelMes {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"Introduce mes (1-12): \");\n        int mes = lector.nextInt();\n        \n        int dias;\n        \n        switch (mes) {\n            case 1: case 3: case 5: case 7: case 8: case 10: case 12:\n                dias = 31;\n                break;\n            case 4: case 6: case 9: case 11:\n                dias = 30;\n                break;\n            case 2:\n                dias = 28; // Simplificado, sin año bisiesto\n                break;\n            default:\n                dias = -1; // Inválido\n        }\n        \n        if (dias > 0) {\n            System.out.println(\"El mes \" + mes + \" tiene \" + dias + \" días\");\n        } else {\n            System.out.println(\"Mes inválido\");\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 60,
+    "question": "Control de errores en entrada con estructuras de selección",
+    "answer": "```java\nTÉCNICAS:\n1. Verificar tipo: hasNextXxx() antes de nextXxx()\n2. Validar rangos: if (valor >= min && valor <= max)\n3. Mensajes de error específicos\n4. Ofrecer reintentos\n\nEJEMPLO:\nif (lector.hasNextInt()) {\n    int numero = lector.nextInt();\n    if (numero >= 1 && numero <= 100) {\n        // Procesar\n    } else {\n        System.out.println(\"Fuera de rango (1-100)\");\n    }\n} else {\n    System.out.println(\"No es un número entero\");\n    lector.next(); // Consumir entrada inválida\n}\n```"
+  },
+  {
+    "id": 61,
+    "question": "¿Qué son las estructuras de repetición y para qué sirven?",
+    "answer": "DEFINICIÓN: Estructuras que permiten ejecutar un bloque de instrucciones múltiples veces.\n\nUSOS COMUNES:\n- Procesar colecciones de datos\n- Realizar cálculos iterativos\n- Esperar condiciones específicas\n- Menús interactivos\n- Validar entradas repetidamente\n\nTIPOS EN JAVA: while, do-while, for\nCONTROL: Contadores, acumuladores, semáforos (banderas)"
+  },
+  {
+    "id": 62,
+    "question": "Elementos de control en estructuras repetitivas",
+    "answer": "1. CONTADOR: Variable que incrementa/decrementa en cada iteración\n   Ej: int i = 0; i < 10; i++\n\n2. ACUMULADOR: Variable que suma resultados parciales\n   Ej: int suma = 0; suma += numero;\n\n3. SEMÁFORO (bandera): Variable boolean que controla fin del bucle\n   Ej: boolean encontrado = false; while (!encontrado)\n\n4. CONDICIÓN: Expresión boolean que determina continuación\n   Ej: while (contador <= 100)"
+  },
+  {
+    "id": 63,
+    "question": "Estructura while: sintaxis y funcionamiento",
+    "answer": "```java\nSINTAXIS:\nwhile (condición) {\n    // bloque de instrucciones\n}\n\nFUNCIONAMIENTO:\n1. Evalúa condición (debe ser boolean)\n2. Si true → ejecuta bloque y vuelve al paso 1\n3. Si false → termina bucle\n\nCARACTERÍSTICA: Puede ejecutarse 0 veces (si condición inicial false)\n```"
+  },
+  {
+    "id": 64,
+    "question": "Ejemplo while: mostrar números del 1 al 10",
+    "answer": "```java\npublic class Numeros1Al10 {\n    public static void main(String[] args) {\n        int contador = 1; // Inicialización\n        \n        while (contador <= 10) { // Condición\n            System.out.println(contador);\n            contador++; // Actualización\n        }\n        \n        System.out.println(\"Fin del bucle\");\n    }\n}\n\nSALIDA: 1 2 3 4 5 6 7 8 9 10 Fin del bucle\n```"
+  },
+  {
+    "id": 65,
+    "question": "Ejemplo while: usar contador para tabla de multiplicar",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class TablaMultiplicar {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"¿Qué tabla quieres? \");\n        int tabla = lector.nextInt();\n        \n        int contador = 1;\n        \n        while (contador <= 10) {\n            int resultado = tabla * contador;\n            System.out.println(tabla + \" x \" + contador + \" = \" + resultado);\n            contador++;\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 66,
+    "question": "Ejemplo while: incrementos diferentes a 1",
+    "answer": "```java\npublic class IncrementosVariables {\n    public static void main(String[] args) {\n        // Contar de 2 en 2\n        int i = 0;\n        while (i <= 20) {\n            System.out.println(i);\n            i += 2; // i = i + 2\n        }\n        \n        // Contar hacia atrás\n        int j = 10;\n        while (j > 0) {\n            System.out.println(j);\n            j--; // j = j - 1\n        }\n        \n        // Multiplicar por 2\n        int k = 1;\n        while (k <= 100) {\n            System.out.println(k);\n            k *= 2; // k = k * 2\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 67,
+    "question": "Ejemplo while: usar acumulador para sumar números",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class SumaAcumulativa {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        int suma = 0; // Acumulador\n        int contador = 1;\n        \n        while (contador <= 5) {\n            System.out.print(\"Introduce número \" + contador + \": \");\n            int numero = lector.nextInt();\n            \n            suma += numero; // suma = suma + numero\n            contador++;\n        }\n        \n        System.out.println(\"La suma total es: \" + suma);\n        System.out.println(\"El promedio es: \" + (double)suma / 5);\n    }\n}\n```"
+  },
+  {
+    "id": 68,
+    "question": "Ejemplo while: usar semáforo (bandera) para control",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class BusquedaConSemáforo {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        final int CLAVE_SECRETA = 1234;\n        \n        boolean encontrado = false; // Semáforo\n        int intentos = 0;\n        \n        while (!encontrado && intentos < 3) {\n            System.out.print(\"Introduce clave: \");\n            int clave = lector.nextInt();\n            \n            if (clave == CLAVE_SECRETA) {\n                encontrado = true;\n                System.out.println(\"¡Acceso concedido!\");\n            } else {\n                intentos++;\n                System.out.println(\"Clave incorrecta. Intentos: \" + intentos);\n            }\n        }\n        \n        if (!encontrado) {\n            System.out.println(\"Acceso denegado\");\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 69,
+    "question": "Ejemplo while: combinar contador y semáforo",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class CombinacionContadorSemáforo {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        int suma = 0;\n        int cantidad = 0;\n        boolean continuar = true;\n        \n        while (continuar && cantidad < 10) {\n            System.out.print(\"Introduce número (0 para terminar): \");\n            int numero = lector.nextInt();\n            \n            if (numero == 0) {\n                continuar = false; // Usuario quiere terminar\n            } else {\n                suma += numero;\n                cantidad++;\n            }\n        }\n        \n        if (cantidad > 0) {\n            System.out.println(\"Suma: \" + suma);\n            System.out.println(\"Cantidad: \" + cantidad);\n            System.out.println(\"Promedio: \" + (double)suma / cantidad);\n        } else {\n            System.out.println(\"No se introdujeron números\");\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 70,
+    "question": "Estructura do-while: sintaxis y diferencias con while",
+    "answer": "```java\nSINTAXIS:\ndo {\n    // bloque de instrucciones\n} while (condición);\n\nDIFERENCIAS CON WHILE:\n- do-while ejecuta el bloque AL MENOS UNA VEZ\n- while puede ejecutarse 0 veces\n- En do-while, condición se evalúa DESPUÉS del bloque\n\nUSO TÍPICO: Menús, validación de entrada, procesos que deben ejecutarse al menos una vez.\n```"
+  },
+  {
+    "id": 71,
+    "question": "Ejemplo do-while: control de entrada por teclado",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class ValidacionEntrada {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        int numero;\n        \n        do {\n            System.out.print(\"Introduce un número entre 1 y 100: \");\n            \n            if (lector.hasNextInt()) {\n                numero = lector.nextInt();\n                lector.nextLine(); // Consumir salto\n                \n                if (numero >= 1 && numero <= 100) {\n                    break; // Número válido, salir del bucle\n                } else {\n                    System.out.println(\"Fuera de rango. Intenta otra vez.\");\n                }\n            } else {\n                System.out.println(\"No es un número entero. Intenta otra vez.\");\n                lector.next(); // Consumir entrada inválida\n            }\n            \n        } while (true); // Bucle infinito hasta break\n        \n        System.out.println(\"Número válido: \" + numero);\n    }\n}\n```"
+  },
+  {
+    "id": 72,
+    "question": "Estructura for: sintaxis y componentes",
+    "answer": "```java\nSINTAXIS:\nfor (inicialización; condición; actualización) {\n    // bloque de instrucciones\n}\n\nCOMPONENTES:\n- INICIALIZACIÓN: Ejecuta una vez al inicio\n- CONDICIÓN: Evalúa antes de cada iteración\n- ACTUALIZACIÓN: Ejecuta después de cada iteración\n\nEQUIVALENTE WHILE:\ninicialización;\nwhile (condición) {\n    // bloque\n    actualización;\n}\n```"
+  },
+  {
+    "id": 73,
+    "question": "Ejemplo for: tabla de multiplicar mejorada",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class TablaFor {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"¿Qué tabla quieres? \");\n        int tabla = lector.nextInt();\n        \n        System.out.println(\"Tabla del \" + tabla + \":\");\n        \n        for (int i = 1; i <= 10; i++) {\n            int resultado = tabla * i;\n            System.out.println(tabla + \" x \" + i + \" = \" + resultado);\n        }\n    }\n}\n\nVENTAJAS VS WHILE:\n- Más compacto\n- Inicialización, condición y actualización en un lugar\n- Menos propenso a olvidar actualizar contador\n```"
+  },
+  {
+    "id": 74,
+    "question": "Ejemplo for: variaciones en inicialización y actualización",
+    "answer": "```java\npublic class ForVariaciones {\n    public static void main(String[] args) {\n        // Contar hacia atrás\n        for (int i = 10; i >= 1; i--) {\n            System.out.println(i);\n        }\n        \n        // De 2 en 2\n        for (int i = 0; i <= 20; i += 2) {\n            System.out.println(i);\n        }\n        \n        // Múltiples variables\n        for (int i = 0, j = 10; i <= 10; i++, j--) {\n            System.out.println(i + \" - \" + j);\n        }\n        \n        // Sin cuerpo (solo actualización)\n        int suma = 0;\n        for (int i = 1; i <= 100; suma += i, i++);\n        System.out.println(\"Suma: \" + suma);\n    }\n}\n```"
+  },
+  {
+    "id": 75,
+    "question": "Combinación de estructuras: selección dentro de repetición",
+    "answer": "CONCEPTO: Usar if/switch dentro de bucles para tomar decisiones en cada iteración.\n\nEJEMPLOS:\n- Filtrar números en un rango\n- Buscar elementos específicos\n- Aplicar condiciones diferentes según iteración\n- Controlar flujo dentro del bucle (break, continue)\n\nVENTAJA: Procesamiento inteligente de secuencias de datos."
+  },
+  {
+    "id": 76,
+    "question": "Ejemplo: tabla de multiplicar con formato mejorado",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class TablaMejorada {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"¿Qué tabla quieres? \");\n        int tabla = lector.nextInt();\n        \n        System.out.println(\"╔══════════════════╗\");\n        System.out.println(\"║ Tabla del \" + tabla + \"       ║\");\n        System.out.println(\"╠══════════════════╣\");\n        \n        for (int i = 1; i <= 10; i++) {\n            int resultado = tabla * i;\n            \n            // Formato condicional para alineación\n            if (i < 10) {\n                System.out.println(\"║ \" + tabla + \" x \" + i + \"  = \" + \n                    (resultado < 10 ? \" \" : \"\") + resultado + \"     ║\");\n            } else {\n                System.out.println(\"║ \" + tabla + \" x \" + i + \" = \" + resultado + \"     ║\");\n            }\n        }\n        \n        System.out.println(\"╚══════════════════╝\");\n    }\n}\n```"
+  },
+  {
+    "id": 77,
+    "question": "Ejemplo: adivinar número secreto con múltiples intentos",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class AdivinaMejorado {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        final int NUMERO_SECRETO = 42;\n        final int MAX_INTENTOS = 5;\n        \n        System.out.println(\"Adivina el número (1-100)\");\n        System.out.println(\"Tienes \" + MAX_INTENTOS + \" intentos\");\n        \n        boolean adivinado = false;\n        int intentos = 0;\n        \n        while (!adivinado && intentos < MAX_INTENTOS) {\n            System.out.print(\"Intento \" + (intentos + 1) + \": \");\n            \n            if (lector.hasNextInt()) {\n                int numero = lector.nextInt();\n                lector.nextLine();\n                \n                if (numero == NUMERO_SECRETO) {\n                    adivinado = true;\n                    System.out.println(\"¡Correcto! Has adivinado en \" + \n                        (intentos + 1) + \" intentos\");\n                } else if (numero < NUMERO_SECRETO) {\n                    System.out.println(\"El número secreto es MAYOR\");\n                } else {\n                    System.out.println(\"El número secreto es MENOR\");\n                }\n                \n                intentos++;\n            } else {\n                System.out.println(\"Por favor, introduce un número válido\");\n                lector.next(); // Consumir entrada inválida\n            }\n        }\n        \n        if (!adivinado) {\n            System.out.println(\"Game over. El número era: \" + NUMERO_SECRETO);\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 78,
+    "question": "Instrucciones break y continue en bucles",
+    "answer": "```java\nBREAK: Termina inmediatamente el bucle actual\nCONTINUE: Salta a la siguiente iteración del bucle\n\nEJEMPLOS:\n// break - buscar número\nfor (int i = 0; i < 100; i++) {\n    if (i == 50) {\n        System.out.println(\"Encontrado en posición \" + i);\n        break; // Termina bucle\n    }\n}\n\n// continue - procesar solo pares\nfor (int i = 0; i <= 10; i++) {\n    if (i % 2 != 0) {\n        continue; // Salta impares\n    }\n    System.out.println(i); // Solo pares\n}\n\nETIQUETAS: break etiqueta; para salir de bucles anidados.\n```"
+  },
+  {
+    "id": 79,
+    "question": "Bucles anidados: concepto y ejemplo práctico",
+    "answer": "```java\nCONCEPTO: Un bucle dentro de otro bucle.\n\nEJEMPLO: Tablas de multiplicar completas\n\npublic class TablasCompletas {\n    public static void main(String[] args) {\n        System.out.println(\"Tablas de multiplicar del 1 al 5:\");\n        \n        for (int tabla = 1; tabla <= 5; tabla++) {\n            System.out.println(\"\\nTabla del \" + tabla + \":\");\n            \n            for (int i = 1; i <= 10; i++) {\n                System.out.println(tabla + \" x \" + i + \" = \" + (tabla * i));\n            }\n        }\n    }\n}\n\nITERACIONES TOTALES: 5 tablas × 10 filas = 50 iteraciones\n```"
+  },
+  {
+    "id": 80,
+    "question": "Depuración (debugging) de programas con estructuras de control",
+    "answer": "TÉCNICAS:\n1. IMPRESIÓN: System.out.println() para ver valores de variables\n2. ANÁLISIS PASO A PASO: Seguir ejecución manualmente\n3. CASOS LÍMITE: Probar condiciones extremas\n4. HERRAMIENTAS IDE: Puntos de ruptura, inspección de variables\n\nEJEMPLO DEBUG:\nint suma = 0;\nfor (int i = 1; i <= 5; i++) {\n    System.out.println(\"i=\" + i + \", suma=\" + suma); // Depuración\n    suma += i;\n}\nSystem.out.println(\"Suma final: \" + suma);"
+  },
+  {
+    "id": 81,
+    "question": "Errores comunes con estructuras de control y cómo evitarlos",
+    "answer": "1. BUCLE INFINITO: Olvidar actualizar variable de condición\n   SOLUCIÓN: Verificar actualización en cada iteración\n\n2. CONDICIÓN INCORRECTA: Usar = en lugar de ==\n   SOLUCIÓN: if (x == 5) no if (x = 5)\n\n3. OFF-BY-ONE: Contadores mal inicializados\n   SOLUCIÓN: Probar casos límite (primera/última iteración)\n\n4. ALCANCE VARIABLES: Variables declaradas en bloques incorrectos\n   SOLUCIÓN: Declarar variables en ámbito adecuado\n\n5. FALL-THROUGH: Olvidar break en switch\n   SOLUCIÓN: Usar break o comentar intención"
+  },
+  {
+    "id": 82,
+    "question": "Comparación de estructuras while, do-while y for",
+    "answer": "WHILE:\n- Condición al inicio\n- 0 o más iteraciones\n- Uso: Cuando no se sabe número exacto de iteraciones\n\nDO-WHILE:\n- Condición al final\n- 1 o más iteraciones\n- Uso: Validación de entrada, menús\n\nFOR:\n- Contador explícito\n- Número conocido de iteraciones\n- Uso: Iterar sobre rangos, procesar arrays\n\nCONVERTIBLES: Cualquier for puede escribirse como while y viceversa"
+  },
+  {
+    "id": 83,
+    "question": "Optimización de estructuras de control",
+    "answer": "1. EVITAR CÁLCULOS EN CONDICIONES: Precalcular fuera del bucle\n   MAL: for (int i=0; i < lista.size(); i++)\n   BIEN: int tamaño = lista.size(); for (int i=0; i < tamaño; i++)\n\n2. REDUCIR ANIDAMIENTO: Usar continue en lugar de if anidado\n   MAL: if (condición) { if (otraCondición) { ... } }\n   BIEN: if (!condición) continue; if (!otraCondición) continue; ...\n\n3. CONDICIONES MÁS PROBABLES PRIMERO: Optimizar evaluación\n   if (casoFrecuente) { ... } else if (casoRaro) { ... }"
+  },
+  {
+    "id": 84,
+    "question": "Patrones comunes con estructuras de control",
+    "answer": "1. ACUMULADOR: suma += valor\n2. CONTADOR: cantidad++\n3. BANDERA: boolean encontrado = false\n4. MÁXIMO/MÍNIMO: if (valor > max) max = valor\n5. BÚSQUEDA: while (!encontrado && hayElementos)\n6. VALIDACIÓN: do { ... } while (!valido)\n7. MENÚ: do { mostrar opciones; leer opción; switch } while (opcion != SALIR)\n8. PROCESAMIENTO POR LOTES: for (cada elemento) { procesar }"
+  },
+  {
+    "id": 85,
+    "question": "Ejemplo integrador: sistema de notas completo",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class SistemaNotas {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        int totalEstudiantes = 0;\n        int aprobados = 0;\n        double sumaNotas = 0;\n        double mejorNota = 0;\n        \n        System.out.println(\"SISTEMA DE REGISTRO DE NOTAS\");\n        System.out.println(\"Introduce -1 para terminar\");\n        \n        while (true) {\n            System.out.print(\"Nota del estudiante \" + (totalEstudiantes + 1) + \": \");\n            \n            if (lector.hasNextDouble()) {\n                double nota = lector.nextDouble();\n                lector.nextLine();\n                \n                if (nota == -1) {\n                    break; // Terminar entrada\n                }\n                \n                if (nota >= 0 && nota <= 10) {\n                    totalEstudiantes++;\n                    sumaNotas += nota;\n                    \n                    if (nota >= 5) {\n                        aprobados++;\n                    }\n                    \n                    if (nota > mejorNota) {\n                        mejorNota = nota;\n                    }\n                } else {\n                    System.out.println(\"Nota debe estar entre 0 y 10\");\n                }\n            } else {\n                System.out.println(\"Entrada inválida\");\n                lector.next(); // Consumir entrada inválida\n            }\n        }\n        \n        // Mostrar resultados\n        if (totalEstudiantes > 0) {\n            double promedio = sumaNotas / totalEstudiantes;\n            double porcentajeAprobados = (double)aprobados / totalEstudiantes * 100;\n            \n            System.out.println(\"\\n--- RESULTADOS ---\");\n            System.out.println(\"Total estudiantes: \" + totalEstudiantes);\n            System.out.println(\"Promedio: \" + String.format(\"%.2f\", promedio));\n            System.out.println(\"Aprobados: \" + aprobados + \" (\" + \n                String.format(\"%.1f\", porcentajeAprobados) + \"%)\");\n            System.out.println(\"Mejor nota: \" + mejorNota);\n        } else {\n            System.out.println(\"No se ingresaron datos\");\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 86,
+    "question": "Resumen de mejores prácticas en programación estructurada",
+    "answer": "1. NOMBRES DESCRIPTIVOS: Variables y métodos con nombres claros\n2. INDENTACIÓN CONSISTENTE: Usar siempre mismo estilo\n3. COMENTARIOS ADECUADOS: Explicar por qué, no qué\n4. FUNCIONES CORTAS: Una función, una responsabilidad\n5. EVITAR CÓDIGO REPETIDO: Reutilizar con funciones\n6. VALIDAR ENTRADAS: Verificar datos externos\n7. MANEJAR ERRORES: Considerar casos excepcionales\n8. TESTING: Probar con diferentes casos\n9. DOCUMENTACIÓN: Explicar uso y limitaciones\n10. REFACTORIZACIÓN: Mejorar código existente"
+  },
+  {
+    "id": 87,
+    "question": "¿Qué es un error de compilación vs error de ejecución?",
+    "answer": "ERROR DE COMPILACIÓN: Detectado por el compilador antes de ejecutar el programa. Causas: sintaxis incorrecta, tipos incompatibles, variables no declaradas. EJEMPLO: System.out.println(\"Hola) // Falta comilla\n\nERROR DE EJECUCIÓN (Runtime): Ocurre durante la ejecución del programa. Causas: división por cero, acceso a índice inválido, entrada incorrecta. EJEMPLO: int x = 5/0; // ArithmeticException"
+  },
+  {
+    "id": 88,
+    "question": "Métodos útiles de la clase Math en Java",
+    "answer": "```java\nMath.abs(x) → Valor absoluto\nMath.sqrt(x) → Raíz cuadrada\nMath.pow(a, b) → Potencia (a^b)\nMath.max(a, b) → Mayor de dos valores\nMath.min(a, b) → Menor de dos valores\nMath.round(x) → Redondeo\nMath.random() → Número aleatorio [0.0, 1.0)\nMath.PI → Constante π\nMath.E → Constante e\n\nEJEMPLO: double raiz = Math.sqrt(25); // 5.0\n```"
+  },
+  {
+    "id": 89,
+    "question": "Cómo generar números aleatorios en Java",
+    "answer": "```java\n// Opción 1: Math.random() - double entre 0.0 y 1.0\ndouble aleatorio1 = Math.random();\n\n// Opción 2: Random class - más control\nimport java.util.Random;\nRandom rand = new Random();\nint numero = rand.nextInt(100); // 0-99\ndouble decimal = rand.nextDouble(); // 0.0-1.0\nboolean bool = rand.nextBoolean(); // true/false\n\n// Ejemplo: dado de 6 caras\nint dado = rand.nextInt(6) + 1; // 1-6\n```"
+  },
+  {
+    "id": 90,
+    "question": "Operador ternario (condicional) en Java",
+    "answer": "```java\nSINTAXIS: condición ? valorSiTrue : valorSiFalse\n\nEQUIVALENTE A:\nif (condición) {\n    resultado = valorSiTrue;\n} else {\n    resultado = valorSiFalse;\n}\n\nEJEMPLOS:\nint mayor = (a > b) ? a : b;\nString estado = (nota >= 5) ? \"Aprobado\" : \"Suspenso\";\nint absoluto = (x >= 0) ? x : -x;\n\nVENTAJA: Código más compacto para condiciones simples.\n```"
+  },
+  {
+    "id": 91,
+    "question": "Manejo básico de excepciones con try-catch",
+    "answer": "```java\nSINTAXIS:\ntry {\n    // Código que puede generar error\n} catch (TipoExcepcion e) {\n    // Manejo del error\n}\n\nEJEMPLO:\ntry {\n    int numero = Integer.parseInt(\"abc\"); // NumberFormatException\n} catch (NumberFormatException e) {\n    System.out.println(\"No es un número válido\");\n}\n\nEXCEPCIONES COMUNES:\n- ArithmeticException: División por cero\n- NullPointerException: Acceso a objeto null\n- ArrayIndexOutOfBoundsException: Índice inválido\n- InputMismatchException: Entrada incorrecta con Scanner\n```"
+  },
+  {
+    "id": 92,
+    "question": "Diferencias entre System.out.print() y System.out.printf()",
+    "answer": "```java\n// print() y println() - concatenación simple\nSystem.out.print(\"Valor: \" + x + \", Total: \" + y);\n\n// printf() - formato controlado\nSystem.out.printf(\"Valor: %d, Total: %.2f\", x, y);\n\nFORMATOS COMUNES:\n%d → entero\n%f → real (%.2f para 2 decimales)\n%s → String\n%c → carácter\n%b → boolean\n\nEJEMPLO: System.out.printf(\"Nombre: %s, Edad: %d, Saldo: %.2f€\", nombre, edad, saldo);\n```"
+  },
+  {
+    "id": 93,
+    "question": "Cómo leer diferentes tipos de datos con Scanner",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class LecturaCompleta {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        // Entero\n        System.out.print(\"Edad: \");\n        int edad = lector.nextInt();\n        \n        // Real\n        System.out.print(\"Altura: \");\n        double altura = lector.nextDouble();\n        \n        // Boolean\n        System.out.print(\"¿Activo? (true/false): \");\n        boolean activo = lector.nextBoolean();\n        \n        // String (una palabra)\n        System.out.print(\"Nombre: \");\n        String nombre = lector.next();\n        \n        // String (línea completa)\n        lector.nextLine(); // Consumir salto anterior\n        System.out.print(\"Dirección: \");\n        String direccion = lector.nextLine();\n        \n        // Siempre consumir salto de línea después de nextXxx()\n    }\n}\n```"
+  },
+  {
+    "id": 94,
+    "question": "Ejercicio: calcular factorial de un número",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class Factorial {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"Introduce un número: \");\n        int n = lector.nextInt();\n        \n        long factorial = 1;\n        \n        // Usando for\n        for (int i = 1; i <= n; i++) {\n            factorial *= i;\n        }\n        \n        // Alternativa con while\n        // int i = 1;\n        // while (i <= n) {\n        //     factorial *= i;\n        //     i++;\n        // }\n        \n        System.out.println(n + \"! = \" + factorial);\n    }\n}\n\n// Ejemplo: 5! = 5 × 4 × 3 × 2 × 1 = 120\n```"
+  },
+  {
+    "id": 95,
+    "question": "Ejercicio: verificar si un número es primo",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class NumeroPrimo {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"Introduce un número: \");\n        int numero = lector.nextInt();\n        \n        boolean esPrimo = true;\n        \n        if (numero <= 1) {\n            esPrimo = false;\n        } else {\n            for (int i = 2; i <= Math.sqrt(numero); i++) {\n                if (numero % i == 0) {\n                    esPrimo = false;\n                    break;\n                }\n            }\n        }\n        \n        if (esPrimo) {\n            System.out.println(numero + \" es primo\");\n        } else {\n            System.out.println(numero + \" no es primo\");\n        }\n    }\n}\n```"
+  },
+  {
+    "id": 96,
+    "question": "Ejercicio: serie de Fibonacci",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class Fibonacci {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        \n        System.out.print(\"¿Cuántos términos de Fibonacci? \");\n        int n = lector.nextInt();\n        \n        long a = 0, b = 1;\n        \n        System.out.println(\"Serie de Fibonacci:\");\n        \n        for (int i = 1; i <= n; i++) {\n            System.out.print(a + \" \");\n            long siguiente = a + b;\n            a = b;\n            b = siguiente;\n        }\n    }\n}\n\n// Salida para n=10: 0 1 1 2 3 5 8 13 21 34\n```"
+  },
+  {
+    "id": 97,
+    "question": "Ejercicio: calculadora simple con menú",
+    "answer": "```java\nimport java.util.Scanner;\n\npublic class Calculadora {\n    public static void main(String[] args) {\n        Scanner lector = new Scanner(System.in);\n        int opcion;\n        \n        do {\n            System.out.println(\"\\n=== CALCULADORA ===\");\n            System.out.println(\"1. Sumar\");\n            System.out.println(\"2. Restar\");\n            System.out.println(\"3. Multiplicar\");\n            System.out.println(\"4. Dividir\");\n            System.out.println(\"5. Salir\");\n            System.out.print(\"Elige opción: \");\n            \n            opcion = lector.nextInt();\n            \n            if (opcion >= 1 && opcion <= 4) {\n                System.out.print(\"Primer número: \");\n                double a = lector.nextDouble();\n                System.out.print(\"Segundo número: \");\n                double b = lector.nextDouble();\n                \n                switch (opcion) {\n                    case 1:\n                        System.out.println(\"Resultado: \" + (a + b));\n                        break;\n                    case 2:\n                        System.out.println(\"Resultado: \" + (a - b));\n                        break;\n                    case 3:\n                        System.out.println(\"Resultado: \" + (a * b));\n                        break;\n                    case 4:\n                        if (b != 0) {\n                            System.out.println(\"Resultado: \" + (a / b));\n                        } else {\n                            System.out.println(\"Error: División por cero\");\n                        }\n                        break;\n                }\n            } else if (opcion != 5) {\n                System.out.println(\"Opción inválida\");\n            }\n            \n        } while (opcion != 5);\n        \n        System.out.println(\"¡Hasta pronto!\");\n    }\n}\n```"
+  },
+  {
+    "id": 98,
+    "question": "Concepto de modularización en programación",
+    "answer": "DEFINICIÓN: Dividir un programa complejo en partes más pequeñas y manejables (módulos).\n\nVENTAJAS:\n- Código más organizado y legible\n- Facilita el mantenimiento y depuración\n- Permite reutilización de código\n- Diferentes programadores pueden trabajar en módulos distintos\n\nEN JAVA: Se logra mediante métodos (funciones) y clases.\n\nEJEMPLO: En lugar de un programa monolítico, dividir en:\n- Módulo de entrada de datos\n- Módulo de cálculos\n- Módulo de presentación de resultados"
+  },
+  {
+    "id": 99,
+    "question": "Principios de diseño de algoritmos eficientes",
+    "answer": "1. CORRECCIÓN: El algoritmo debe resolver el problema correctamente\n2. EFICIENCIA: Uso óptimo de recursos (tiempo y memoria)\n3. CLARIDAD: Fácil de entender y mantener\n4. GENERALIDAD: Funciona para diferentes casos de entrada\n5. ROBUSTEZ: Maneja adecuadamente entradas incorrectas\n\nTÉCNICAS:\n- Divide y vencerás: Dividir problema en subproblemas\n- Algoritmos voraces: Tomar decisiones localmente óptimas\n- Programación dinámica: Reutilizar soluciones de subproblemas\n- Backtracking: Probar diferentes caminos sistemáticamente"
+  },
+  {
+    "id": 100,
+    "question": "Preparación para examen: temas clave a repasar",
+    "answer": "1. SINTAXIS JAVA: Estructura programa, main, comentarios\n2. TIPOS DE DATOS: Primitivos, rangos, literales\n3. OPERADORES: Aritméticos, relacionales, lógicos, precedencia\n4. VARIABLES: Declaración, inicialización, ámbito\n5. E/S BÁSICA: System.out, Scanner\n6. ESTRUCTURAS CONTROL: if, switch, while, do-while, for\n7. CONSTANTES: Declaración y uso\n8. CONVERSIONES: Implícitas y explícitas (casting)\n9. DETECCIÓN ERRORES: Compilación vs ejecución\n10. ALGORITMOS: Diseño, pseudocódigo, depuración\n\nRECOMENDACIONES: Practicar ejercicios, revisar código de ejemplos, entender conceptos no solo memorizar."
+  }
+  ]
+}

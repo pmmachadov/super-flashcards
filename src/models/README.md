@@ -1,49 +1,95 @@
-# JavaScript Flashcards Database
+# Flashcards Database - Multi-Subject System
 
-This directory contains the data for the JavaScript Flashcards application.
+This directory contains the data for the Flashcards application with support for multiple subjects.
 
 ## Files
 
-- `db.json`: Main database file with the first 50 questions used by the application
-- `complete_db.json`: Complete database containing all 476 JavaScript interview questions (only partially implemented currently)
-- `generate_db.js`: A script to help generate database entries
+- `subjects.json`: Configuration file that lists all available subjects
+- `programacion.json`: Programming flashcards database
+- `matematicas.json`: Mathematics flashcards database
+- `ingles.json`: English flashcards database
+- Add more subject JSON files as needed!
 
-## Question Structure
+## How to Add a New Subject
 
-Each question in the database follows this structure:
+### Step 1: Create the JSON file
+
+Create a new JSON file in this directory with the structure:
 
 ```json
 {
-  "id": 1,
-  "question": "Question text goes here?",
-  "answer": "Answer text goes here."
+  "questions": [
+    {
+      "id": 1,
+      "question": "Your question here?",
+      "answer": "Your answer here."
+    },
+    {
+      "id": 2,
+      "question": "Another question?",
+      "answer": "Another answer."
+    }
+  ]
 }
 ```
 
-## Adding More Questions
+**Example:** `historia.json`, `fisica.json`, `quimica.json`
 
-To add more questions to the database:
+### Step 2: Register the subject in subjects.json
 
-1. Open `db.json`
-2. Add new questions to the `flashcards` array
-3. Make sure each question has a unique ID
+Open `subjects.json` and add your new subject to the array:
 
-## Categories
+```json
+{
+  "subjects": [
+    // ... existing subjects ...
+    {
+      "id": "historia",
+      "name": "Historia",
+      "file": "historia.json",
+      "icon": "📜",
+      "color": "#E91E63"
+    }
+  ]
+}
+```
 
-You can optionally add categories to questions by adding a `category` field:
+**Properties:**
+
+- `id`: Unique identifier (lowercase, no spaces)
+- `name`: Display name
+- `file`: JSON filename
+- `icon`: Emoji icon (optional)
+- `color`: Hex color code for the button
+
+### Step 3: That's it!
+
+The app will automatically detect and load your new subject. No code changes needed!
+
+## Question Structure
+
+Each question follows this structure:
 
 ```json
 {
   "id": 1,
   "question": "Question text goes here?",
   "answer": "Answer text goes here.",
-  "category": "ES6"
+  "questionImage": null, // Optional: URL to image
+  "answerImage": null // Optional: URL to image
 }
 ```
 
-## Source
+## Color Suggestions
 
-The questions in this database are based on a comprehensive collection of JavaScript interview questions available in the main project README.
+- 🔵 Blue: `#2196F3`
+- 🟢 Green: `#4CAF50`
+- 🟠 Orange: `#FF9800`
+- 🔴 Red: `#F44336`
+- 🟣 Purple: `#9C27B0`
+- 🟡 Yellow: `#FFC107`
+- 🔵 Cyan: `#00BCD4`
+- 🟤 Brown: `#795548`
 
 ## License
 

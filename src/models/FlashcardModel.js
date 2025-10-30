@@ -1,8 +1,35 @@
-import flashcardsData from "./db.json";
+import subjectsData from "./subjects.json";
 
 class FlashcardModel {
   constructor() {
-    this.flashcards = flashcardsData.questions;
+    this.subjects = subjectsData.subjects;
+    this.currentSubject = null;
+    this.flashcards = [];
+    this.loadedData = {};
+  }
+
+  async loadSubjectData(subjectId) {
+    const subject = this.subjects.find(s => s.id === subjectId);
+    if (!subject) {
+      throw new Error(`Subject ${subjectId} not found`);
+    }
+
+    if (!this.loadedData[subjectId]) {
+      const data = await import(`./${subject.file}`);
+      this.loadedData[subjectId] = data.default.questions;
+    }
+
+    this.currentSubject = subjectId;
+    this.flashcards = this.loadedData[subjectId];
+    return this.flashcards;
+  }
+
+  getSubjects() {
+    return this.subjects;
+  }
+
+  getCurrentSubject() {
+    return this.currentSubject;
   }
 
   getAllFlashcards() {
@@ -12,8 +39,11 @@ class FlashcardModel {
   getFlashcardById(id) {
     return this.flashcards.find((card) => card.id === id);
   }
+
   addFlashcard(flashcard) {
-    const newId = Math.max(...this.flashcards.map((card) => card.id)) + 1;
+    const newId = this.flashcards.length > 0
+      ? Math.max(...this.flashcards.map((card) => card.id)) + 1
+      : 1;
     const newCard = {
       ...flashcard,
       id: newId,
